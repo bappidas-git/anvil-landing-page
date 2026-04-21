@@ -7,42 +7,54 @@ import React, { useState, useEffect } from "react";
 import { IconButton, Typography, Badge } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { trackPhoneClick, trackWhatsAppClick, trackNavigation } from "../../../utils/gtm";
+import { trackPhoneClick, trackNavigation, trackCTAClick } from "../../../utils/gtm";
 import styles from "./MobileNavigation.module.css";
+
+const SALES_PHONE_TEL = (process.env.REACT_APP_SALES_PHONE || "+918002020001").replace(/\s+/g, "");
 
 // Navigation items configuration
 const navItems = [
   {
+    id: "home",
+    label: "Home",
+    icon: "mdi:home",
+    color: "var(--primary-dark)",
+    action: "scroll",
+    href: "#home",
+  },
+  {
+    id: "calculator",
+    label: "Calculator",
+    icon: "mdi:calculator",
+    color: "var(--primary-dark)",
+    action: "scroll",
+    href: "#calculator",
+  },
+  {
+    id: "services",
+    label: "Solutions",
+    icon: "mdi:solar-panel",
+    color: "var(--primary-dark)",
+    action: "scroll",
+    href: "#services",
+  },
+  {
     id: "call",
     label: "Call",
     icon: "mdi:phone",
-    color: "#E74C3C",
+    color: "var(--primary-dark)",
     action: "call",
-    href: "tel:+919181956562",
-  },
-  {
-    id: "whatsapp",
-    label: "WhatsApp",
-    icon: "mdi:whatsapp",
-    color: "#25D366",
-    action: "whatsapp",
-    href: "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
+    href: `tel:${SALES_PHONE_TEL}`,
+    external: true,
   },
   {
     id: "enquiry",
-    label: "Book Now",
-    icon: "mdi:calendar-plus",
-    color: "#E74C3C",
+    label: "Book",
+    icon: "mdi:calendar-check",
+    color: "var(--accent-gold)",
     action: "enquiry",
     badge: true,
     primary: true,
-  },
-  {
-    id: "menu",
-    label: "Menu",
-    icon: "mdi:menu",
-    color: "#546E7A",
-    action: "menu",
   },
 ];
 
@@ -82,17 +94,26 @@ const MobileNavigation = ({
     setTimeout(() => setActiveItem(null), 300);
 
     switch (item.action) {
-      case "whatsapp":
-        trackWhatsAppClick('mobile_nav');
-        window.open(item.href, "_blank");
-        break;
       case "call":
-        trackPhoneClick('+919181956562', 'mobile_nav');
+        trackPhoneClick(SALES_PHONE_TEL, 'mobile_nav');
         window.open(item.href, "_blank");
         break;
       case "enquiry":
+        trackCTAClick('book_your_free_call', 'mobile_nav', 'bottom_bar');
         if (onEnquiryClick) onEnquiryClick();
         break;
+      case "scroll": {
+        trackNavigation('mobile_bottom_nav', 'click', item.label);
+        const targetId = item.href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          const headerOffset = 80;
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        }
+        break;
+      }
       case "menu":
         trackNavigation('mobile_drawer', 'open');
         if (onMenuClick) onMenuClick();
@@ -214,7 +235,7 @@ const MobileNavigation = ({
                       variant="dot"
                       sx={{
                         "& .MuiBadge-badge": {
-                          backgroundColor: "#F44336",
+                          backgroundColor: "var(--accent-orange)",
                           width: 8,
                           height: 8,
                           minWidth: 8,

@@ -23,13 +23,24 @@ import styles from "./MobileDrawer.module.css";
 
 // Navigation menu items
 const menuItems = [
-  { id: "home", label: "Home", icon: "ic:outline-home", href: "#home" },
-  { id: "about", label: "About Us", icon: "mdi:information-outline", href: "#about" },
-  { id: "services", label: "Services", icon: "mdi:medical-bag", href: "#services" },
-  { id: "why-us", label: "Why Choose Us", icon: "mdi:star-outline", href: "#why-us" },
-  { id: "results", label: "Results", icon: "mdi:image-multiple-outline", href: "#results" },
-  { id: "testimonials", label: "Testimonials", icon: "mdi:format-quote-open", href: "#testimonials" },
-  { id: "contact", label: "Contact", icon: "mdi:phone-outline", href: "#contact" },
+  { id: "home", label: "Home", icon: "mdi:home", href: "#home" },
+  { id: "calculator", label: "Solar Calculator", icon: "mdi:calculator", href: "#calculator" },
+  { id: "services", label: "Solar Solutions", icon: "mdi:solar-panel", href: "#services" },
+  { id: "about", label: "Why Anvil", icon: "mdi:shield-sun", href: "#about" },
+  { id: "stats", label: "Savings", icon: "mdi:chart-line", href: "#stats" },
+  { id: "faq", label: "FAQ", icon: "mdi:help-circle-outline", href: "#faq" },
+  { id: "contact", label: "Contact", icon: "mdi:phone", href: "#contact" },
+];
+
+const SALES_PHONE_DISPLAY = process.env.REACT_APP_SALES_PHONE || "+91 1800 2020 001";
+const SALES_PHONE_TEL = (process.env.REACT_APP_SALES_PHONE || "+918002020001").replace(/\s+/g, "");
+const WHATSAPP_NUMBER = (process.env.REACT_APP_WHATSAPP_NUMBER || "+918002020001").replace(/[^\d]/g, "");
+
+const SOCIAL_LINKS = [
+  { id: "facebook", icon: "mdi:facebook", label: "Facebook", href: process.env.REACT_APP_FACEBOOK_URL },
+  { id: "instagram", icon: "mdi:instagram", label: "Instagram", href: process.env.REACT_APP_INSTAGRAM_URL },
+  { id: "youtube", icon: "mdi:youtube", label: "YouTube", href: process.env.REACT_APP_YOUTUBE_URL },
+  { id: "linkedin", icon: "mdi:linkedin", label: "LinkedIn", href: process.env.REACT_APP_LINKEDIN_URL },
 ];
 
 const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection = "home" }) => {
@@ -159,9 +170,12 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
         <Box className={styles.logoSection}>
           <img
             src="https://solar.anvil.energy/svgs/logo.svg"
-            alt="Monjoven"
+            alt="Anvil Solar"
             style={{ height: "32px", width: "auto" }}
           />
+          <p className={styles.brandTagline}>
+            Your Anvil Saathi for rooftop solar
+          </p>
         </Box>
         <IconButton
           onClick={onClose}
@@ -208,7 +222,9 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
                         sx={{
                           minWidth: 44,
                           color:
-                            activeSection === item.id ? "#FFB800" : "#6B7280",
+                            activeSection === item.id
+                              ? "var(--accent-gold)"
+                              : "var(--text-gray)",
                         }}
                       >
                         <Icon icon={item.icon} style={{ fontSize: 22 }} />
@@ -220,7 +236,9 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
                           "& .MuiTypography-root": {
                             fontWeight: activeSection === item.id ? 600 : 500,
                             color:
-                              activeSection === item.id ? "#FFB800" : "#374151",
+                              activeSection === item.id
+                                ? "var(--accent-gold)"
+                                : "var(--text-dark-gray)",
                             fontSize: "0.95rem",
                           },
                         }}
@@ -258,33 +276,42 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
           {/* Contact Details */}
           <Box className={styles.contactDetails}>
             <a
-              href="tel:+919181956562"
+              href={`tel:${SALES_PHONE_TEL}`}
               className={styles.contactDetailItem}
-              onClick={() => trackPhoneClick('+919181956562', 'mobile_drawer')}
+              onClick={() => trackPhoneClick(SALES_PHONE_TEL, 'mobile_drawer')}
             >
-              <Icon icon="mdi:phone" style={{ color: '#E74C3C', fontSize: 18 }} />
-              <span>+91 9181956562</span>
+              <Icon icon="mdi:phone" style={{ color: 'var(--accent-orange)', fontSize: 18 }} />
+              <span>{`Call ${SALES_PHONE_DISPLAY}`}</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               className={styles.contactDetailItem}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick('mobile_drawer')}
             >
               <Icon icon="mdi:whatsapp" style={{ color: '#25D366', fontSize: 18 }} />
-              <span>+91 9127062599</span>
-            </a>
-            <a
-              href="mailto:dr@monjoven.com"
-              className={styles.contactDetailItem}
-            >
-              <Icon icon="mdi:email-outline" style={{ color: '#FFB800', fontSize: 18 }} />
-              <span>dr@monjoven.com</span>
+              <span>Chat on WhatsApp</span>
             </a>
           </Box>
 
-          {/* Book Consultation CTA */}
+          {/* Social Links */}
+          <Box className={styles.socialLinks}>
+            {SOCIAL_LINKS.filter((s) => !!s.href).map((social) => (
+              <a
+                key={social.id}
+                href={social.href}
+                className={styles.socialLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+              >
+                <Icon icon={social.icon} style={{ fontSize: 20 }} />
+              </a>
+            ))}
+          </Box>
+
+          {/* Book Your Free Call CTA */}
           <motion.button
             className={styles.bookConsultationCta}
             whileHover={{ scale: 1.02 }}
@@ -296,8 +323,8 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
               }
             }}
           >
-            <Icon icon="mdi:calendar-plus" style={{ fontSize: 20 }} />
-            <span>Book Consultation</span>
+            <Icon icon="mdi:calendar-check" style={{ fontSize: 20 }} />
+            <span>Book Your Free Call</span>
           </motion.button>
         </Box>
       </Box>
