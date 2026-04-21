@@ -7,20 +7,27 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { Icon } from "@iconify/react";
-import { trackPhoneClick, trackNavigation } from "../../../utils/gtm";
+import { trackPhoneClick, trackNavigation, trackCTAClick } from "../../../utils/gtm";
+import { useModal } from "../../../context/ModalContext";
 import styles from "./Header.module.css";
 
-const logoUrl = "https://solar.anvil.energy/svgs/logo.svg";
-const whiteLogoUrl = "https://solar.anvil.energy/svgs/logo.svg";
+const LOGO_URL = "https://solar.anvil.energy/svgs/logo.svg";
+const LOGO_WHITE_URL = "https://solar.anvil.energy/svgs/logo.svg";
+const BRAND_NAME = process.env.REACT_APP_NAME || "Anvil";
+
+const SALES_PHONE_DISPLAY = process.env.REACT_APP_SALES_PHONE || "+91 1800 2020 001";
+const SALES_PHONE_TEL =
+  process.env.REACT_APP_WHATSAPP_NUMBER ||
+  (process.env.REACT_APP_SALES_PHONE || "+918002020001").replace(/\s+/g, "");
 
 // Navigation items
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Why Choose Us", href: "#why-us" },
-  { label: "Results", href: "#results" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Solar Calculator", href: "#calculator" },
+  { label: "Solar Solutions", href: "#services" },
+  { label: "Why Anvil", href: "#about" },
+  { label: "Savings", href: "#stats" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -30,6 +37,13 @@ const Header = ({ forceCloseMenu = false }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const { openLeadDrawer } = useModal();
+
+  const handleOpenLeadForm = (source) => {
+    trackCTAClick("book_your_free_call", "header", source);
+    openLeadDrawer("book-meeting");
+    setIsMobileMenuOpen(false);
+  };
 
   // Close mobile menu when bottom drawer opens
   useEffect(() => {
@@ -163,8 +177,8 @@ const Header = ({ forceCloseMenu = false }) => {
           >
             <div className={styles.logoWrapper}>
               <img
-                src={isScrolled ? logoUrl : whiteLogoUrl}
-                alt="Monjoven"
+                src={isScrolled ? LOGO_URL : LOGO_WHITE_URL}
+                alt={`${BRAND_NAME} — rooftop solar for homes and businesses`}
                 className={styles.mainLogo}
                 style={{
                   height: "40px",
@@ -212,14 +226,16 @@ const Header = ({ forceCloseMenu = false }) => {
               transition={{ delay: 0.5, duration: 0.3 }}
             >
               <a
-                href="tel:+919181956562"
+                href="#book"
+                role="button"
                 className={styles.callButton}
-                onClick={() =>
-                  trackPhoneClick("+919181956562", "header_desktop")
-                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleOpenLeadForm("header_desktop");
+                }}
               >
                 <Icon icon="mdi:phone" className={styles.callButtonIcon} />
-                +91 9181956562
+                Book Your Free Call
               </a>
             </motion.div>
           )}
@@ -279,15 +295,15 @@ const Header = ({ forceCloseMenu = false }) => {
               </ul>
               <div className={styles.mobileNavCTA}>
                 <a
-                  href="tel:+919181956562"
+                  href={`tel:${SALES_PHONE_TEL}`}
                   className={styles.mobileCallButton}
                   onClick={() => {
-                    trackPhoneClick("+919181956562", "header_mobile_menu");
+                    trackPhoneClick(SALES_PHONE_TEL, "header_mobile_menu");
                     setIsMobileMenuOpen(false);
                   }}
                 >
                   <Icon icon="mdi:phone" className={styles.callButtonIcon} />
-                  +91 9181956562
+                  {SALES_PHONE_DISPLAY}
                 </a>
               </div>
             </nav>
@@ -302,11 +318,11 @@ const Header = ({ forceCloseMenu = false }) => {
 const getNavIcon = (label) => {
   const icons = {
     Home: "mdi:home-outline",
-    About: "mdi:information-outline",
-    Services: "mdi:medical-bag",
-    "Why Choose Us": "mdi:star-outline",
-    Results: "mdi:image-multiple-outline",
-    Testimonials: "mdi:format-quote-open",
+    "Solar Calculator": "mdi:calculator-variant-outline",
+    "Solar Solutions": "mdi:solar-panel",
+    "Why Anvil": "mdi:star-outline",
+    Savings: "mdi:piggy-bank-outline",
+    FAQ: "mdi:help-circle-outline",
     Contact: "mdi:phone-outline",
   };
   return icons[label] || "mdi:circle-outline";
