@@ -168,7 +168,7 @@ const HeroSection = () => {
                   label="Northeast India's Premier Hair Transplant Clinic"
                   className={styles.launchBadge}
                   sx={{
-                    backgroundColor: "#148F77",
+                    backgroundColor: "#FFB800",
                     color: "#FFFFFF",
                     fontWeight: 600,
                     fontSize: "0.875rem",

@@ -8,15 +8,15 @@ import { createTheme, alpha } from '@mui/material/styles';
 // Color palette matching CSS variables
 const colors = {
   primary: {
-    main: '#1A5276',
-    light: '#2980B9',
-    dark: '#154360',
+    main: '#0A1F3D',
+    light: '#1E4A85',
+    dark: '#061330',
     contrastText: '#FFFFFF',
   },
   secondary: {
-    main: '#148F77',
-    light: '#1ABC9C',
-    dark: '#0E6655',
+    main: '#FFB800',
+    light: '#FFC939',
+    dark: '#E6A500',
     contrastText: '#FFFFFF',
   },
   orange: {
@@ -35,19 +35,19 @@ const colors = {
     900: '#803110',
   },
   navy: {
-    main: '#1A5276',
-    light: '#2980B9',
-    dark: '#154360',
+    main: '#0A1F3D',
+    light: '#1E4A85',
+    dark: '#061330',
     50: '#EBF5FB',
     100: '#D6EAF8',
     200: '#AED6F1',
     300: '#85C1E9',
-    400: '#5DADE2',
-    500: '#2980B9',
-    600: '#1F6F96',
-    700: '#1A5276',
-    800: '#1A5276',
-    900: '#154360',
+    400: '#3B6FB5',
+    500: '#1E4A85',
+    600: '#14315B',
+    700: '#0A1F3D',
+    800: '#0A1F3D',
+    900: '#061330',
   },
   success: {
     main: '#2E7D32',
@@ -88,7 +88,7 @@ const colors = {
   background: {
     default: '#FFFFFF',
     paper: '#FFFFFF',
-    dark: '#1A5276',
+    dark: '#0A1F3D',
     light: '#F8FAFC',
   },
   text: {
@@ -99,13 +99,13 @@ const colors = {
     light: '#FFFFFF',
   },
   iconColors: {
-    gold: '#148F77',
+    gold: '#FFB800',
     green: '#4CAF50',
     purple: '#9C27B0',
     orange: '#FF6B35',
     pink: '#E91E63',
     red: '#F44336',
-    teal: '#148F77',
+    teal: '#FFB800',
     blue: '#2196F3',
   },
   cardBg: {

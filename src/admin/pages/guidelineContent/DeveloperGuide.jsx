@@ -192,7 +192,7 @@ npm start
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>src/styles/variables.css</code></td>
               <td className={styles.guideTableCell}>Brand colors (landing page only)</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>--primary-dark: #1A5276</code></td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>--primary-dark: #0A1F3D</code></td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>src/theme/muiTheme.js</code></td>
@@ -252,12 +252,12 @@ npm start
           <tbody>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>--primary-dark</code></td>
-              <td className={styles.guideTableCell}>#1A5276 (Deep Navy)</td>
+              <td className={styles.guideTableCell}>#0A1F3D (Deep Navy)</td>
               <td className={styles.guideTableCell}>Headers, text</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>--accent-gold</code></td>
-              <td className={styles.guideTableCell}>#148F77 (Teal)</td>
+              <td className={styles.guideTableCell}>#FFB800 (Teal)</td>
               <td className={styles.guideTableCell}>Buttons, highlights, links</td>
             </tr>
             <tr>

@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   background-image:
-    radial-gradient(circle at 1px 1px, rgba(20, 143, 119, 0.06) 1px, transparent 0);
+    radial-gradient(circle at 1px 1px, rgba(255, 184, 0, 0.06) 1px, transparent 0);
   background-size: 32px 32px;
   pointer-events: none;
   z-index: 0;
@@ -38,7 +38,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #148F77;
+  color: #FFB800;
   margin-bottom: 0.75rem;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .accentText {
-  color: #148F77;
+  color: #FFB800;
   font-style: italic;
 }
 
@@ -78,7 +78,7 @@
 }
 
 .statCard:hover {
-  border-color: rgba(20, 143, 119, 0.3);
+  border-color: rgba(255, 184, 0, 0.3);
 }
 
 /* ========== Stat Icon ========== */
@@ -100,7 +100,7 @@
 
 .statIcon {
   font-size: 28px;
-  color: #148F77;
+  color: #FFB800;
 }
 
 /* ========== Stat Value ========== */
@@ -114,7 +114,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #148F77;
+  color: #FFB800;
   margin-bottom: 0.75rem;
 }
 
@@ -122,7 +122,7 @@
 .statTitle {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #1A5276;
+  color: #0A1F3D;
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
@@ -324,7 +324,7 @@
 
 /* ========== Focus Styles for Accessibility ========== */
 .statCard:focus-visible {
-  outline: 2px solid #148F77;
+  outline: 2px solid #FFB800;
   outline-offset: 2px;
 }
 

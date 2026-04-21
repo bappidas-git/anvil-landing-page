@@ -18,7 +18,7 @@ const trustBadges = [
   {
     icon: "mdi:calendar-check",
     label: "25+ Yrs Plastic Surgery | 15+ Yrs Hair Transplant",
-    color: "#148F77",
+    color: "#FFB800",
   },
   {
     icon: "mdi:account-heart",
@@ -126,7 +126,7 @@ const ThankYou = () => {
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-        colors: ["#148F77", "#1ABC9C", "#FFD700", "#FFA500"],
+        colors: ["#FFB800", "#FFC939", "#FFD700", "#FFA500"],
       });
 
       // Right side confetti
@@ -134,7 +134,7 @@ const ThankYou = () => {
         ...defaults,
         particleCount,
         origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-        colors: ["#148F77", "#1ABC9C", "#FFD700", "#FFA500"],
+        colors: ["#FFB800", "#FFC939", "#FFD700", "#FFA500"],
       });
     }, 250);
 
@@ -143,7 +143,7 @@ const ThankYou = () => {
       particleCount: 100,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ["#148F77", "#1ABC9C", "#FFD700", "#4CAF50", "#2196F3"],
+      colors: ["#FFB800", "#FFC939", "#FFD700", "#4CAF50", "#2196F3"],
     });
   }, []);
 

@@ -49,7 +49,7 @@ const LocationSection = () => {
     },
     hover: {
       y: -5,
-      boxShadow: "0 15px 40px rgba(26, 82, 118, 0.15)",
+      boxShadow: "0 15px 40px rgba(10, 31, 61, 0.15)",
       transition: {
         duration: 0.3,
       },

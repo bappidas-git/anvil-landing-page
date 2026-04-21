@@ -7,7 +7,7 @@
 .section {
   position: relative;
   padding: var(--space-16) 0;
-  background: linear-gradient(135deg, #1a5276 0%, #0e2f44 100%);
+  background: linear-gradient(135deg, #0A1F3D 0%, #061330 100%);
   overflow: hidden;
 }
 
@@ -139,7 +139,7 @@
 
 .testimonialCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(20, 143, 119, 0.4);
+  border-color: rgba(255, 184, 0, 0.4);
 }
 
 /* Quote Icon */
@@ -148,7 +148,7 @@
   top: var(--space-4);
   right: var(--space-4);
   font-size: 2rem;
-  color: rgba(20, 143, 119, 0.3);
+  color: rgba(255, 184, 0, 0.3);
   line-height: 1;
 }
 
@@ -236,7 +236,7 @@
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   color: var(--accent-gold-light);
-  background: rgba(20, 143, 119, 0.15);
+  background: rgba(255, 184, 0, 0.15);
   padding: 6px 12px;
   border-radius: var(--radius-full);
   width: fit-content;
@@ -423,7 +423,7 @@
   height: 200px;
   background: linear-gradient(
     315deg,
-    rgba(20, 143, 119, 0.1) 0%,
+    rgba(255, 184, 0, 0.1) 0%,
     transparent 70%
   );
   clip-path: polygon(100% 0, 100% 100%, 0 100%);
@@ -602,7 +602,7 @@
   .badgeLabel,
   .ctaTitle,
   .ctaSubtext {
-    color: #1a5276 !important;
+    color: #0A1F3D !important;
   }
 
   .testimonialCard {
@@ -611,7 +611,7 @@
   }
 
   .patientName {
-    color: #1a5276;
+    color: #0A1F3D;
   }
 
   .testimonialText {
