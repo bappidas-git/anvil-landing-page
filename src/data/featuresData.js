@@ -1,67 +1,70 @@
 export const featuresData = [
   {
-    id: 1,
-    category: "Techniques",
+    category: "Solar Technology",
     items: [
       {
-        icon: "mdi:microscope",
-        title: "FUE & DHI Techniques",
+        icon: "mdi:solar-panel-large",
+        title: "Tier-1 Monocrystalline Panels",
         description:
-          "Hair transplant procedures performed using established techniques such as Follicular Unit Extraction (FUE) and Direct Hair Implantation (DHI), selected based on individual assessment.",
+          "High-efficiency panels from globally-certified manufacturers with 25-year linear power output warranty.",
       },
       {
-        icon: "mdi:needle",
-        title: "PRP Therapy",
+        icon: "mdi:chip",
+        title: "Smart Inverters",
         description:
-          "Platelet-Rich Plasma (PRP) therapy may be used in selected cases as an adjunct to support hair growth.",
+          "Tier-1 inverters with built-in MPPT, grid protection, and app-based live monitoring of every kilowatt-hour you generate.",
+      },
+      {
+        icon: "mdi:battery-charging-high",
+        title: "Lithium-ion Battery Backup",
+        description:
+          "Optional high-density lithium batteries with 10-year life for power-cut-proof hybrid systems.",
       },
     ],
   },
   {
-    id: 2,
-    category: "Patient Care & Support",
+    category: "Full-Service Install",
     items: [
       {
-        icon: "mdi:clipboard-pulse-outline",
-        title: "Post-Procedure Care",
+        icon: "mdi:handshake",
+        title: "Dedicated Anvil Saathi",
         description:
-          "Structured guidance provided for recovery, including instructions, follow-up evaluation, and ongoing support.",
+          "One person owns your entire journey — site survey, design, paperwork, install, and support.",
       },
       {
-        icon: "mdi:calendar-check",
-        title: "Follow-Up & Monitoring",
+        icon: "mdi:file-document-check",
+        title: "PM Surya Ghar Paperwork",
         description:
-          "Patients are advised follow-up based on individual requirements to monitor progress and address concerns.",
+          "Application, DISCOM approval, net metering, and subsidy disbursal handled end-to-end.",
+      },
+      {
+        icon: "mdi:bank",
+        title: "Zero Down-Payment EMI",
+        description:
+          "Solar loans from 7% p.a. with tenors up to 10 years, on-boarded through our partner banks.",
       },
     ],
   },
   {
-    id: 3,
-    category: "Experience & Trust",
+    category: "Trust & Warranty",
     items: [
       {
-        icon: "mdi:doctor",
-        title: "Experienced Plastic Surgeon",
+        icon: "mdi:shield-sun",
+        title: "25-Year Panel Warranty",
         description:
-          "Led by Dr. Porag Neog (MBBS, MS) with over 24 years of experience in plastic and reconstructive surgery and more than a decade of experience in hair transplant procedures.",
+          "Linear power output warranty directly from the OEM — matched by Anvil's 5-year workmanship warranty.",
       },
       {
-        icon: "mdi:trophy-outline",
-        title: "Early Practice in Hair Transplant in Northeast India",
+        icon: "mdi:map-marker-radius",
+        title: "PAN-India Service Network",
         description:
-          "Earliest centre to offer dedicated hair transplant services in Northeast India since 2012.",
+          "Vetted installer teams across 300+ cities. Your Saathi is never more than a day away.",
       },
       {
-        icon: "mdi:earth",
-        title: "Patients from India and Abroad",
+        icon: "mdi:chart-line",
+        title: "Live Generation Tracking",
         description:
-          "Patients from Northeast India as well as international locations including the USA, UK, Canada, Middle East, Bhutan and Nepal.",
-      },
-      {
-        icon: "mdi:shield-lock-outline",
-        title: "Confidential & Individualized Care",
-        description:
-          "Treatment plans are discussed privately with each patient, with focus on individualized planning and discretion.",
+          "The Anvil app shows your live output, savings, and CO₂ offset — with monthly performance reports.",
       },
     ],
   },
