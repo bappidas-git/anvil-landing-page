@@ -213,6 +213,16 @@
   margin-top: 8px;
 }
 
+/* Privacy Note */
+.privacyNote {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.72rem !important;
+  line-height: 1.4 !important;
+  color: var(--text-gray) !important;
+}
+
 /* Submit Button */
 .submitButton {
   padding: 14px 32px !important;
