@@ -188,7 +188,7 @@ const HeroSection = () => {
                   className={styles.heroTitle}
                   sx={{
                     color: "#FFFFFF",
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     fontWeight: 700,
                     fontSize: {
                       xs: "2.25rem",
@@ -254,7 +254,7 @@ const HeroSection = () => {
                     padding: "0.875rem 2rem",
                     borderRadius: "12px",
                     textTransform: "none",
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     boxShadow: "0 4px 20px rgba(255, 107, 53, 0.4)",
                     "&:hover": {
                       backgroundColor: "#E85A20",
@@ -283,7 +283,7 @@ const HeroSection = () => {
                     padding: "0.875rem 2rem",
                     borderRadius: "12px",
                     textTransform: "none",
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     borderWidth: "2px",
                     "&:hover": {
                       borderColor: "#FFFFFF",
@@ -328,7 +328,7 @@ const HeroSection = () => {
                       sx={{
                         color: "#FFFFFF",
                         fontWeight: 700,
-                        fontFamily: "'Poppins', sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                         textAlign: "center",
                         fontSize: "1.25rem",
                       }}

@@ -114,7 +114,7 @@
 }
 
 .highlightTitle {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700 !important;
   color: #0A1F3D;
@@ -217,7 +217,7 @@
 }
 
 .ctaHeading {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;

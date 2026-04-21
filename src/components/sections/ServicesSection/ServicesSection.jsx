@@ -199,7 +199,7 @@ const ServicesSection = () => {
               variant="h2"
               className={styles.sectionTitle}
               sx={{
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.25rem" },
                 color: "#0A1F3D",
@@ -323,7 +323,7 @@ const ServicesSection = () => {
                       fontWeight: 700,
                       color: "#1B2631",
                       fontSize: { xs: "1rem", md: "1.15rem" },
-                      fontFamily: "Poppins, sans-serif",
+                      fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     }}
                   >
                     A Message from Our Lead Surgeon
