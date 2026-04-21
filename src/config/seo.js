@@ -8,13 +8,14 @@ export const seoConfig = {
   // =========================================
   // Site-level Settings
   // =========================================
-  siteName: "Monjoven",
-  siteUrl: "https://www.monjoven.com",
-  defaultTitle: "Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati",
-  titleTemplate: "%s | Monjoven",
+  siteName: "Anvil",
+  siteUrl: "https://solar.anvil.energy",
+  defaultTitle: "Anvil Solar | Rooftop Solar for Homes & Businesses",
+  titleTemplate: "%s | Anvil Solar",
   defaultDescription:
-    "Monjoven is the first dedicated hair transplant clinic in Northeast India, led by Dr. Porag Neog with 25+ years of experience in plastic surgery and 15+ years in hair transplant. Expert FUE & FUT hair transplant, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Consult Dr. Porag Neog today.",
-  defaultImage: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&q=80&auto=format&fit=crop",
+    "Switch to rooftop solar with Anvil. End-to-end installation, PM Surya Ghar subsidy, zero-hassle financing, and lifetime support. Calculate your savings today.",
+  defaultImage:
+    "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&q=80&auto=format&fit=crop",
   locale: "en_IN",
   language: "en",
 
@@ -22,30 +23,32 @@ export const seoConfig = {
   // Organization Details
   // =========================================
   organization: {
-    name: "Monjoven Hair Transplant & Cosmetic Surgery",
-    alternateName: "Monjoven",
-    url: "https://www.monjoven.com",
+    name: "Anvil Energy",
+    alternateName: "Anvil",
+    url: "https://solar.anvil.energy",
     logo: "https://solar.anvil.energy/svgs/logo.svg",
-    email: "dr@monjoven.com",
-    phone: "+91 9181956562",
+    email: "hello@anvil.energy",
+    phone: "+91-1800-2020-001",
     description:
-      "Monjoven is Northeast India's first dedicated hair transplant clinic, offering advanced FUE & FUT hair restoration, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Founded by Dr. Porag Neog with over 25 years of experience in plastic surgery and 15+ years in hair transplant.",
+      "End-to-end rooftop solar installation for homes and businesses across India. Anvil handles design, PM Surya Ghar subsidy, financing, installation, net metering, and lifetime support so you can switch to solar with zero hassle.",
     address: {
-      streetAddress: "VIP Road, Borbari, Six Mile, Near Pratiksha Hospital",
-      addressLocality: "Guwahati",
-      addressRegion: "Assam",
-      postalCode: "",
+      streetAddress: "Anvil Energy HQ",
+      addressLocality: "Gurugram",
+      addressRegion: "Haryana",
+      postalCode: "122001",
       addressCountry: "IN",
     },
     sameAs: [
-      "https://www.facebook.com/MONJOVEN/",
-      "https://www.instagram.com/monjoven_",
+      "https://www.facebook.com/anvilenergy",
+      "https://www.instagram.com/anvil.energy",
+      "https://www.linkedin.com/company/anvil-energy",
+      "https://www.youtube.com/@anvilenergy",
     ],
     founder: {
-      name: "Dr. Porag Neog",
-      jobTitle: "Cosmetic Surgeon & Founder",
+      name: "Anvil Energy Team",
+      jobTitle: "Founding Team",
     },
-    foundingDate: "2012",
+    foundingDate: "2020",
   },
 
   // =========================================
@@ -53,20 +56,21 @@ export const seoConfig = {
   // =========================================
   pages: {
     home: {
-      title: "Monjoven | Hair Transplant & Cosmetic Surgery in Guwahati, Assam",
+      title: "Anvil Solar | Rooftop Solar for Homes & Businesses in India",
       description:
-        "Northeast India's first dedicated hair transplant clinic. Led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience in plastic surgery and 15+ years in hair transplant. Advanced Micro-FUE technology, free post operative care. Book your consultation today.",
+        "Switch to rooftop solar with Anvil. End-to-end installation, PM Surya Ghar subsidy, zero-hassle financing, and lifetime support. Book your free consultation today.",
       keywords:
-        "hair transplant guwahati, fue hair transplant assam, hair transplant northeast india, cosmetic surgery guwahati, dr porag neog, monjoven, beard transplant, rhinoplasty assam, prp therapy guwahati",
+        "rooftop solar India, home solar, PM Surya Ghar, solar calculator, on-grid solar, hybrid solar, solar subsidy, Anvil Saathi",
     },
     thankYou: {
-      title: "Thank You | Monjoven Hair Transplant & Cosmetic Surgery",
+      title: "Thank You | Your Anvil Saathi Will Call You Shortly",
       description:
-        "Thank you for your consultation request. Dr. Neog's team will contact you within 24 hours.",
+        "Your Anvil Saathi will call you within the next 30 minutes to discuss your rooftop solar consultation.",
       robots: "noindex, nofollow",
     },
     admin: {
-      title: "Admin Panel | Monjoven",
+      title: "Anvil Admin",
+      description: "Lead management for Anvil Solar",
       robots: "noindex, nofollow",
     },
   },
@@ -76,54 +80,54 @@ export const seoConfig = {
   // =========================================
   faqs: [
     {
-      question: "What is a hair transplant and how does it work?",
+      question: "How much can I save by going solar with Anvil?",
       answer:
-        "A hair transplant is a surgical procedure that moves hair follicles from a donor area (usually the back of the head) to balding or thinning areas. At Monjoven, we use both FUE (Follicular Unit Extraction) and FUT (Follicular Unit Transplantation) methods. FUE uses micro punches (0.6-1.25mm) to extract individual follicles, while FUT involves removing a strip for graft separation. Both methods produce permanent, natural-looking results.",
+        "Most residential customers cut their electricity bill by 70–90%. The exact savings depend on your monthly consumption, state tariff, system size, and sunlight hours. Use the Anvil Solar Savings Calculator on our homepage for an instant personalised estimate.",
     },
     {
-      question: "What is the difference between FUE and FUT hair transplant?",
+      question: "Does Anvil help me claim the PM Surya Ghar subsidy?",
       answer:
-        "FUE (Follicular Unit Extraction) extracts individual follicles using tiny punches, leaving minimal scarring with faster recovery. FUT (Follicular Unit Transplantation) removes a strip of scalp for graft harvesting, allowing more grafts in a single session. Dr. Porag Neog at Monjoven recommends the best method based on your hair loss pattern, donor area, and desired results.",
+        "Yes. Anvil handles the entire PM Surya Ghar Muft Bijli Yojana process — registration, DISCOM coordination, technical feasibility report, and subsidy disbursal. Eligible households can receive up to ₹78,000 in central government subsidy.",
     },
     {
-      question: "How long does a hair transplant procedure take?",
+      question: "What is the difference between on-grid and hybrid solar?",
       answer:
-        "A typical hair transplant at Monjoven takes 6-8 hours, performed in a single session under local anesthesia. The duration depends on the number of grafts needed. You remain comfortable throughout with our luxury clinic amenities including healthy & hygienic meals and snacks.",
+        "An on-grid system exports excess solar to the utility grid for credits (net metering) but shuts off during outages. A hybrid system adds a battery so you keep power during outages and stay self-reliant. Anvil recommends the right fit based on your load profile and state policy.",
     },
     {
-      question: "Is the hair transplant procedure painful?",
+      question: "What roof types are suitable for solar?",
       answer:
-        "The procedure is performed under local anesthesia, so you feel minimal discomfort. Most patients report the experience as painless. After the procedure, any mild soreness is easily managed with prescribed medication. Dr. Neog ensures patient comfort throughout the process.",
+        "Anvil installs on concrete (RCC) and tin-sheet (metal / asbestos-replacement) roofs. A site survey confirms structural suitability and shading. Minimum usable area: roughly 100 sq ft per kW for residential systems.",
     },
     {
-      question: "What is the recovery time after a hair transplant?",
+      question: "How long does installation take?",
       answer:
-        "Most patients return to normal activities within 2-3 days. FUE has faster recovery than FUT as there are no sutures. Monjoven provides free 2-week follow-up care and 4 months of complimentary laser therapy to accelerate healing and hair growth.",
+        "Physical installation of a 3–5 kW residential system takes 2–3 days once materials arrive. End-to-end timeline including subsidy approval, net metering, and commissioning is typically 3–6 weeks depending on your DISCOM.",
     },
     {
-      question: "When will I see results after my hair transplant?",
+      question: "What warranties do I get?",
       answer:
-        "Initial growth begins at 3-4 months, with significant improvement visible at 6-8 months. Full results are typically seen at 12-18 months. The transplanted hair is permanent and grows naturally for a lifetime.",
+        "25-year linear power warranty on solar panels, 10-year comprehensive warranty on the inverter, and 5-year Anvil workmanship warranty on the entire installation — including mounting structures and AC/DC cabling.",
     },
     {
-      question: "How much does a hair transplant cost at Monjoven?",
+      question: "What happens on cloudy or rainy days?",
       answer:
-        "The cost depends on the number of grafts required, technique used (FUE or FUT), and the extent of hair loss. We offer transparent pricing with no hidden costs. Book a consultation with Dr. Porag Neog for a personalized assessment and detailed cost estimate.",
+        "Solar panels still generate electricity on cloudy days (at reduced output). Any shortfall is automatically drawn from the grid for on-grid systems, or from your battery for hybrid systems, so you never lose power.",
     },
     {
-      question: "Who is a good candidate for hair transplant?",
+      question: "Can Anvil help with financing or EMI?",
       answer:
-        "Good candidates include individuals with male/female pattern baldness, adequate donor hair, and realistic expectations. Age, hair type, and medical history are considered. Dr. Neog evaluates each case personally to determine the best treatment approach.",
+        "Yes. Anvil partners with leading banks under the PM Surya Ghar loan scheme to offer low-interest solar loans starting at 7% with EMI tenors up to 10 years. Zero down-payment options are available for eligible customers.",
     },
     {
-      question: "Does Monjoven offer non-surgical hair loss treatments?",
+      question: "How much maintenance does a solar system need?",
       answer:
-        "Yes, Monjoven offers PRP (Platelet-Rich Plasma) therapy and laser therapy as non-surgical options for hair loss. These can be standalone treatments or complement surgical procedures for enhanced results.",
+        "Very little. Panels need cleaning every 2–4 weeks in most Indian cities. Anvil offers optional annual maintenance contracts that include panel cleaning, electrical inspection, and remote monitoring.",
     },
     {
-      question: "Why should I choose Monjoven for my hair transplant?",
+      question: "Is Anvil available in my city?",
       answer:
-        "Monjoven is Northeast India's first dedicated hair transplant clinic, led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience in plastic surgery and 15+ years in hair transplant. We use the smallest FUE punch technology, offer free post-operative laser therapy, 24/7 support, and have served patients from 10+ countries with results at par with international standards.",
+        "Anvil installs across India through a vetted partner network. Enter your state in the savings calculator to see local incentives, and our Anvil Saathi will confirm availability during your free consultation.",
     },
   ],
 
@@ -131,8 +135,8 @@ export const seoConfig = {
   // LocalBusiness Schema Settings
   // =========================================
   localBusiness: {
-    type: "MedicalBusiness",
-    priceRange: "$$",
+    type: "SolarEnergyContractor",
+    priceRange: "₹₹",
     openingHours: {
       days: [
         "Monday",
@@ -143,36 +147,52 @@ export const seoConfig = {
         "Saturday",
       ],
       opens: "09:00",
-      closes: "18:00",
+      closes: "19:00",
     },
     geo: {
-      latitude: "26.1445",
-      longitude: "91.7862",
+      latitude: "28.4595",
+      longitude: "77.0266",
     },
-    medicalSpecialty: "Cosmetic Surgery, Hair Transplant",
+    knowsAbout: [
+      "Rooftop Solar",
+      "On-Grid Solar",
+      "Hybrid Solar",
+      "Solar Net Metering",
+      "PM Surya Ghar Yojana",
+      "Solar Financing",
+    ],
     isAcceptingNewPatients: true,
-    hasMap: "https://maps.google.com/?cid=monjoven-guwahati",
+    hasMap: "https://www.google.com/maps/place/Gurugram,+Haryana,+India",
     availableService: [
       {
-        name: "FUE Hair Transplant",
-        description: "Follicular Unit Extraction hair restoration",
+        name: "Rooftop Solar Installation",
+        description:
+          "End-to-end on-grid and hybrid rooftop solar installation for homes and businesses",
       },
       {
-        name: "FUT Hair Transplant",
-        description: "Follicular Unit Transplantation hair restoration",
+        name: "On-Grid Solar Systems",
+        description:
+          "Net-metered solar systems that export excess power to the utility grid for credits",
       },
       {
-        name: "Beard Transplant",
-        description: "Facial hair restoration surgery",
+        name: "Hybrid Solar Systems",
+        description:
+          "Solar with battery backup for outage protection and energy independence",
       },
       {
-        name: "PRP Therapy",
-        description: "Platelet-Rich Plasma therapy for hair loss",
+        name: "PM Surya Ghar Subsidy Assistance",
+        description:
+          "End-to-end help registering and claiming the central government rooftop solar subsidy",
       },
-      { name: "Rhinoplasty", description: "Cosmetic nose surgery" },
       {
-        name: "Cosmetic Surgery",
-        description: "Aesthetic and cosmetic surgical procedures",
+        name: "Solar Financing & EMI",
+        description:
+          "Low-interest solar loans under PM Surya Ghar with zero down-payment options",
+      },
+      {
+        name: "Annual Maintenance",
+        description:
+          "Panel cleaning, electrical inspection, and remote monitoring for installed systems",
       },
     ],
   },
