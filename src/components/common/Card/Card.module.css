@@ -272,7 +272,7 @@
 
 .selected {
   border: 2px solid var(--accent-gold);
-  box-shadow: 0 0 0 4px rgba(20, 143, 119, 0.1);
+  box-shadow: 0 0 0 4px rgba(255, 184, 0, 0.1);
 }
 
 /* Focus State */

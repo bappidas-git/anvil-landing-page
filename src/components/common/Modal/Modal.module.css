@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
-  background: rgba(26, 82, 118, 0.7);
+  background: rgba(10, 31, 61, 0.7);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }

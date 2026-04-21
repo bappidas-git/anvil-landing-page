@@ -149,7 +149,7 @@ const HighlightsSection = () => {
                 fontFamily: "'Poppins', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.25rem" },
-                color: "#1A5276",
+                color: "#0A1F3D",
                 marginTop: "0.75rem",
                 textAlign: "center",
                 lineHeight: 1.2,

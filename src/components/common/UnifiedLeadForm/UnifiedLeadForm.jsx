@@ -83,7 +83,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#1A5276",
+          color: "#0A1F3D",
         }}
       >
         Introduction
@@ -103,7 +103,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#1A5276",
+          color: "#0A1F3D",
         }}
       >
         Information We Collect
@@ -156,7 +156,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#1A5276",
+          color: "#0A1F3D",
         }}
       >
         How We Use Your Information
@@ -206,7 +206,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#1A5276",
+          color: "#0A1F3D",
         }}
       >
         Information Sharing
@@ -261,7 +261,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#1A5276",
+          color: "#0A1F3D",
         }}
       >
         Data Security
@@ -281,7 +281,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#1A5276",
+          color: "#0A1F3D",
         }}
       >
         Your Rights
@@ -327,7 +327,7 @@ const PrivacyPolicyContent = () => (
           fontSize: "16px",
           fontWeight: 600,
           marginBottom: "12px",
-          color: "#1A5276",
+          color: "#0A1F3D",
         }}
       >
         Contact Us
@@ -430,7 +430,7 @@ const PrivacyPolicyModal = ({ isOpen, onClose }) => {
                   fontSize: "18px",
                   fontWeight: 600,
                   margin: 0,
-                  color: "#1A5276",
+                  color: "#0A1F3D",
                 }}
               >
                 Privacy Policy
