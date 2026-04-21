@@ -158,7 +158,7 @@ const MobileDrawer = ({ open, onClose, onOpen, onBookConsultation, activeSection
       <Box className={styles.drawerHeader}>
         <Box className={styles.logoSection}>
           <img
-            src="https://www.monjoven.com/assets/img/logo.png"
+            src="https://solar.anvil.energy/svgs/logo.svg"
             alt="Monjoven"
             style={{ height: "32px", width: "auto" }}
           />

@@ -183,7 +183,7 @@ const LocationSection = () => {
                 <div className={styles.mapContainer}>
                   <div className={styles.mapPlaceholder}>
                     <img
-                      src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775885388/Map_Image_tezkg3.png"
+                      src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1200&q=80&auto=format&fit=crop"
                       alt="Monjoven Clinic Location Map - Six Mile, Guwahati"
                       className={styles.mapImage}
                     />

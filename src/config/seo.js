@@ -14,7 +14,7 @@ export const seoConfig = {
   titleTemplate: "%s | Monjoven",
   defaultDescription:
     "Monjoven is the first dedicated hair transplant clinic in Northeast India, led by Dr. Porag Neog with 25+ years of experience in plastic surgery and 15+ years in hair transplant. Expert FUE & FUT hair transplant, cosmetic surgery, and aesthetic treatments in Guwahati, Assam. Consult Dr. Porag Neog today.",
-  defaultImage: "https://www.monjoven.com/og-image.jpg",
+  defaultImage: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&q=80&auto=format&fit=crop",
   locale: "en_IN",
   language: "en",
 
@@ -25,7 +25,7 @@ export const seoConfig = {
     name: "Monjoven Hair Transplant & Cosmetic Surgery",
     alternateName: "Monjoven",
     url: "https://www.monjoven.com",
-    logo: "https://www.monjoven.com/assets/img/logo.png",
+    logo: "https://solar.anvil.energy/svgs/logo.svg",
     email: "dr@monjoven.com",
     phone: "+91 9181956562",
     description:

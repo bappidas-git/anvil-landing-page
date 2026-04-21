@@ -41,7 +41,7 @@ const AdminLogin = () => {
         <div className={styles.loginHeader}>
           <div className={styles.loginLogo}>
             <img
-              src="https://www.monjoven.com/assets/img/logo.png"
+              src="https://solar.anvil.energy/svgs/logo.svg"
               alt="Monjoven"
             />
           </div>
