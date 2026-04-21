@@ -11,7 +11,7 @@ export const locationData = {
   website: "www.monjoven.com",
   whatsapp: "919127062599",
   mapUrl:
-    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775885388/Map_Image_tezkg3.png",
+    "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1200&q=80&auto=format&fit=crop",
   warehouses: [],
   nearbyAreas: [
     "Six Mile",

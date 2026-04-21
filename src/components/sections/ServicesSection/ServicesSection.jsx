@@ -304,7 +304,7 @@ const ServicesSection = () => {
               >
                 <Box
                   component="img"
-                  src="https://res.cloudinary.com/dn9gyaiik/image/upload/v1775886740/doc-small-photo_rasnle.png"
+                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80&auto=format&fit=crop"
                   alt="Lead Surgeon"
                   sx={{
                     width: { xs: 56, md: 64 },

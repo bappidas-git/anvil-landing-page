@@ -70,7 +70,7 @@ const keyStats = [
 // Doctor profile data
 const doctorProfile = {
   image:
-    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Dr._Image_Porag_neong_pyergn.png",
+    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80&auto=format&fit=crop",
   name: "Dr. Porag Neog",
   credentials: "MBBS, MS",
   title: "Cosmetic Surgeon & Founder",
@@ -79,7 +79,7 @@ const doctorProfile = {
 
 // Clinic image
 const clinicImage = {
-  src: "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775887560/monjoven-clinic-interior_urbcsh.png",
+  src: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=1200&q=80&auto=format&fit=crop",
   alt: "Monjoven Clinic Interior",
 };
 

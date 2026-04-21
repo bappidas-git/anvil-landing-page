@@ -58,7 +58,7 @@ const AdminTopbar = () => {
     <header className={styles.topbar}>
       <div className={styles.topbarLeft}>
         <img
-          src="https://www.monjoven.com/assets/img/logo.png"
+          src="https://solar.anvil.energy/svgs/logo.svg"
           alt="Monjoven"
           className={styles.logo}
         />
@@ -111,7 +111,7 @@ const AdminTopbar = () => {
             {/* Logo at top */}
             <div className={styles.mobileMenuHeader}>
               <img
-                src="https://www.monjoven.com/assets/img/logo.png"
+                src="https://solar.anvil.energy/svgs/logo.svg"
                 alt="Monjoven"
                 className={styles.mobileMenuLogo}
               />

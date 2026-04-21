@@ -24,10 +24,10 @@ import styles from "./HeroSection.module.css";
 // Hero images with fallbacks
 const HERO_IMAGES = {
   desktop: [
-    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Hero_Image_Desktop_V_pcpj89.png",
+    "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80&auto=format&fit=crop",
   ],
   mobile: [
-    "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775884050/Hero_Image_Mobile_V_k4r8vx.png",
+    "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=80&auto=format&fit=crop",
   ],
 };
 

@@ -10,9 +10,8 @@ import { Icon } from "@iconify/react";
 import { trackPhoneClick, trackNavigation } from "../../../utils/gtm";
 import styles from "./Header.module.css";
 
-const logoUrl = "https://www.monjoven.com/assets/img/logo.png";
-const whiteLogoUrl =
-  "https://res.cloudinary.com/dn9gyaiik/image/upload/v1775887476/MONJOVEN-LOGO_hqpdnc.png";
+const logoUrl = "https://solar.anvil.energy/svgs/logo.svg";
+const whiteLogoUrl = "https://solar.anvil.energy/svgs/logo.svg";
 
 // Navigation items
 const navItems = [
