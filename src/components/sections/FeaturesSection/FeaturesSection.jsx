@@ -1,6 +1,6 @@
 /* ============================================
-   FeaturesSection Component - Why Choose Monjoven
-   Tabbed benefits showcase with clinic highlights and CTA
+   FeaturesSection Component - Why Choose Anvil
+   Tabbed benefits showcase with solar highlights and CTA
    ============================================ */
 
 import React, { useState, useRef } from "react";
@@ -11,28 +11,28 @@ import { useModal } from "../../../context/ModalContext";
 import { featuresData } from "../../../data/featuresData";
 import styles from "./FeaturesSection.module.css";
 
-// Category icons (replacing Lottie animations)
+// Category icons keyed by category name
 const categoryIcons = {
-  1: "mdi:chip",
-  2: "mdi:hand-heart",
-  3: "mdi:star-circle",
+  "Solar Technology": "mdi:solar-panel-large",
+  "Full-Service Install": "mdi:handshake",
+  "Trust & Warranty": "mdi:shield-check",
 };
 
-// Accent icons for decorative display (replacing Lottie)
+// Accent icons for decorative display
 const categoryAccentIcons = {
-  1: "mdi:microscope",
-  2: "mdi:shield-check",
-  3: "mdi:trophy-outline",
+  "Solar Technology": "mdi:solar-power",
+  "Full-Service Install": "mdi:account-hard-hat",
+  "Trust & Warranty": "mdi:shield-sun",
 };
 
-// Highlights strip items
-const courseHighlights = [
-  { icon: "mdi:microscope", label: "Micro-FUE" },
-  { icon: "mdi:laser-pointer", label: "Laser Therapy" },
-  { icon: "mdi:needle", label: "PRP Therapy" },
-  { icon: "mdi:phone-in-talk", label: "24/7 Support" },
-  { icon: "mdi:doctor", label: "Expert Surgeon" },
-  { icon: "mdi:earth", label: "Global Patients" },
+// Solar highlights strip items
+const solarHighlights = [
+  { icon: "mdi:solar-panel", label: "Tier-1 Panels" },
+  { icon: "mdi:chip", label: "Smart Inverters" },
+  { icon: "mdi:battery-charging-high", label: "Lithium Backup" },
+  { icon: "mdi:handshake", label: "Anvil Saathi" },
+  { icon: "mdi:file-document-check", label: "Subsidy Paperwork" },
+  { icon: "mdi:chart-line", label: "Live Tracking" },
 ];
 
 // Animation variants
@@ -76,15 +76,15 @@ const cardVariants = {
 const FeaturesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [activeTab, setActiveTab] = useState(featuresData[0]?.id ?? 1);
+  const [activeTab, setActiveTab] = useState(featuresData[0]?.category);
   const { openLeadDrawer } = useModal();
 
-  const handleConsultation = () => {
-    openLeadDrawer("consultation");
+  const handleOpenLeadForm = () => {
+    openLeadDrawer("book-meeting");
   };
 
   const activeCategory =
-    featuresData.find((c) => c.id === activeTab) || featuresData[0];
+    featuresData.find((c) => c.category === activeTab) || featuresData[0];
 
   return (
     <section className={styles.benefitsSection} id="why-us" ref={ref}>
@@ -109,7 +109,7 @@ const FeaturesSection = () => {
                 marginBottom: "0.5rem",
               }}
             >
-              Why Choose Us
+              Built for India
             </Typography>
             <Typography
               variant="h2"
@@ -123,7 +123,7 @@ const FeaturesSection = () => {
                 lineHeight: 1.2,
               }}
             >
-              The Monjoven <span className={styles.accentText}>Approach</span>
+              Better solar. <span className={styles.accentText}>Less hassle.</span>
             </Typography>
             <Typography
               className={styles.sectionSubtitle}
@@ -135,8 +135,8 @@ const FeaturesSection = () => {
                 marginTop: "0.75rem",
               }}
             >
-              Experience the difference of Northeast India's most trusted hair
-              transplant and cosmetic surgery clinic
+              Every Anvil installation is engineered, warrantied, and supported
+              by a team that actually picks up the phone.
             </Typography>
           </motion.div>
 
@@ -144,18 +144,18 @@ const FeaturesSection = () => {
           <motion.div variants={itemVariants} className={styles.categoryTabs}>
             {featuresData.map((category) => (
               <button
-                key={category.id}
+                key={category.category}
                 className={`${styles.categoryTab} ${
-                  activeTab === category.id ? styles.activeTab : ""
+                  activeTab === category.category ? styles.activeTab : ""
                 }`}
-                onClick={() => setActiveTab(category.id)}
+                onClick={() => setActiveTab(category.category)}
               >
                 <Icon
-                  icon={categoryIcons[category.id]}
+                  icon={categoryIcons[category.category]}
                   className={styles.tabIcon}
                 />
                 <span className={styles.tabLabel}>{category.category}</span>
-                {activeTab === category.id && (
+                {activeTab === category.category && (
                   <motion.div
                     className={styles.tabIndicator}
                     layoutId="tabIndicator"
@@ -215,14 +215,14 @@ const FeaturesSection = () => {
           <div className={styles.mobileStack}>
             {featuresData.map((category) => (
               <motion.div
-                key={category.id}
+                key={category.category}
                 variants={itemVariants}
                 className={styles.mobileCategory}
               >
                 <div className={styles.mobileCategoryHeader}>
                   <div className={styles.mobileCategoryLottie}>
                     <Icon
-                      icon={categoryAccentIcons[category.id]}
+                      icon={categoryAccentIcons[category.category]}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -261,13 +261,13 @@ const FeaturesSection = () => {
             ))}
           </div>
 
-          {/* Course Highlights Strip */}
+          {/* Solar Highlights Strip */}
           <motion.div
             variants={itemVariants}
             className={styles.highlightsStrip}
           >
             <div className={styles.highlightsTrack}>
-              {courseHighlights.map((item, index) => (
+              {solarHighlights.map((item, index) => (
                 <div key={index} className={styles.highlightChip}>
                   <Icon icon={item.icon} className={styles.highlightIcon} />
                   <span className={styles.highlightLabel}>{item.label}</span>
@@ -276,12 +276,12 @@ const FeaturesSection = () => {
             </div>
           </motion.div>
 
-          {/* Procedures Milestone Highlight */}
+          {/* Service Network Milestone Highlight */}
           <motion.div variants={itemVariants} className={styles.milestoneWrapper}>
             <div className={styles.milestoneBadge}>
-              <Icon icon="mdi:medal-outline" className={styles.milestoneIcon} />
+              <Icon icon="mdi:map-marker-radius" className={styles.milestoneIcon} />
               <span className={styles.milestoneText}>
-                <strong>2000+</strong> hair transplant procedures performed
+                <strong>300+</strong> cities served by Anvil's PAN-India network
               </span>
             </div>
           </motion.div>
@@ -298,12 +298,12 @@ const FeaturesSection = () => {
                 marginBottom: "1rem",
               }}
             >
-              Ready to transform your look?
+              Ready to cut your power bill?
             </Typography>
             <Button
               variant="contained"
               className={styles.ctaButton}
-              onClick={handleConsultation}
+              onClick={handleOpenLeadForm}
               endIcon={<Icon icon="mdi:arrow-right" />}
               sx={{
                 background: "linear-gradient(135deg, #FFB800 0%, #FFC939 100%)",
@@ -322,7 +322,7 @@ const FeaturesSection = () => {
                 },
               }}
             >
-              Schedule Your Consultation
+              Book Your Free Call
             </Button>
           </motion.div>
         </motion.div>
