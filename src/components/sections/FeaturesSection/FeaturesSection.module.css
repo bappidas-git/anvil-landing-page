@@ -167,7 +167,7 @@
 
 .benefitTitle {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
   font-size: 0.925rem;
   font-weight: 600;
   color: #0A1F3D;
@@ -215,7 +215,7 @@
 
 .mobileCategoryTitle {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 600;
   color: #0A1F3D;
@@ -311,7 +311,7 @@
 }
 
 .milestoneText strong {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.05rem;
   color: #FFB800;

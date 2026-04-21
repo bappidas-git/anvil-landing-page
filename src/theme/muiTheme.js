@@ -133,7 +133,7 @@ const breakpoints = {
 // Typography configuration
 const typography = {
   fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif",
-  fontFamilyHeading: "'Poppins', sans-serif",
+  fontFamilyHeading: "'Plus Jakarta Sans', 'Inter', sans-serif",
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
@@ -141,7 +141,7 @@ const typography = {
   fontWeightBold: 700,
   fontWeightExtraBold: 800,
   h1: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
     fontWeight: 700,
     fontSize: 'clamp(2.5rem, 2rem + 2.5vw, 4.5rem)',
     lineHeight: 1.1,
@@ -149,7 +149,7 @@ const typography = {
     color: colors.primary.main,
   },
   h2: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
     fontWeight: 700,
     fontSize: 'clamp(2rem, 1.5rem + 2.5vw, 3rem)',
     lineHeight: 1.1,
@@ -157,28 +157,28 @@ const typography = {
     color: colors.primary.main,
   },
   h3: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
     fontWeight: 700,
     fontSize: 'clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem)',
     lineHeight: 1.2,
     color: colors.primary.main,
   },
   h4: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
     fontWeight: 700,
     fontSize: 'clamp(1.5rem, 1.25rem + 1.25vw, 2rem)',
     lineHeight: 1.25,
     color: colors.primary.main,
   },
   h5: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
     fontWeight: 600,
     fontSize: 'clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem)',
     lineHeight: 1.3,
     color: colors.primary.main,
   },
   h6: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
     fontWeight: 600,
     fontSize: 'clamp(1.1rem, 1rem + 0.5vw, 1.25rem)',
     lineHeight: 1.4,

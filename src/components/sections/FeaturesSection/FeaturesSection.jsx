@@ -115,7 +115,7 @@ const FeaturesSection = () => {
               variant="h2"
               className={styles.sectionTitle}
               sx={{
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.25rem" },
                 color: "#0A1F3D",
@@ -290,7 +290,7 @@ const FeaturesSection = () => {
           <motion.div variants={itemVariants} className={styles.ctaWrapper}>
             <Typography
               sx={{
-                fontFamily: "'Poppins', sans-serif",
+                fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontWeight: 600,
                 fontSize: { xs: "1.1rem", md: "1.35rem" },
                 color: "#0A1F3D",
