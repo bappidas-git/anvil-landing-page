@@ -31,18 +31,15 @@ import {
 } from '../../../utils/validators';
 import styles from './LeadForm.module.css';
 
-// Service interest options for medical consultations
+// Service interest options for solar enquiries
 const SERVICE_OPTIONS = [
-  "Hair Transplant",
-  "Beard Transplant",
-  "Eyebrow Transplant",
-  "Rhinoplasty",
-  "Liposuction",
-  "Gynecomastia",
-  "PRP Therapy",
-  "Laser Therapy",
-  "Hairfall Consultation",
-  "Other",
+  { value: 'On-Grid Solar', label: 'On-Grid Rooftop Solar (residential)' },
+  { value: 'Hybrid Solar', label: 'Hybrid Solar with Battery Backup' },
+  { value: 'Commercial Solar', label: 'Commercial / Industrial Solar' },
+  { value: 'Subsidy Assistance', label: 'PM Surya Ghar Subsidy Help' },
+  { value: 'Financing', label: 'Solar Loan / EMI' },
+  { value: 'Site Survey', label: 'Free Site Survey' },
+  { value: 'Not Sure', label: "I'm not sure yet — advise me" },
 ];
 
 // Initial form state
@@ -65,9 +62,9 @@ const initialErrorState = {
 
 const LeadForm = ({
   variant = 'default', // 'default', 'compact', 'dark', 'card'
-  title = 'Schedule a Consultation',
-  subtitle = '',
-  submitButtonText = 'Book Consultation',
+  title = 'Get your free solar savings plan',
+  subtitle = 'Share a few details — your Anvil Saathi will call you within 30 minutes.',
+  submitButtonText = 'Book My Free Call',
   showTitle = true,
   showCourseFields = true,
   onSubmitSuccess,
@@ -272,8 +269,8 @@ const LeadForm = ({
       // Show success message with SweetAlert2
       await showAlert({
         icon: 'success',
-        title: 'Thank You!',
-        text: "Your consultation request has been received. Dr. Neog's team will contact you within 24 hours to schedule your appointment.",
+        title: 'Request received',
+        text: 'Your Anvil Saathi will call within 30 minutes!',
         confirmButtonColor: '#0A1F3D',
         confirmButtonText: 'Great!',
         timer: 3000,
@@ -376,7 +373,8 @@ const LeadForm = ({
           <TextField
             inputRef={nameRef}
             fullWidth
-            placeholder="Your Full Name"
+            label="Full Name"
+            placeholder="e.g., Priya Sharma"
             variant="outlined"
             value={formData.name}
             onChange={handleChange('name')}
@@ -385,6 +383,7 @@ const LeadForm = ({
             helperText={touched.name && errors.name}
             disabled={isSubmitting}
             className={styles.textField}
+            InputLabelProps={{ shrink: true }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -402,7 +401,7 @@ const LeadForm = ({
               },
             }}
             inputProps={{
-              'aria-label': 'Your name',
+              'aria-label': 'Full name',
               maxLength: 50,
             }}
           />
@@ -413,15 +412,21 @@ const LeadForm = ({
           <TextField
             inputRef={mobileRef}
             fullWidth
-            placeholder="XXXXX XXXXX"
+            label="Mobile Number"
+            placeholder="10-digit number starting 6-9"
             variant="outlined"
             value={formData.mobile}
             onChange={handleChange('mobile')}
             onBlur={handleBlur('mobile')}
             error={touched.mobile && !!errors.mobile}
-            helperText={touched.mobile && errors.mobile}
+            helperText={
+              touched.mobile && errors.mobile
+                ? errors.mobile
+                : "We'll only call to schedule your site survey"
+            }
             disabled={isSubmitting}
             className={styles.textField}
+            InputLabelProps={{ shrink: true }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start" className={styles.mobilePrefix}>
@@ -446,12 +451,73 @@ const LeadForm = ({
           />
         </motion.div>
 
+        {/* Service Interest Field */}
+        {showCourseFields && (
+          <motion.div variants={fieldVariants}>
+            <FormControl
+              fullWidth
+              error={touched.service_interest && !!errors.service_interest}
+              className={styles.textField}
+            >
+              <Select
+                ref={serviceRef}
+                displayEmpty
+                value={formData.service_interest}
+                onChange={handleChange('service_interest')}
+                onBlur={handleBlur('service_interest')}
+                disabled={isSubmitting}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <Icon
+                      icon="mdi:solar-power-variant"
+                      className={styles.inputIcon}
+                      style={variant === 'dark' ? { color: '#FFFFFF99' } : undefined}
+                    />
+                  </InputAdornment>
+                }
+                renderValue={(selected) => {
+                  if (!selected) {
+                    return (
+                      <span style={{ color: variant === 'dark' ? '#FFFFFF80' : undefined, opacity: variant === 'dark' ? 1 : 0.5 }}>
+                        Select a solar solution
+                      </span>
+                    );
+                  }
+                  const match = SERVICE_OPTIONS.find((opt) => opt.value === selected);
+                  return match ? match.label : selected;
+                }}
+                classes={{
+                  root: styles.inputRoot,
+                }}
+                inputProps={{
+                  'aria-label': 'What are you interested in?',
+                }}
+                sx={
+                  variant === 'dark'
+                    ? { color: '#FFFFFF', '& .MuiSelect-icon': { color: '#FFFFFF80' } }
+                    : undefined
+                }
+              >
+                {SERVICE_OPTIONS.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+              {touched.service_interest && errors.service_interest && (
+                <FormHelperText>{errors.service_interest}</FormHelperText>
+              )}
+            </FormControl>
+          </motion.div>
+        )}
+
         {/* Email Field */}
         <motion.div variants={fieldVariants}>
           <TextField
             inputRef={emailRef}
             fullWidth
-            placeholder="your@email.com"
+            label="Email (optional)"
+            placeholder="you@example.com"
             type="email"
             variant="outlined"
             value={formData.email}
@@ -461,6 +527,7 @@ const LeadForm = ({
             helperText={touched.email && errors.email}
             disabled={isSubmitting}
             className={styles.textField}
+            InputLabelProps={{ shrink: true }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -483,71 +550,13 @@ const LeadForm = ({
           />
         </motion.div>
 
-        {/* Service Interest Field */}
-        {showCourseFields && (
-          <motion.div variants={fieldVariants}>
-            <FormControl
-              fullWidth
-              error={touched.service_interest && !!errors.service_interest}
-              className={styles.textField}
-            >
-              <Select
-                ref={serviceRef}
-                displayEmpty
-                value={formData.service_interest}
-                onChange={handleChange('service_interest')}
-                onBlur={handleBlur('service_interest')}
-                disabled={isSubmitting}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <Icon
-                      icon="mdi:medical-bag"
-                      className={styles.inputIcon}
-                      style={variant === 'dark' ? { color: '#FFFFFF99' } : undefined}
-                    />
-                  </InputAdornment>
-                }
-                renderValue={(selected) => {
-                  if (!selected) {
-                    return (
-                      <span style={{ color: variant === 'dark' ? '#FFFFFF80' : undefined, opacity: variant === 'dark' ? 1 : 0.5 }}>
-                        Select Service
-                      </span>
-                    );
-                  }
-                  return selected;
-                }}
-                classes={{
-                  root: styles.inputRoot,
-                }}
-                inputProps={{
-                  'aria-label': 'Service interest',
-                }}
-                sx={
-                  variant === 'dark'
-                    ? { color: '#FFFFFF', '& .MuiSelect-icon': { color: '#FFFFFF80' } }
-                    : undefined
-                }
-              >
-                {SERVICE_OPTIONS.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </Select>
-              {touched.service_interest && errors.service_interest && (
-                <FormHelperText>{errors.service_interest}</FormHelperText>
-              )}
-            </FormControl>
-          </motion.div>
-        )}
-
         {/* Brief Message Field */}
         <motion.div variants={fieldVariants}>
           <TextField
             inputRef={messageRef}
             fullWidth
-            placeholder="Describe your concern or preferred consultation time..."
+            label="Anything specific? (optional)"
+            placeholder="e.g., my monthly bill is ₹4,000 and I'm in Gurugram"
             variant="outlined"
             value={formData.message}
             onChange={handleChange('message')}
@@ -559,6 +568,7 @@ const LeadForm = ({
             minRows={2}
             maxRows={4}
             className={styles.textField}
+            InputLabelProps={{ shrink: true }}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start" style={{ alignSelf: 'flex-start', marginTop: '14px' }}>
@@ -576,7 +586,7 @@ const LeadForm = ({
               },
             }}
             inputProps={{
-              'aria-label': 'Brief message',
+              'aria-label': 'Additional details',
               maxLength: 500,
             }}
           />
@@ -600,6 +610,13 @@ const LeadForm = ({
               submitButtonText
             )}
           </Button>
+          <Typography
+            variant="caption"
+            className={styles.privacyNote}
+            sx={variant === 'dark' ? { color: '#FFFFFFB3 !important' } : undefined}
+          >
+            By submitting, you agree to be contacted by Anvil about your solar enquiry. We never share your details.
+          </Typography>
         </motion.div>
 
         {/* Status Messages */}
@@ -617,7 +634,7 @@ const LeadForm = ({
                   onClose={() => setSubmitStatus(null)}
                 >
                   {submitStatus === 'success'
-                    ? 'Your consultation request has been submitted successfully!'
+                    ? 'Thanks! Your Anvil Saathi will call you within 30 minutes.'
                     : 'Failed to submit. Please try again.'}
                 </Alert>
               </Collapse>
