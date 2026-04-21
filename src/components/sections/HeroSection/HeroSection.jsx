@@ -81,10 +81,10 @@ const buttonVariants = {
 
 // Trust indicators data
 const trustIndicators = [
-  { icon: "mdi:calendar-check-outline", text: "25+ Yrs Plastic Surgery | 15+ Yrs Hair Transplant" },
-  { icon: "mdi:check-decagram-outline", text: "5000+ Successful Procedures" },
-  { icon: "mdi:microscope", text: "Micro-FUE Technology" },
-  { icon: "mdi:laser-pointer", text: "Free Post operative" },
+  { icon: "mdi:solar-power", text: "PAN-India installation" },
+  { icon: "mdi:bank", text: "PM Surya Ghar subsidy included" },
+  { icon: "mdi:shield-check", text: "25-year panel warranty" },
+  { icon: "mdi:currency-inr", text: "Zero down-payment EMI" },
 ];
 
 const HeroSection = () => {
@@ -141,6 +141,8 @@ const HeroSection = () => {
         <div
           className={styles.heroBgImage}
           style={{ backgroundImage: `url('${heroImageUrl}')` }}
+          role="img"
+          aria-label="Modern home with rooftop solar panels installed by Anvil"
         />
       )}
 
@@ -165,7 +167,7 @@ const HeroSection = () => {
               <motion.div variants={badgeVariants}>
                 <Chip
                   icon={<span className={styles.pulseDot} />}
-                  label="Northeast India's Premier Hair Transplant Clinic"
+                  label="⚡ India's hassle-free rooftop solar partner"
                   className={styles.launchBadge}
                   sx={{
                     backgroundColor: "#FFB800",
@@ -200,11 +202,8 @@ const HeroSection = () => {
                     marginTop: "1.5rem",
                   }}
                 >
-                  World-Class Hair Transplant —
-                  <span className={styles.orangeText}>
-                    {" "}
-                    Natural Hair Back in 6–9 Months
-                  </span>
+                  Cut your electricity bill by up to{" "}
+                  <span className={styles.accent}>90%</span> with rooftop solar.
                 </Typography>
               </motion.div>
 
@@ -222,10 +221,9 @@ const HeroSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  Led by Dr. Porag Neog (MBBS, MS) with 25+ years of experience
-                  in plastic surgery and 15+ years in hair transplant. We use the
-                  latest Micro-FUE technology to deliver natural, permanent
-                  results at par with international standards.
+                  Anvil handles everything — design, PM Surya Ghar subsidy,
+                  financing, installation, and lifetime support. Get your free
+                  personalised savings plan in under 60 seconds.
                 </Typography>
               </motion.div>
 
@@ -242,7 +240,7 @@ const HeroSection = () => {
                     trackCTAClick(
                       "hero_primary_cta",
                       "hero",
-                      "Book Consultation",
+                      "Book Your Free Call",
                     );
                     openLeadDrawer("apply-now");
                   }}
@@ -264,16 +262,20 @@ const HeroSection = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Book Consultation →
+                  Book Your Free Call →
                 </Button>
                 <Button
                   variant="outlined"
                   size="large"
                   className={styles.secondaryCta}
                   component="a"
-                  href="tel:+919181956562"
+                  href="#calculator"
                   onClick={() => {
-                    trackCTAClick("hero_secondary_cta", "hero", "Call Now");
+                    trackCTAClick(
+                      "hero_secondary_cta",
+                      "hero",
+                      "Calculate My Savings",
+                    );
                   }}
                   sx={{
                     borderColor: "rgba(255, 255, 255, 0.6)",
@@ -293,7 +295,7 @@ const HeroSection = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Call Now: +91 9181956562
+                  Calculate My Savings
                 </Button>
               </motion.div>
 
