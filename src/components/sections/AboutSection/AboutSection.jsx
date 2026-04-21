@@ -1,6 +1,6 @@
 /* ============================================
    AboutSection Component
-   About section with stats, content grid & differentiators
+   "Why Anvil" section with stats, Saathi highlight & differentiators
    ============================================ */
 
 import React from "react";
@@ -35,79 +35,83 @@ const itemVariants = {
   },
 };
 
-// Stats data
+// Stats data — solar-relevant trust markers
 const keyStats = [
   {
-    value: "15",
+    value: "10000",
+    prefix: "",
     suffix: "+",
-    label: "Years Experience",
-    icon: "mdi:trophy-award",
+    label: "Rooftops powered",
+    icon: "mdi:home-lightning-bolt",
     color: "#FFB800",
   },
   {
-    value: "5000",
-    suffix: "+",
-    label: "Successful Procedures",
-    icon: "mdi:check-decagram",
+    value: "70",
+    prefix: "",
+    suffix: "–90%",
+    label: "Average bill cut",
+    icon: "mdi:flash",
     color: "#0A1F3D",
   },
   {
-    value: "98",
-    suffix: "%",
-    label: "Patient Satisfaction",
-    icon: "mdi:heart-pulse",
+    value: "78000",
+    prefix: "₹",
+    suffix: "",
+    label: "Subsidy assistance",
+    icon: "mdi:cash-multiple",
     color: "#FFB800",
   },
   {
-    value: "8",
-    suffix: "",
-    label: "NE States Served",
-    icon: "mdi:map-marker-multiple",
+    value: "25",
+    prefix: "",
+    suffix: " yrs",
+    label: "Panel warranty",
+    icon: "mdi:shield-check",
     color: "#0A1F3D",
   },
 ];
 
-// Doctor profile data
+// Anvil Saathi profile data
 const doctorProfile = {
   image:
     "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80&auto=format&fit=crop",
-  name: "Dr. Porag Neog",
-  credentials: "MBBS, MS",
-  title: "Cosmetic Surgeon & Founder",
-  bio: "Highly trained cosmetic surgeon with 25+ years of experience in plastic surgery and 15+ years specializing in hair transplant using the smallest FUE punch (micro-FUE) technology.",
+  name: "Anvil Saathi",
+  credentials: "",
+  title: "Your dedicated solar companion",
+  bio: "Every Anvil customer is assigned a personal Saathi who handles the site survey, system design, DISCOM paperwork, subsidy filing, installation oversight, and lifetime support. One number. One person. Zero runaround.",
 };
 
-// Clinic image
+// Supporting image
 const clinicImage = {
   src: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=1200&q=80&auto=format&fit=crop",
-  alt: "Monjoven Clinic Interior",
+  alt: "Anvil solar installation on a residential rooftop",
 };
 
-// Key differentiators data
+// Key differentiators — why choose Anvil
 const differentiators = [
   {
-    icon: "mdi:medal-outline",
-    title: "25+ Years of Surgical Experience",
-    description:
-      "Over 24 years of experience in plastic, reconstructive and aesthetic surgery, with more than a decade of experience in hair transplant procedures.",
+    icon: "mdi:handshake",
+    title: "One Saathi, start to finish",
   },
   {
-    icon: "mdi:microscope",
-    title: "Advanced FUE & DHI Techniques",
-    description:
-      "Hair transplant procedures performed using established techniques such as Follicular Unit Extraction (FUE) and Direct Hair Implantation (DHI), depending on individual patient requirements.",
+    icon: "mdi:file-document-check",
+    title: "PM Surya Ghar paperwork handled",
   },
   {
-    icon: "mdi:account-group",
-    title: "Focus on Natural-Looking Outcomes",
-    description:
-      "Treatment approach focused on achieving natural hairline design and density, tailored to individual patient characteristics.",
+    icon: "mdi:cash-multiple",
+    title: "Zero-down-payment EMI options",
   },
   {
-    icon: "mdi:earth",
-    title: "Patients from Across India & Abroad",
-    description:
-      "Patients from Northeast India as well as international locations including the USA, UK, Canada, Middle East, Bhutan and Nepal.",
+    icon: "mdi:solar-panel-large",
+    title: "Tier-1 panels + Tier-1 inverters",
+  },
+  {
+    icon: "mdi:shield-check",
+    title: "25-year panel + 10-year inverter warranty",
+  },
+  {
+    icon: "mdi:wrench",
+    title: "Free AMC for the first year",
   },
 ];
 
@@ -131,7 +135,7 @@ const AboutSection = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
-            <span className={styles.badge}>ABOUT MONJOVEN</span>
+            <span className={styles.badge}>WHY ANVIL</span>
             <Typography
               variant="h2"
               className={styles.sectionTitle}
@@ -139,11 +143,13 @@ const AboutSection = () => {
                 fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.75rem", sm: "2rem", md: "2.75rem" },
-                color: "#0A1F3D",
+                color: "var(--primary-dark)",
                 letterSpacing: "-0.01em",
               }}
             >
-              Northeast India's First Dedicated Hair Transplant Clinic
+              Your{" "}
+              <span className={styles.accent}>Anvil Saathi</span>
+              {" "}— from first call to first kilowatt.
             </Typography>
             <Typography
               variant="h3"
@@ -156,7 +162,8 @@ const AboutSection = () => {
                 marginTop: "0.5rem",
               }}
             >
-              Restoring Youthfulness & Confidence Since 2012
+              Anvil handles every step of your rooftop solar journey so you
+              never have to juggle vendors, paperwork, or subsidy approvals.
             </Typography>
           </motion.div>
 
@@ -176,6 +183,9 @@ const AboutSection = () => {
                   <Icon icon={stat.icon} style={{ color: stat.color }} />
                 </div>
                 <div className={styles.statValue}>
+                  {stat.prefix && (
+                    <span className={styles.statPrefix}>{stat.prefix}</span>
+                  )}
                   <AnimatedCounter
                     value={stat.value}
                     duration={1.5}
@@ -195,19 +205,11 @@ const AboutSection = () => {
             {/* Left Column - Text */}
             <motion.div variants={itemVariants} className={styles.textColumn}>
               <Typography className={styles.contentParagraph}>
-                Founded in 2012 by Dr. Porag Neog (MBBS, MS), Monjoven is
-                Northeast India's first dedicated clinic for hair loss solutions
-                and hair transplant. The name "Monjoven" means "My Youth" —
-                reflecting our mission to restore youthfulness and confidence in
-                every patient who walks through our doors.
-              </Typography>
-              <Typography className={styles.contentParagraph}>
-                With over a decade of pioneering excellence in hair transplants
-                and cosmetic surgery, Monjoven delivers international-standard
-                results using advanced micro-FUE technology. Our patients travel
-                from across India and internationally — from the US, Canada, UK,
-                Norway, Saudi Arabia, France, Dubai, Bhutan, and Nepal —
-                trusting us with their transformation journey.
+                Rooftop solar in India is a maze of DISCOMs, vendors, subsidies,
+                and financing options. Anvil cuts through all of it. Your
+                Saathi designs the right system for your home or business,
+                books the panels, gets the sanctions, and hands you a running
+                solar plant — usually in 3 to 6 weeks.
               </Typography>
               <Button
                 variant="contained"
@@ -233,11 +235,11 @@ const AboutSection = () => {
                   },
                 }}
               >
-                Book Consultation
+                Talk to your Saathi
               </Button>
             </motion.div>
 
-            {/* Right Column - Doctor Profile & Clinic Image */}
+            {/* Right Column - Saathi Profile & Supporting Image */}
             <motion.div variants={itemVariants} className={styles.imageColumn}>
               <motion.div
                 className={styles.doctorCard}
@@ -247,16 +249,18 @@ const AboutSection = () => {
                 <div className={styles.doctorImageWrapper}>
                   <img
                     src={doctorProfile.image}
-                    alt={doctorProfile.name}
+                    alt="Anvil certified solar installer working on a residential rooftop"
                     className={styles.doctorImage}
                     loading="lazy"
                   />
                 </div>
                 <div className={styles.doctorInfo}>
                   <h3 className={styles.doctorName}>{doctorProfile.name}</h3>
-                  <span className={styles.doctorCredentials}>
-                    {doctorProfile.credentials}
-                  </span>
+                  {doctorProfile.credentials && (
+                    <span className={styles.doctorCredentials}>
+                      {doctorProfile.credentials}
+                    </span>
+                  )}
                   <span className={styles.doctorTitle}>
                     {doctorProfile.title}
                   </span>
@@ -290,12 +294,12 @@ const AboutSection = () => {
                 fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.25rem", sm: "1.5rem", md: "1.75rem" },
-                color: "#0A1F3D",
+                color: "var(--primary-dark)",
                 textAlign: "center",
                 marginBottom: { xs: "1.5rem", md: "2rem" },
               }}
             >
-              Why Choose Monjoven
+              Why Choose Anvil
             </Typography>
             <div className={styles.differentiatorsGrid}>
               {differentiators.map((item, index) => (
@@ -309,9 +313,11 @@ const AboutSection = () => {
                     <Icon icon={item.icon} />
                   </div>
                   <h4 className={styles.differentiatorTitle}>{item.title}</h4>
-                  <p className={styles.differentiatorDesc}>
-                    {item.description}
-                  </p>
+                  {item.description && (
+                    <p className={styles.differentiatorDesc}>
+                      {item.description}
+                    </p>
+                  )}
                 </motion.div>
               ))}
             </div>
