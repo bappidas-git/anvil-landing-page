@@ -1,13 +1,13 @@
 /* ============================================
-   Results & Procedures Section Styles
-   Light gray background with image-based cards
+   How It Works Section Styles
+   Customer journey cards with step number + icon
    ============================================ */
 
 /* ========== Main Section ========== */
 .resultsSection {
   position: relative;
   padding: 4rem 0;
-  background: #f5f7fa;
+  background: var(--light-gray);
   overflow: hidden;
 }
 
@@ -23,7 +23,7 @@
   display: inline-block;
   padding: 0.3rem 1rem;
   background: rgba(10, 31, 61, 0.1);
-  color: #0A1F3D;
+  color: var(--primary-dark);
   font-weight: 700;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -35,8 +35,8 @@
   position: relative;
 }
 
-.highlightText {
-  color: #FFB800;
+.accent {
+  color: var(--accent-gold);
   font-style: italic;
 }
 
@@ -49,14 +49,14 @@
 .underlineBar {
   width: 50px;
   height: 3px;
-  background: linear-gradient(135deg, #FFB800 0%, #FFC939 100%);
+  background: var(--accent-gold-gradient);
   border-radius: 3px;
 }
 
 .sectionSubtitle {
   margin-top: 0.75rem;
   font-size: 1rem;
-  color: #5c6370;
+  color: var(--text-gray);
   text-align: center;
   max-width: 600px;
 }
@@ -70,7 +70,7 @@
 }
 
 .highlightCard {
-  background: #ffffff;
+  background: var(--white);
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(10, 31, 61, 0.08);
@@ -87,22 +87,36 @@
 }
 
 .highlightImageWrap {
+  position: relative;
   width: 100%;
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  background: #e8f6f3;
-}
-
-.highlightImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  background: var(--card-dark-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.4s ease;
 }
 
-.highlightCard:hover .highlightImage {
-  transform: scale(1.05);
+.highlightCard:hover .highlightImageWrap {
+  transform: scale(1.02);
+}
+
+.stepNumber {
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  letter-spacing: var(--ls-tight);
+  line-height: 1;
+}
+
+.stepIcon {
+  font-size: 3.5rem;
+  color: var(--white);
 }
 
 .highlightContent {
@@ -117,67 +131,14 @@
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700 !important;
-  color: #0A1F3D;
+  color: var(--primary-dark);
   line-height: 1.3;
 }
 
 .highlightDesc {
   font-size: 0.9rem;
-  color: #5c6370;
+  color: var(--text-gray);
   line-height: 1.55;
-}
-
-.highlightBullets {
-  list-style: none;
-  margin: 0.75rem 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.highlightBulletItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: #2d3748;
-  line-height: 1.5;
-}
-
-.highlightBulletIcon {
-  color: #FFB800;
-  font-size: 1.05rem;
-  flex-shrink: 0;
-  margin-top: 0.125rem;
-}
-
-/* ========== Disclaimer Note ========== */
-.disclaimerNote {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.625rem;
-  max-width: 760px;
-  margin: 0 auto 2.5rem;
-  padding: 0.875rem 1.25rem;
-  background: rgba(10, 31, 61, 0.04);
-  border: 1px solid rgba(10, 31, 61, 0.12);
-  border-left: 3px solid #FFB800;
-  border-radius: 10px;
-}
-
-.disclaimerIcon {
-  color: #FFB800;
-  font-size: 1.125rem;
-  flex-shrink: 0;
-  margin-top: 0.125rem;
-}
-
-.disclaimerText {
-  font-size: 0.85rem !important;
-  color: #5c6370;
-  line-height: 1.5;
-  font-style: italic;
 }
 
 /* ========== CTA Banner ========== */
@@ -185,7 +146,7 @@
   margin-bottom: 0;
   border-radius: 16px;
   overflow: hidden;
-  background: linear-gradient(135deg, #0A1F3D 0%, #1b2631 100%);
+  background: var(--card-dark-gradient);
   box-shadow: 0 8px 32px rgba(10, 31, 61, 0.25);
 }
 
@@ -203,13 +164,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 184, 0, 0.15);
+  background: var(--icon-gold-bg);
   border-radius: 50%;
 }
 
 .ctaIconWrap svg {
   font-size: 30px;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .ctaTextBlock {
@@ -220,7 +181,7 @@
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--white);
   margin-bottom: 0.375rem;
 }
 
@@ -235,21 +196,21 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
-  background: linear-gradient(135deg, #e74c3c 0%, #ff8f5e 100%);
+  background: var(--accent-orange-gradient);
   border: none;
   border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--white);
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+  box-shadow: var(--shadow-button);
 }
 
 .ctaButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(231, 76, 60, 0.55);
+  box-shadow: var(--shadow-button-hover);
 }
 
 .ctaButton svg {
@@ -302,8 +263,14 @@
     font-size: 0.85rem;
   }
 
-  .highlightBulletItem {
-    font-size: 0.825rem;
+  .stepNumber {
+    font-size: 1.75rem;
+    top: 0.75rem;
+    left: 1rem;
+  }
+
+  .stepIcon {
+    font-size: 3rem;
   }
 
   .ctaBannerContent {
@@ -357,18 +324,14 @@
     font-size: 0.85rem;
   }
 
-  .highlightBulletItem {
-    font-size: 0.825rem;
+  .stepNumber {
+    font-size: 1.5rem;
+    top: 0.625rem;
+    left: 0.875rem;
   }
 
-  .disclaimerNote {
-    margin-bottom: 2rem;
-    padding: 0.75rem 1rem;
-    gap: 0.5rem;
-  }
-
-  .disclaimerText {
-    font-size: 0.8rem !important;
+  .stepIcon {
+    font-size: 2.75rem;
   }
 
   .ctaBanner {
@@ -454,7 +417,7 @@
 /* ========== Reduced Motion ========== */
 @media (prefers-reduced-motion: reduce) {
   .highlightCard,
-  .highlightImage,
+  .highlightImageWrap,
   .ctaButton {
     transition: none;
     animation: none;
@@ -465,14 +428,14 @@
     transform: none;
   }
 
-  .highlightCard:hover .highlightImage {
+  .highlightCard:hover .highlightImageWrap {
     transform: none;
   }
 }
 
 /* ========== Focus Styles for Accessibility ========== */
 .ctaButton:focus-visible {
-  outline: 2px solid #FFB800;
+  outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
 
@@ -480,22 +443,22 @@
 @media print {
   .resultsSection {
     padding: 2rem 0;
-    background: white;
+    background: var(--white);
   }
 
   .highlightCard {
-    background: #f5f5f5;
-    border: 1px solid #ddd;
+    background: var(--light-gray);
+    border: 1px solid var(--border-gray);
     box-shadow: none;
   }
 
   .ctaBanner {
-    background: #f0f0f0;
+    background: var(--medium-gray);
     box-shadow: none;
   }
 
   .ctaHeading,
   .ctaDesc {
-    color: #0A1F3D !important;
+    color: var(--primary-dark) !important;
   }
 }

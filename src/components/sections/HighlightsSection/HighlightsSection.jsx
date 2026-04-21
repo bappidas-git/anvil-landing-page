@@ -1,6 +1,6 @@
 /* ============================================
-   HighlightsSection Component - Results & Procedures
-   Showcases before/after results and treatment process
+   HighlightsSection Component - How It Works
+   Visualises Anvil's customer journey from first call to commissioned system
    ============================================ */
 
 import React, { useRef } from "react";
@@ -34,91 +34,42 @@ const itemVariants = {
   },
 };
 
-// Highlights data — before/after results and procedures
-const highlightsData = [
+// Customer journey — 5 steps from first call to lifetime support
+const steps = [
   {
-    id: 1,
-    image:
-      "https://placehold.co/600x400/2EC4B6/white?text=Hair+Transplant+Results+(600+x+400)",
-    title: "Hair Transplant Results",
+    step: "01",
+    icon: "mdi:phone-in-talk",
+    title: "Free Call",
     description:
-      "Outcomes following FUE/DHI hair transplant procedures, with focus on natural hairline design and appropriate density.",
-    bullets: [
-      "Natural hairline planning",
-      "Donor area preservation",
-      "Density based on individual case",
-      "Long-term planning approach",
-    ],
+      "Share your state, monthly bill, and roof type. Your Anvil Saathi calls within 30 minutes with a preliminary savings plan.",
   },
   {
-    id: 2,
-    image:
-      "https://placehold.co/600x400/FF6B35/white?text=Beard+Transplant+Results+(600+x+400)",
-    title: "Beard Transplant Results",
+    step: "02",
+    icon: "mdi:home-search",
+    title: "Site Survey & Custom Design",
     description:
-      "Beard restoration procedures designed to improve density and coverage in patchy or sparse areas.",
-    bullets: [
-      "Custom beard design",
-      "Natural direction of growth",
-      "Gradual density improvement",
-      "Case-based planning",
-    ],
+      "Our engineer visits your roof, captures measurements, and designs a system tailored to your load and shading profile.",
   },
   {
-    id: 3,
-    image:
-      "https://placehold.co/600x400/2D3561/white?text=How+We+Plan+(600+x+400)",
-    title: "How We Plan Each Procedure",
+    step: "03",
+    icon: "mdi:file-document-check",
+    title: "Paperwork & Subsidy",
     description:
-      "Each case is evaluated individually to determine suitability, donor availability, and appropriate technique (FUE or DHI).",
-    bullets: [
-      "Clinical assessment before procedure",
-      "Technique selection based on case",
-      "Focus on natural appearance",
-      "Planning for future hair loss",
-    ],
+      "We handle the PM Surya Ghar application, DISCOM approval, net metering, and loan processing — end to end.",
   },
   {
-    id: 4,
-    image:
-      "https://placehold.co/600x400/8E44AD/white?text=FUI+%26+DHI+Techniques+(600+x+400)",
-    title: "FUE & DHI Techniques",
+    step: "04",
+    icon: "mdi:solar-power",
+    title: "Install & Commission",
     description:
-      "Hair transplant procedures performed using established techniques such as Follicular Unit Extraction (FUE) and Direct Hair Implantation (DHI), based on individual assessment.",
-    bullets: [
-      "Technique selection based on case",
-      "Focus on natural hairline design",
-      "Graft handling with care",
-      "Emphasis on donor area preservation",
-    ],
+      "Installation completes in 2–4 days. Your system goes live once the DISCOM approves — typically within 3–6 weeks total.",
   },
   {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=1200&q=80&auto=format&fit=crop",
-    title: "Post-Procedure Care & Follow-Up",
+    step: "05",
+    icon: "mdi:chart-line",
+    title: "Monitor & Support",
     description:
-      "Structured post-procedure care with guidance on recovery, hair growth cycle, and follow-up support.",
-    bullets: [
-      "Post-procedure instructions",
-      "Scheduled follow-up evaluation",
-      "Guidance during recovery phase",
-      "Ongoing patient support",
-    ],
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=1200&q=80&auto=format&fit=crop",
-    title: "Clinical Environment",
-    description:
-      "Procedures performed in a clean and controlled clinical setting, maintaining standard protocols for hygiene and patient safety.",
-    bullets: [
-      "Sterile procedure environment",
-      "Trained clinical support team",
-      "Focus on patient safety",
-      "Standard operating protocols",
-    ],
+      "Track live output, savings, and CO₂ offset in the Anvil app. Anvil Saathi stays on call for the life of your system.",
   },
 ];
 
@@ -127,7 +78,7 @@ const HighlightsSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { openLeadDrawer } = useModal();
 
-  const handleConsultationClick = () => {
+  const handleOpenLeadForm = () => {
     openLeadDrawer("get-details");
   };
 
@@ -141,7 +92,7 @@ const HighlightsSection = () => {
         >
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
-            <span className={styles.sectionBadge}>OUR RESULTS</span>
+            <span className={styles.sectionBadge}>HOW IT WORKS</span>
             <Typography
               variant="h2"
               className={styles.sectionTitle}
@@ -149,30 +100,28 @@ const HighlightsSection = () => {
                 fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.25rem" },
-                color: "#0A1F3D",
+                color: "var(--primary-dark)",
                 marginTop: "0.75rem",
                 textAlign: "center",
                 lineHeight: 1.2,
               }}
             >
-              Real Patients, Real{" "}
-              <span className={styles.highlightText}>Outcomes</span>
+              From first call to first kilowatt in{" "}
+              <span className={styles.accent}>as little as 3 weeks.</span>
             </Typography>
             <div className={styles.titleUnderline}>
               <span className={styles.underlineBar} />
             </div>
             <Typography className={styles.sectionSubtitle}>
-              Examples of results achieved following hair transplant and
-              cosmetic procedures. Outcomes may vary based on individual
-              factors.
+              Your Anvil Saathi owns every step. You only focus on the savings.
             </Typography>
           </motion.div>
 
-          {/* Highlight Cards Grid */}
+          {/* Step Cards Grid */}
           <motion.div variants={itemVariants} className={styles.highlightsGrid}>
-            {highlightsData.map((card, index) => (
+            {steps.map((card, index) => (
               <motion.div
-                key={card.id}
+                key={card.step}
                 className={styles.highlightCard}
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
                 initial={{ opacity: 0, y: 30 }}
@@ -182,11 +131,11 @@ const HighlightsSection = () => {
                 transition={{ delay: 0.2 + index * 0.12 }}
               >
                 <div className={styles.highlightImageWrap}>
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className={styles.highlightImage}
-                    loading="lazy"
+                  <span className={styles.stepNumber}>{card.step}</span>
+                  <Icon
+                    icon={card.icon}
+                    className={styles.stepIcon}
+                    aria-hidden="true"
                   />
                 </div>
                 <div className={styles.highlightContent}>
@@ -196,64 +145,39 @@ const HighlightsSection = () => {
                   <Typography className={styles.highlightDesc}>
                     {card.description}
                   </Typography>
-                  {card.bullets && card.bullets.length > 0 && (
-                    <ul className={styles.highlightBullets}>
-                      {card.bullets.map((bullet) => (
-                        <li key={bullet} className={styles.highlightBulletItem}>
-                          <Icon
-                            icon="mdi:check-circle"
-                            className={styles.highlightBulletIcon}
-                            aria-hidden="true"
-                          />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-
-          {/* Disclaimer Note */}
-          <motion.div variants={itemVariants} className={styles.disclaimerNote}>
-            <Icon
-              icon="mdi:information-outline"
-              className={styles.disclaimerIcon}
-              aria-hidden="true"
-            />
-            <Typography className={styles.disclaimerText}>
-              All images shown are of treated cases at our clinic. Results may
-              vary from patient to patient.
-            </Typography>
           </motion.div>
 
           {/* CTA Banner */}
           <motion.div variants={itemVariants} className={styles.ctaBanner}>
             <div className={styles.ctaBannerContent}>
               <div className={styles.ctaIconWrap}>
-                <Icon icon="mdi:calendar-check" />
+                <Icon icon="mdi:phone-in-talk" />
               </div>
               <div className={styles.ctaTextBlock}>
                 <Typography
                   className={styles.ctaHeading}
-                  sx={{ color: "#fff", fontWeight: "bold" }}
+                  sx={{ color: "var(--white)", fontWeight: "bold" }}
                 >
-                  Ready for Your Transformation?
+                  Ready to start saving on your electricity bill?
                 </Typography>
-                <Typography className={styles.ctaDesc} sx={{ color: "#fff" }}>
-                  Book a consultation with our specialists and take the first
-                  step toward your new look. Personalized treatment plans
-                  tailored to your goals.
+                <Typography
+                  className={styles.ctaDesc}
+                  sx={{ color: "var(--white)" }}
+                >
+                  Zero obligation. Zero hard sell. Your Anvil Saathi calls you
+                  back within 30 minutes with a preliminary savings plan.
                 </Typography>
               </div>
               <motion.button
                 className={styles.ctaButton}
-                onClick={handleConsultationClick}
+                onClick={handleOpenLeadForm}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <span>Book Your Consultation</span>
+                <span>Start With a Free Call</span>
                 <Icon icon="mdi:arrow-right" />
               </motion.button>
             </div>
