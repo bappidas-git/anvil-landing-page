@@ -134,36 +134,31 @@
   opacity: 0.6;
 }
 
-/* Primary CTA Item (Book Now) */
+/* Primary CTA Item (Book) */
 .primaryItem .navButton {
-  background: linear-gradient(135deg, #E74C3C 0%, #FF8F5E 100%);
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.35);
+  background: var(--accent-orange-gradient);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.35);
   width: 52px;
   height: 52px;
   margin-top: -6px;
 }
 
 .primaryItem .navIcon {
-  color: #FFFFFF !important;
+  color: var(--white) !important;
 }
 
 .primaryItem .navLabel {
-  color: #E74C3C !important;
+  color: var(--accent-orange) !important;
   font-weight: 600 !important;
 }
 
 .primaryItem .navButton:hover {
-  background: linear-gradient(135deg, #E55A28 0%, #E74C3C 100%);
-  box-shadow: 0 6px 16px rgba(231, 76, 60, 0.45);
+  background: var(--accent-orange-gradient-reverse);
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.45);
 }
 
 .primaryItem .navButton:active {
-  background: linear-gradient(135deg, #D04E1F 0%, #E55A28 100%);
-}
-
-/* WhatsApp Button Special Styling */
-.navItem:nth-child(2) .navButton:hover {
-  background: rgba(37, 211, 102, 0.1);
+  background: linear-gradient(135deg, var(--accent-orange-dark) 0%, var(--accent-orange) 100%);
 }
 
 /* Active State Visual Feedback */
