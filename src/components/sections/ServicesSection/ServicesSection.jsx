@@ -1,6 +1,6 @@
 /* ============================================
    ServicesSection Component
-   Showcases medical procedure cards
+   Showcases Anvil solar solution cards
    ============================================ */
 
 import React, { useRef, useEffect } from "react";
@@ -81,7 +81,7 @@ const ServicesSection = () => {
 
   const handleBookConsultation = (serviceName) => {
     openLeadDrawer("get-course-details", {
-      subtitle: `Book consultation for ${serviceName}`,
+      subtitle: `Talk to an Anvil Saathi about ${serviceName}`,
     });
   };
 
@@ -162,7 +162,7 @@ const ServicesSection = () => {
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        <span>Book Consultation</span>
+        <span>Talk to Anvil Saathi</span>
         <Icon icon="mdi:arrow-right" />
       </motion.button>
     </motion.div>
@@ -183,10 +183,10 @@ const ServicesSection = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
             <Chip
-              label="Our Services"
+              label="Solar Solutions"
               sx={{
                 backgroundColor: "rgba(255, 184, 0, 0.12)",
-                color: "#FFB800",
+                color: "var(--accent-gold)",
                 fontWeight: 700,
                 fontSize: "0.7rem",
                 letterSpacing: "0.1em",
@@ -202,14 +202,16 @@ const ServicesSection = () => {
                 fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2.25rem" },
-                color: "#0A1F3D",
+                color: "var(--primary-dark)",
                 marginTop: "0.75rem",
                 textAlign: "center",
                 lineHeight: 1.2,
               }}
             >
-              Advanced Hair &{" "}
-              <span className={styles.accentText}>Cosmetic Procedures</span>
+              One partner for every rooftop.{" "}
+              <span className={styles.accentText}>
+                Homes, offices, and factories.
+              </span>
             </Typography>
             <Typography
               className={styles.sectionSubtitle}
@@ -218,11 +220,12 @@ const ServicesSection = () => {
                 color: "#6B7280",
                 textAlign: "center",
                 marginTop: "0.5rem",
-                maxWidth: "480px",
+                maxWidth: "560px",
               }}
             >
-              Treatments tailored to your needs, performed by experienced
-              specialists using the latest technology
+              Pick the Anvil solar system that fits your roof, your load, and
+              your budget. Our Saathi will walk you through each option on your
+              free call.
             </Typography>
           </motion.div>
 
@@ -259,10 +262,10 @@ const ServicesSection = () => {
               <Icon icon="mdi:headset" className={styles.ctaIcon} />
               <div className={styles.ctaText}>
                 <span className={styles.ctaTitle}>
-                  Not sure which procedure is right for you?
+                  Not sure which solar system fits your rooftop?
                 </span>
                 <span className={styles.ctaSubtitle}>
-                  Our specialists will help you choose the best treatment
+                  Your Anvil Saathi will call you within 30 minutes.
                 </span>
               </div>
             </div>
@@ -272,12 +275,12 @@ const ServicesSection = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span>Book Consultation →</span>
+              <span>Book Your Free Call</span>
               <Icon icon="mdi:arrow-right" />
             </motion.button>
           </motion.div>
 
-          {/* === Doctor CTA Banner === */}
+          {/* === Founder CTA Banner === */}
           <motion.div
             className={styles.foundationBanner}
             initial={{ opacity: 0, y: 20 }}
@@ -304,15 +307,15 @@ const ServicesSection = () => {
               >
                 <Box
                   component="img"
-                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80&auto=format&fit=crop"
-                  alt="Lead Surgeon"
+                  src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1200&q=80&auto=format&fit=crop"
+                  alt="Anvil founding team"
                   sx={{
                     width: { xs: 56, md: 64 },
                     height: { xs: 56, md: 64 },
                     borderRadius: "50%",
                     objectFit: "cover",
                     flexShrink: 0,
-                    border: "3px solid #FFB800",
+                    border: "3px solid var(--accent-gold)",
                     boxShadow: "0 4px 12px rgba(255, 184, 0, 0.25)",
                   }}
                 />
@@ -326,7 +329,7 @@ const ServicesSection = () => {
                       fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
                     }}
                   >
-                    A Message from Our Lead Surgeon
+                    A Message from the Anvil Founders
                   </Typography>
                   <Typography
                     sx={{
@@ -335,11 +338,11 @@ const ServicesSection = () => {
                       mt: 0.5,
                     }}
                   >
-                    Hair restoration and cosmetic procedures require careful
-                    planning and a thorough understanding of individual patient
-                    needs. At MONJOVEN, each procedure is approached with
-                    clinical evaluation, appropriate technique selection, and a
-                    focus on long-term outcomes.
+                    Every rooftop is different, and so is every family's power
+                    bill. At Anvil, we pair tier-1 equipment with a human
+                    Saathi who plans your system, handles the subsidy
+                    paperwork, and stays with you for the next 25 years of
+                    generation.
                   </Typography>
                 </Box>
               </Box>
@@ -359,8 +362,8 @@ const ServicesSection = () => {
                   }
                 }}
                 sx={{
-                  background: "linear-gradient(135deg, #FFB800, #FFC939)",
-                  color: "#FFF",
+                  background: "var(--accent-gold-gradient)",
+                  color: "var(--white)",
                   fontWeight: 600,
                   borderRadius: "12px",
                   padding: { xs: "10px 24px", md: "12px 32px" },
@@ -369,12 +372,12 @@ const ServicesSection = () => {
                   whiteSpace: "nowrap",
                   boxShadow: "0 4px 14px rgba(255, 184, 0, 0.3)",
                   "&:hover": {
-                    background: "linear-gradient(135deg, #1FA89B, #FFB800)",
+                    background: "var(--accent-gold-gradient-reverse)",
                     boxShadow: "0 6px 20px rgba(255, 184, 0, 0.4)",
                   },
                 }}
               >
-                Learn More About Us →
+                Learn More About Anvil →
               </Button>
             </Box>
           </motion.div>
