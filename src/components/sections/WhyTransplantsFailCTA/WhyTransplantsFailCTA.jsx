@@ -1,8 +1,9 @@
 /* ============================================
    WhyTransplantsFailCTA Component
-   Highlights common hair transplant failure reasons,
-   Dr. Porag Neog supervision reassurance, and
-   a prominent price-led CTA starting at ₹30,000.
+   "Why Solar Installations Fail — and how Anvil
+   prevents it" objection handler section.
+   Note: filename/component name kept stable to
+   preserve existing App.jsx routing.
    ============================================ */
 
 import React, { useRef } from "react";
@@ -13,35 +14,48 @@ import { useModal } from "../../../context/ModalContext";
 import { trackCTAClick } from "../../../utils/gtm";
 import styles from "./WhyTransplantsFailCTA.module.css";
 
-// Pain points — reasons most hair transplants fail
-const failureReasons = [
+// Six common solar-install failure modes — each with the Anvil fix
+const failureModes = [
   {
-    icon: "mdi:account-alert-outline",
-    title: "Inexperienced Handling of Grafts",
-    description:
-      "Improper handling of grafts may affect survival and growth, leading to suboptimal density and less natural-looking outcomes.",
+    icon: "mdi:alert-decagram",
+    title: "Wrong panel specs for the roof",
+    problem:
+      "Undersized panels for the household's real load — bills barely move.",
+    fix: "Anvil sizes the array from 12 months of your actual consumption, not a quick eyeball.",
   },
   {
-    icon: "mdi:content-cut",
-    title: "Overharvesting of Donor Area",
-    description:
-      "Excessive extraction can reduce donor density and may impact future procedures, sometimes leading to visible thinning.",
+    icon: "mdi:cable-data",
+    title: "Cheap DC cabling & earthing",
+    problem:
+      "Fire risk, voltage drops, and broken inverters within 2–3 years.",
+    fix: "Copper DC cable, proper earthing pits, and IP-65 rated combiner boxes on every install.",
   },
   {
-    icon: "mdi:vector-polyline-edit",
-    title: "Improper Hairline Design",
-    description:
-      "Hairline design that does not consider age, facial proportions, and future hair loss patterns may lead to unnatural appearance over time.",
+    icon: "mdi:file-remove",
+    title: "Subsidy paperwork stuck in DISCOM",
+    problem:
+      "Customers wait months for PM Surya Ghar disbursal — or never get it.",
+    fix: "Anvil's paperwork team tracks every application until the subsidy hits your bank.",
   },
-];
-
-// Reassurance bullet points from Dr. Porag Neog's clinic
-const reassurancePoints = [
-  "Each procedure is carried out with involvement of a surgeon experienced in plastic & reconstructive  surgery.",
-  "Over 24 years of experience in plastic and reconstructive surgery",
-  "Use of established techniques such as FUE and DHI based on individual assessment",
-  "Emphasis on donor area preservation and long-term planning",
-  "Hairline design tailored to age, facial proportions and future hair loss pattern",
+  {
+    icon: "mdi:wrench-off",
+    title: "Installer vanishes post-install",
+    problem: "No AMC, no phone support, and warranty claims nobody honours.",
+    fix: "Every Anvil customer keeps their Saathi for life, with a 5-year workmanship warranty.",
+  },
+  {
+    icon: "mdi:solar-panel-large",
+    title: "No monitoring = hidden underperformance",
+    problem:
+      "You only notice low output when your bill arrives months later.",
+    fix: "Live app monitoring + monthly performance reports from Anvil.",
+  },
+  {
+    icon: "mdi:shield-off",
+    title: "Fake warranties",
+    problem: "Generic 'lifetime' claims with no OEM backing.",
+    fix: "Real OEM warranties on panels + inverter, countersigned by Anvil.",
+  },
 ];
 
 // Animation variants
@@ -81,18 +95,18 @@ const WhyTransplantsFailCTA = () => {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const { openLeadDrawer } = useModal();
 
-  const handleBookConsultation = () => {
+  const handleOpenLeadForm = () => {
     trackCTAClick(
-      "why_fail_book_consultation",
-      "why_fail_cta",
-      "Book Consultation",
+      "why_solar_fail_book_call",
+      "why_solar_fail_cta",
+      "Book Your Free Call",
     );
-    openLeadDrawer("consultation");
+    openLeadDrawer("request-callback");
   };
 
   return (
     <section
-      id="why-transplants-fail"
+      id="why-solar-installs-fail"
       className={styles.section}
       ref={ref}
       aria-labelledby="why-fail-title"
@@ -113,143 +127,83 @@ const WhyTransplantsFailCTA = () => {
           <motion.div variants={itemVariants} className={styles.header}>
             <span className={styles.badge}>
               <Icon
-                icon="mdi:alert-octagon-outline"
+                icon="mdi:solar-power-variant"
                 className={styles.badgeIcon}
               />
-              The Hard Truth
+              Before you go solar
             </span>
             <Typography
               id="why-fail-title"
               variant="h2"
               className={styles.title}
             >
-              Why Hair Transplant Results Can Be{" "}
-              <span className={styles.titleAccent}>Unsatisfactory</span>
+              Why most <span className={styles.accent}>bad</span> solar installs
+              fail — and how Anvil prevents it.
             </Typography>
             <Typography className={styles.subtitle} sx={{ marginTop: "20px" }}>
-              A hair transplant is a carefully planned medical procedure. Here
-              are some common factors that can affect outcomes—and how
-              appropriate planning and technique help improve results.
+              We've audited hundreds of failed rooftops. Here's what actually
+              goes wrong — and the checklist we follow on every Anvil
+              installation.
             </Typography>
           </motion.div>
 
-          {/* Failure Reason Cards */}
+          {/* Failure Mode Cards */}
           <div className={styles.reasonsGrid}>
-            {failureReasons.map((reason, index) => (
+            {failureModes.map((mode, index) => (
               <motion.article
-                key={reason.title}
+                key={mode.title}
                 className={styles.reasonCard}
                 custom={index}
                 variants={cardVariants}
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
               >
                 <div className={styles.reasonIconWrap}>
-                  <Icon icon={reason.icon} className={styles.reasonIcon} />
+                  <Icon icon={mode.icon} className={styles.reasonIcon} />
                   <span className={styles.reasonNumber}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className={styles.reasonTitle}>{reason.title}</h3>
-                <p className={styles.reasonDescription}>{reason.description}</p>
+                <h3 className={styles.reasonTitle}>{mode.title}</h3>
+
+                <div className={styles.problemBlock}>
+                  <span className={styles.problemLabel}>
+                    <Icon
+                      icon="mdi:close-circle"
+                      className={styles.problemLabelIcon}
+                    />
+                    What goes wrong
+                  </span>
+                  <p className={styles.reasonDescription}>{mode.problem}</p>
+                </div>
+
+                <div className={styles.fixBlock}>
+                  <span className={styles.fixLabel}>
+                    <Icon
+                      icon="mdi:check-decagram"
+                      className={styles.fixLabelIcon}
+                    />
+                    The Anvil fix
+                  </span>
+                  <p className={styles.fixDescription}>{mode.fix}</p>
+                </div>
               </motion.article>
             ))}
           </div>
 
-          {/* Reassurance Banner */}
-          <motion.div variants={itemVariants} className={styles.ctaBanner}>
-            <div className={styles.bannerGrid}>
-              {/* Left — reassurance copy */}
-              <div className={styles.bannerLeft}>
-                <span className={styles.bannerBadge}>
-                  <Icon
-                    icon="mdi:shield-check"
-                    className={styles.bannerBadgeIcon}
-                  />
-                  The Monjoven Promise
-                </span>
-                <Typography variant="h3" className={styles.bannerTitle}>
-                  Hair Transplant Planned & Performed Under the Care of{" "}
-                  <span className={styles.bannerTitleAccent}>
-                    Dr. Porag Neog
-                  </span>
-                </Typography>
-
-                <ul className={styles.reassuranceList}>
-                  {reassurancePoints.map((point) => (
-                    <li key={point} className={styles.reassuranceItem}>
-                      <Icon
-                        icon="mdi:check-decagram"
-                        className={styles.reassuranceIcon}
-                      />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Right — price + CTA */}
-              <div className={styles.bannerRight}>
-                <div className={styles.priceCard}>
-                  <span className={styles.priceLabel}>
-                    Hair Transplant Starting From
-                  </span>
-                  <div className={styles.priceValueRow}>
-                    <span className={styles.priceCurrency}>₹</span>
-                    <span className={styles.priceValue}>30,000</span>
-                    <span className={styles.priceStar}>*</span>
-                  </div>
-
-                  <button
-                    type="button"
-                    className={styles.ctaButton}
-                    onClick={handleBookConsultation}
-                    style={{ marginBottom: "25px" }}
-                  >
-                    <Icon
-                      icon="mdi:calendar-check"
-                      className={styles.ctaButtonIcon}
-                    />
-                    <span>Book Consultation</span>
-                  </button>
-
-                  <div className={styles.priceNotwWrapper}>
-                    <span className={styles.priceNote}>
-                      <Icon
-                        icon="mdi:check-decagram"
-                        className={styles.reassuranceIcon}
-                        style={{ marginRight: "10px", fontSize: "16px" }}
-                      />
-                      Treatment cost varies depending on graft requirement and
-                      individual case
-                    </span>
-                    <span className={styles.priceNote}>
-                      <Icon
-                        icon="mdi:check-decagram"
-                        className={styles.reassuranceIcon}
-                        style={{ marginRight: "10px", fontSize: "16px" }}
-                      />
-                      Detailed estimate provided after consultation
-                    </span>
-                  </div>
-
-                  <div className={styles.trustRow}>
-                    <div className={styles.trustItem}>
-                      <Icon icon="mdi:shield-lock" />
-                      <span>Confidential Consultation</span>
-                    </div>
-                    <div className={styles.trustItem}>
-                      <Icon icon="mdi:headset" />
-                      <span>Dedicated Patient Support</span>
-                    </div>
-                  </div>
-
-                  <span className={styles.priceDisclaimer}>
-                    * Final cost depends on graft requirement and treatment
-                    plan.
-                  </span>
-                </div>
-              </div>
-            </div>
+          {/* CTA Card */}
+          <motion.div variants={itemVariants} className={styles.ctaCard}>
+            <h3 className={styles.ctaTitle}>
+              Every Anvil install avoids all six.{" "}
+              <span className={styles.ctaTitleAccent}>Guaranteed.</span>
+            </h3>
+            <button
+              type="button"
+              className={styles.ctaButton}
+              onClick={handleOpenLeadForm}
+            >
+              <Icon icon="mdi:phone-in-talk" className={styles.ctaButtonIcon} />
+              <span>Book Your Free Call</span>
+            </button>
           </motion.div>
         </motion.div>
       </Container>
