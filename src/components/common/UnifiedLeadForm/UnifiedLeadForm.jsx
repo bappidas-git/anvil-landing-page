@@ -56,6 +56,56 @@ const SERVICE_OPTIONS = [
   "Other",
 ];
 
+// Indian states / UTs for the Solar Savings Calculator state field.
+// Declared at module scope so it isn't re-created on every render.
+const INDIAN_STATES = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Delhi",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Chandigarh",
+  "Puducherry",
+  "Jammu & Kashmir",
+  "Ladakh",
+  "Andaman & Nicobar",
+  "Dadra & Nagar Haveli & Daman & Diu",
+  "Lakshadweep",
+];
+
+const initialCalcState = {
+  consumerType: "",
+  systemType: "",
+  roofType: "",
+  state: "",
+  phase: "",
+  monthlyBill: "",
+};
+
 // Initial form state
 const initialFormState = {
   name: "",
@@ -461,33 +511,9 @@ const PrivacyPolicyModal = ({ isOpen, onClose }) => {
   );
 };
 
-// Contextual header text based on source
-const getHeaderDefaults = (source) => {
-  switch (source) {
-    case "hero":
-      return {
-        title: "Book Your Consultation",
-        subtitle: "Get expert advice from Dr. Porag Neog",
-      };
-    case "contact":
-      return {
-        title: "Request a Callback",
-        subtitle: "Our team will contact you within 24 hours",
-      };
-    default:
-      return {
-        title: "Schedule a Consultation",
-        subtitle: "Take the first step towards your transformation",
-      };
-  }
-};
-
 const UnifiedLeadForm = ({
   variant = "default", // 'default', 'dark', 'hero', 'drawer'
-  source = "default",
-  title: titleProp,
-  subtitle: subtitleProp,
-  submitButtonText = "Book Consultation",
+  submitButtonText = "Get My Free Savings Plan",
   showTitle = true,
   showSubtitle = true,
   showCourseFields = true,
@@ -499,9 +525,6 @@ const UnifiedLeadForm = ({
   className = "",
   formId = "unified-lead-form",
 }) => {
-  const headerDefaults = getHeaderDefaults(source);
-  const title = titleProp || headerDefaults.title;
-  const subtitle = subtitleProp || headerDefaults.subtitle;
   const navigate = useNavigate();
 
   // Form state
@@ -510,6 +533,15 @@ const UnifiedLeadForm = ({
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
+
+  // UI-only Solar Savings Calculator selects. These never map to their own
+  // backend fields — their values are concatenated into `message` at submit
+  // time so the webhook schema stays identical.
+  const [calc, setCalc] = useState(initialCalcState);
+  const updateCalc = useCallback((field) => (event) => {
+    const value = event.target.value;
+    setCalc((prev) => ({ ...prev, [field]: value }));
+  }, []);
 
   // Refs for input focus management
   const nameRef = useRef(null);
@@ -648,6 +680,23 @@ const UnifiedLeadForm = ({
 
     setIsSubmitting(true);
 
+    // Concatenate the calculator selects into the existing `message` field so
+    // the backend schema remains unchanged.
+    const calcSummary = [
+      calc.consumerType && `Consumer: ${calc.consumerType}`,
+      calc.systemType && `System: ${calc.systemType}`,
+      calc.roofType && `Roof: ${calc.roofType}`,
+      calc.state && `State: ${calc.state}`,
+      calc.phase && `Phase: ${calc.phase}`,
+      calc.monthlyBill && `Bill: ₹${calc.monthlyBill}`,
+    ]
+      .filter(Boolean)
+      .join(" | ");
+
+    const enrichedMessage = calcSummary
+      ? `${calcSummary}${formData.message ? ` | Notes: ${formData.message}` : ""}`
+      : formData.message;
+
     try {
       // Prepare lead data
       const leadData = {
@@ -655,7 +704,7 @@ const UnifiedLeadForm = ({
         mobile: formData.mobile.trim(),
         email: formData.email.trim(),
         service_interest: formData.service_interest || '',
-        message: formData.message || '',
+        message: enrichedMessage || '',
         source: formId || 'general',
       };
 
@@ -716,6 +765,7 @@ const UnifiedLeadForm = ({
 
         // THEN reset form
         setFormData(initialFormState);
+        setCalc(initialCalcState);
         setTouched({});
         setErrors(initialErrorState);
 
@@ -773,15 +823,18 @@ const UnifiedLeadForm = ({
     <div
       className={`${styles.formContainer} ${getVariantClass()} ${className}`}
     >
-      {/* Form Header */}
+      {/* Form Header — Solar Savings Calculator */}
       {(showTitle || showSubtitle) && (
-        <div className={styles.formHeader}>
+        <div className={styles.calcHeader}>
           {showTitle && (
-            <Typography variant="h5" className={styles.formTitle}>
-              {title}
-            </Typography>
+            <>
+              <span className={styles.eyebrow}>⚡ Solar Savings Calculator</span>
+              <Typography variant="h5" className={styles.formTitle}>
+                See how much you could save on electricity
+              </Typography>
+            </>
           )}
-          {showSubtitle && subtitle && (
+          {showSubtitle && (
             <Typography
               variant="body2"
               className={styles.formSubtitle}
@@ -791,7 +844,9 @@ const UnifiedLeadForm = ({
                   : undefined
               }
             >
-              {subtitle}
+              Step 1 of 2: a few quick questions about your home. Step 2: your
+              contact details — an Anvil Saathi will call you in 30 minutes with
+              a personalised plan.
             </Typography>
           )}
         </div>
@@ -805,6 +860,107 @@ const UnifiedLeadForm = ({
         noValidate
         autoComplete="off"
       >
+        {/* Solar Savings Calculator — UI-only selects. Values are merged into
+            the `message` field at submit; no new backend keys. */}
+        <div className={styles.calcGrid}>
+          <label className={styles.calcField}>
+            <span className={styles.calcLabel}>Consumer Type</span>
+            <select
+              className={styles.calcSelect}
+              value={calc.consumerType}
+              onChange={updateCalc("consumerType")}
+              disabled={isSubmitting}
+              aria-label="Consumer type"
+            >
+              <option value="">Select</option>
+              <option value="Residential">Residential</option>
+              <option value="Business-Office">Business / Office</option>
+            </select>
+          </label>
+
+          <label className={styles.calcField}>
+            <span className={styles.calcLabel}>System Type</span>
+            <select
+              className={styles.calcSelect}
+              value={calc.systemType}
+              onChange={updateCalc("systemType")}
+              disabled={isSubmitting}
+              aria-label="System type"
+            >
+              <option value="">Select</option>
+              <option value="On-Grid">On-Grid</option>
+              <option value="Hybrid">Hybrid (with battery backup)</option>
+            </select>
+          </label>
+
+          <label className={styles.calcField}>
+            <span className={styles.calcLabel}>Roof Type</span>
+            <select
+              className={styles.calcSelect}
+              value={calc.roofType}
+              onChange={updateCalc("roofType")}
+              disabled={isSubmitting}
+              aria-label="Roof type"
+            >
+              <option value="">Select</option>
+              <option value="Concrete">Concrete Roof</option>
+              <option value="Tin-shed">Tin-shed Roof</option>
+            </select>
+          </label>
+
+          <label className={styles.calcField}>
+            <span className={styles.calcLabel}>State</span>
+            <select
+              className={styles.calcSelect}
+              value={calc.state}
+              onChange={updateCalc("state")}
+              disabled={isSubmitting}
+              aria-label="State"
+            >
+              <option value="">Select your state</option>
+              {INDIAN_STATES.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className={styles.calcField}>
+            <span className={styles.calcLabel}>Phase In Use</span>
+            <select
+              className={styles.calcSelect}
+              value={calc.phase}
+              onChange={updateCalc("phase")}
+              disabled={isSubmitting}
+              aria-label="Phase in use"
+            >
+              <option value="">Select</option>
+              <option value="1-Phase">1 Phase (homes)</option>
+              <option value="3-Phase">
+                3 Phase (commercial / large societies)
+              </option>
+            </select>
+          </label>
+
+          <label className={styles.calcField}>
+            <span className={styles.calcLabel}>
+              Avg. monthly electricity bill (₹)
+            </span>
+            <input
+              className={styles.calcInput}
+              type="number"
+              min="0"
+              placeholder="e.g. 4200"
+              value={calc.monthlyBill}
+              onChange={updateCalc("monthlyBill")}
+              disabled={isSubmitting}
+              inputMode="numeric"
+              aria-label="Average monthly electricity bill in rupees"
+            />
+          </label>
+        </div>
+
         {/* Name Field */}
         <motion.div
           custom={0}
@@ -1171,6 +1327,19 @@ const UnifiedLeadForm = ({
             </Typography>
           </motion.div>
         )}
+
+        {/* Solar calculator trust strip */}
+        <motion.ul
+          custom={showCourseFields ? 8 : 6}
+          variants={fieldVariants}
+          initial="hidden"
+          animate="visible"
+          className={styles.trustStrip}
+        >
+          <li>✓ Takes under 60 seconds</li>
+          <li>✓ No spam — Saathi call only</li>
+          <li>✓ Includes subsidy & EMI options</li>
+        </motion.ul>
       </form>
 
       {/* Phone Button */}
