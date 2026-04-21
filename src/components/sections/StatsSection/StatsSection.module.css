@@ -7,7 +7,7 @@
 .statsSection {
   position: relative;
   padding: 5rem 0;
-  background-color: #FFFFFF;
+  background-color: var(--white);
   overflow: hidden;
 }
 
@@ -38,7 +38,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: #FFB800;
+  color: var(--accent-gold);
   margin-bottom: 0.75rem;
 }
 
@@ -46,8 +46,8 @@
   position: relative;
 }
 
-.accentText {
-  color: #FFB800;
+.accent {
+  color: var(--accent-gold);
   font-style: italic;
 }
 
@@ -68,7 +68,7 @@
   align-items: center;
   text-align: center;
   padding: 2rem 1.25rem;
-  background: #FFFFFF;
+  background: var(--white);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.04);
@@ -90,7 +90,7 @@
   justify-content: center;
   border-radius: 14px;
   margin-bottom: 1rem;
-  background-color: #E8F6F3;
+  background-color: var(--icon-gold-bg);
   transition: transform 0.3s ease;
 }
 
@@ -100,7 +100,7 @@
 
 .statIcon {
   font-size: 28px;
-  color: #FFB800;
+  color: var(--accent-gold);
 }
 
 /* ========== Stat Value ========== */
@@ -114,7 +114,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #FFB800;
+  color: var(--accent-gold);
   margin-bottom: 0.75rem;
 }
 
@@ -122,7 +122,7 @@
 .statTitle {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0A1F3D;
+  color: var(--primary-dark);
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
@@ -324,7 +324,7 @@
 
 /* ========== Focus Styles for Accessibility ========== */
 .statCard:focus-visible {
-  outline: 2px solid #FFB800;
+  outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
 
