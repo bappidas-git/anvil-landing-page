@@ -7,7 +7,7 @@
 .coursesSection {
   position: relative;
   padding: 4rem 0;
-  background-color: #FFFFFF;
+  background-color: var(--white);
   overflow: hidden;
 }
 
@@ -18,7 +18,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, #F8F9FA 0%, #FFFFFF 50%, #F8F9FA 100%);
+  background: linear-gradient(180deg, #F8F9FA 0%, var(--white) 50%, #F8F9FA 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -51,7 +51,7 @@
 }
 
 .accentText {
-  color: #FFB800;
+  color: var(--accent-gold);
   font-style: italic;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .swiperContainer :global(.swiper-pagination-bullet-active) {
-  background: #FFB800;
+  background: var(--accent-gold);
   width: 24px;
   border-radius: 4px;
 }
@@ -98,7 +98,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
+  background: var(--white);
   border: 1px solid #E5E7EB;
   border-radius: 16px;
   padding: 1.75rem 1.5rem;
@@ -119,8 +119,8 @@
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  background: linear-gradient(135deg, #FFB800 0%, #FFC939 100%);
-  color: #FFFFFF;
+  background: var(--accent-gold-gradient);
+  color: var(--white);
   z-index: 2;
 }
 
@@ -129,8 +129,8 @@
 }
 
 .premiumBadge {
-  background: linear-gradient(135deg, #0A1F3D 0%, #4A5888 100%);
-  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #4A5888 100%);
+  color: var(--white);
 }
 
 /* ========== Course Icon ========== */
@@ -147,7 +147,7 @@
 
 .courseIcon {
   font-size: 26px;
-  color: #0A1F3D;
+  color: var(--primary-dark);
 }
 
 /* ========== Course Name ========== */
@@ -155,7 +155,7 @@
   font-family: var(--font-heading) !important;
   font-size: 1.0625rem !important;
   font-weight: 700 !important;
-  color: #0A1F3D !important;
+  color: var(--primary-dark) !important;
   line-height: 1.3 !important;
   margin-bottom: 0.75rem !important;
   min-height: 2.75rem;
@@ -180,7 +180,7 @@
 
 .metaItem svg {
   font-size: 15px;
-  color: #FFB800;
+  color: var(--accent-gold);
 }
 
 /* ========== Course Description ========== */
@@ -234,7 +234,7 @@
 
 .courseFrequency svg {
   font-size: 15px;
-  color: #0A1F3D;
+  color: var(--primary-dark);
   flex-shrink: 0;
 }
 
@@ -246,10 +246,10 @@
   gap: 0.5rem;
   width: 100%;
   padding: 11px 20px;
-  background: linear-gradient(135deg, #FFB800 0%, #FFC939 100%);
+  background: var(--accent-gold-gradient);
   border: none;
   border-radius: 10px;
-  color: #FFFFFF;
+  color: var(--white);
   font-size: 0.8375rem;
   font-weight: 600;
   cursor: pointer;
@@ -279,13 +279,13 @@
   font-family: var(--font-heading) !important;
   font-size: 1.125rem !important;
   font-weight: 600 !important;
-  color: #0A1F3D !important;
+  color: var(--primary-dark) !important;
   margin-bottom: 1rem !important;
 }
 
 .comparisonTitle svg {
   font-size: 22px;
-  color: #FFB800;
+  color: var(--accent-gold);
 }
 
 .comparisonTableWrapper {
@@ -316,12 +316,12 @@
 }
 
 .comparisonTable thead {
-  background: linear-gradient(135deg, #0A1F3D 0%, #0A1F3D 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-dark) 100%);
 }
 
 .comparisonTable th {
   padding: 0.875rem 1rem;
-  color: #FFFFFF;
+  color: var(--white);
   font-weight: 600;
   font-size: 0.8125rem;
   text-align: left;
@@ -357,7 +357,7 @@
 
 .comparisonLabel {
   font-weight: 600 !important;
-  color: #0A1F3D !important;
+  color: var(--primary-dark) !important;
 }
 
 .comparisonYes {
@@ -393,7 +393,7 @@
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.25rem 1.75rem;
-  background: linear-gradient(135deg, #0A1F3D 0%, #4A5888 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #4A5888 100%);
   border-radius: 14px;
 }
 
@@ -405,7 +405,7 @@
 
 .ctaIcon {
   font-size: 28px;
-  color: #FFB800;
+  color: var(--accent-gold);
 }
 
 .ctaText {
@@ -416,7 +416,7 @@
 .ctaTitle {
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--white);
 }
 
 .ctaSubtitle {
@@ -429,10 +429,10 @@
   align-items: center;
   gap: 0.5rem;
   padding: 11px 22px;
-  background: linear-gradient(135deg, #FFB800 0%, #FFC939 100%);
+  background: var(--accent-gold-gradient);
   border: none;
   border-radius: 10px;
-  color: #FFFFFF;
+  color: var(--white);
   font-size: 0.8375rem;
   font-weight: 600;
   cursor: pointer;
@@ -650,7 +650,7 @@
 /* ========== Focus Styles for Accessibility ========== */
 .courseCtaBtn:focus-visible,
 .ctaBtn:focus-visible {
-  outline: 2px solid #FFB800;
+  outline: 2px solid var(--accent-gold);
   outline-offset: 2px;
 }
 
@@ -686,7 +686,7 @@
   }
 
   .accentText {
-    color: #0A1F3D !important;
+    color: var(--primary-dark) !important;
   }
 }
 
