@@ -35,19 +35,19 @@ import styles from "./LeadDetail.module.css";
 
 // Status config
 const STATUS_OPTIONS = [
-  { value: "new", label: "New", color: "#2B7BD5", bg: "#EBF5FF" },
-  { value: "contacted", label: "Contacted", color: "#F59E0B", bg: "#FFF7ED" },
-  { value: "consultation_booked", label: "Consultation Booked", color: "#8B5CF6", bg: "#F3E8FF" },
-  { value: "procedure_scheduled", label: "Procedure Scheduled", color: "#0097A7", bg: "#E0F7FA" },
-  { value: "completed", label: "Completed", color: "#10B981", bg: "#ECFDF5" },
+  { value: "new", label: "New Lead", color: "#2B7BD5", bg: "#EBF5FF" },
+  { value: "contacted", label: "Saathi Called", color: "#F59E0B", bg: "#FFF7ED" },
+  { value: "consultation_booked", label: "Saathi Call Booked", color: "#8B5CF6", bg: "#F3E8FF" },
+  { value: "procedure_scheduled", label: "Site Survey Scheduled", color: "#0097A7", bg: "#E0F7FA" },
+  { value: "completed", label: "Solar Installed", color: "#10B981", bg: "#ECFDF5" },
   { value: "not_interested", label: "Not Interested", color: "#EF4444", bg: "#FEF2F2" },
 ];
 
 const CONVERSION_TYPES = [
-  "Consultation Completed",
-  "Procedure Booked",
-  "Procedure Completed",
-  "Follow-up Visit",
+  "Saathi Call Completed",
+  "Site Survey Booked",
+  "Site Survey Completed",
+  "Solar Installed",
   "Referral",
   "Other",
 ];
@@ -247,9 +247,9 @@ const LeadDetail = () => {
         <div className={styles.notFoundIcon}>
           <Icon icon="mdi:account-search-outline" width={64} />
         </div>
-        <h2 className={styles.notFoundTitle}>Patient record not found</h2>
+        <h2 className={styles.notFoundTitle}>Lead record not found</h2>
         <p className={styles.notFoundText}>
-          The patient record you're looking for doesn't exist or has been deleted.
+          The lead record you're looking for doesn't exist or has been deleted.
         </p>
         <button className={styles.backBtn} onClick={() => navigate("/admin/lms")}>
           <Icon icon="mdi:arrow-left" width={16} />
@@ -284,7 +284,7 @@ const LeadDetail = () => {
             Back to Leads
           </button>
           <div className={styles.headerInfo}>
-            <h1 className={styles.leadName}>{lead.name || "Unknown Patient"}</h1>
+            <h1 className={styles.leadName}>{lead.name || "Unknown Lead"}</h1>
             <p className={styles.leadId}>ID: {lead.lead_id}</p>
           </div>
         </div>
@@ -317,7 +317,7 @@ const LeadDetail = () => {
           <div className={styles.card}>
             <h3 className={styles.cardTitle}>
               <Icon icon="mdi:account-circle-outline" width={16} />
-              Patient Details
+              Lead Details
             </h3>
             <div className={styles.infoGrid}>
               <div className={styles.infoField}>
@@ -352,8 +352,8 @@ const LeadDetail = () => {
           {/* Interest Details */}
           <div className={styles.card}>
             <h3 className={styles.cardTitle}>
-              <Icon icon="mdi:medical-bag" width={16} />
-              Service Interest
+              <Icon icon="mdi:solar-panel" width={16} />
+              Solar Interest
             </h3>
             <div className={styles.infoGrid}>
               <div className={styles.infoField}>
@@ -593,7 +593,7 @@ const LeadDetail = () => {
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete this patient record? This action cannot be undone.
+            Are you sure you want to delete this lead record? This action cannot be undone.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -625,7 +625,7 @@ const LeadDetail = () => {
         <DialogContent>
           <DialogContentText sx={{ mb: 2 }}>
             Record a conversion for{" "}
-            <strong>{lead.name || "this patient"}</strong>. This will send a conversion
+            <strong>{lead.name || "this lead"}</strong>. This will send a conversion
             event to Meta CAPI and{lead.gclid
               ? " mark it for Google Ads offline conversion export"
               : " record it locally"}.
