@@ -1,5 +1,5 @@
 /* ============================================
-   CTASection Styles - Patient Testimonials
+   CTASection Styles - Customer Testimonials
    Dark primary gradient with testimonial cards
    ============================================ */
 
@@ -7,7 +7,7 @@
 .section {
   position: relative;
   padding: var(--space-16) 0;
-  background: linear-gradient(135deg, #0A1F3D 0%, #061330 100%);
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--admin-primary-dark) 100%);
   overflow: hidden;
 }
 
@@ -78,7 +78,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: var(--fw-bold);
-  color: #ffffff !important;
+  color: var(--white) !important;
   line-height: var(--lh-tight);
 }
 
@@ -174,7 +174,7 @@
   font-family: var(--font-heading);
   font-size: var(--fs-sm);
   font-weight: var(--fw-bold);
-  color: #ffffff;
+  color: var(--white);
   flex-shrink: 0;
 }
 
@@ -188,7 +188,7 @@
   font-family: var(--font-heading);
   font-size: var(--fs-base);
   font-weight: var(--fw-semibold);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .patientLocation {
@@ -211,7 +211,7 @@
 
 .starFilled {
   font-size: 1.125rem;
-  color: #f5b041;
+  color: var(--accent-gold-hover);
 }
 
 .starEmpty {
@@ -261,7 +261,7 @@
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -325,7 +325,7 @@
   font-family: var(--font-heading);
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
-  color: #ffffff;
+  color: var(--white);
 }
 
 .badgeLabel {
@@ -356,7 +356,7 @@
   font-family: var(--font-heading);
   font-size: clamp(1.25rem, 3vw, 1.75rem);
   font-weight: var(--fw-bold);
-  color: #ffffff !important;
+  color: var(--white) !important;
   line-height: var(--lh-tight);
 }
 
@@ -389,14 +389,14 @@
 .secondaryBtn {
   min-width: 200px;
   border-color: rgba(255, 255, 255, 0.7) !important;
-  color: #ffffff !important;
+  color: var(--white) !important;
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(4px);
 }
 
 .secondaryBtn:hover {
   background: rgba(255, 255, 255, 0.18) !important;
-  border-color: #ffffff !important;
+  border-color: var(--white) !important;
 }
 
 /* Corner Decorations */
@@ -585,7 +585,7 @@
    ============================================ */
 @media print {
   .section {
-    background: #f5f7fa;
+    background: var(--light-gray);
     padding: var(--space-8) 0;
   }
 
@@ -602,20 +602,20 @@
   .badgeLabel,
   .ctaTitle,
   .ctaSubtext {
-    color: #0A1F3D !important;
+    color: var(--primary-dark) !important;
   }
 
   .testimonialCard {
-    background: #f8f9fa;
-    border-color: #dee2e6;
+    background: var(--off-white);
+    border-color: var(--border-gray);
   }
 
   .patientName {
-    color: #0A1F3D;
+    color: var(--primary-dark);
   }
 
   .testimonialText {
-    color: #333;
+    color: var(--text-dark-gray);
   }
 
   .ctaButtons {
