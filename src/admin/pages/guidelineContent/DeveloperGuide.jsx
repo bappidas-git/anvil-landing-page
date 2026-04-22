@@ -140,7 +140,7 @@ npm start
 
 # 5. Access admin panel
 # Go to http://localhost:3000/admin
-# Credentials: monjoven / monjoven@2026vip`}
+# Credentials: set via REACT_APP_ADMIN_USERNAME / REACT_APP_ADMIN_PASSWORD in .env`}
         </pre>
 
         <div className={styles.guideNote}>
@@ -167,7 +167,7 @@ npm start
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>.env</code></td>
               <td className={styles.guideTableCell}>Business name, phone, email, admin credentials</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_NAME="Monjoven"</code></td>
+              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_NAME="Anvil"</code></td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>src/data/servicesData.js</code></td>
@@ -307,7 +307,7 @@ npm start
         </p>
 
         <pre className={styles.guideCode}>
-{`Patient fills UnifiedLeadForm → handleSubmit()
+{`Lead fills UnifiedLeadForm → handleSubmit()
   ↓
 Form validation (validators.js)
   Fields: name, mobile, email, service_interest, message
@@ -401,14 +401,14 @@ Navigate to /thank-you`}
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_ADMIN_USERNAME</code></td>
               <td className={styles.guideTableCell}>Yes</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>monjoven</code></td>
-              <td className={styles.guideTableCell}>Admin login username</td>
+              <td className={styles.guideTableCell}>—</td>
+              <td className={styles.guideTableCell}>Admin login username (set in your .env)</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_ADMIN_PASSWORD</code></td>
               <td className={styles.guideTableCell}>Yes</td>
-              <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>monjoven@2026vip</code></td>
-              <td className={styles.guideTableCell}>Admin login password</td>
+              <td className={styles.guideTableCell}>—</td>
+              <td className={styles.guideTableCell}>Admin login password (set in your .env)</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}><code className={styles.guideInlineCode}>REACT_APP_SALES_PHONE</code></td>

@@ -32,7 +32,7 @@ const SEOSetupGuide = ({ styles }) => {
           <li className={styles.guideStepItem}>
             Example:
             <pre className={styles.guideCode}>
-{`<title>Best Hair Transplant in Guwahati | Monjoven</title>`}
+{`<title>Best Solar Installation in Guwahati | Anvil</title>`}
             </pre>
           </li>
         </ol>
@@ -48,7 +48,7 @@ const SEOSetupGuide = ({ styles }) => {
           <li className={styles.guideStepItem}>
             Example:
             <pre className={styles.guideCode}>
-{`<meta name="description" content="Advanced hair transplant & cosmetic surgery in Guwahati by Dr. Porag Neog. FUE technique, natural results. Book consultation!">`}
+{`<meta name="description" content="Affordable rooftop solar installation across India by Anvil. Subsidy assistance, financing, and site survey included. Book a free Saathi call!">`}
             </pre>
           </li>
         </ol>
@@ -86,10 +86,10 @@ const SEOSetupGuide = ({ styles }) => {
             Update in <code className={styles.guideInlineCode}>public/index.html</code>:
             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
               <li style={{ marginBottom: '4px' }}>
-                Line ~76: <code className={styles.guideInlineCode}>{`<meta property="og:image" content="https://landing.monjoven.com/og-image.jpg">`}</code>
+                Line ~76: <code className={styles.guideInlineCode}>{`<meta property="og:image" content="https://solar.anvil.energy/og-image.jpg">`}</code>
               </li>
               <li style={{ marginBottom: '4px' }}>
-                Line ~99: <code className={styles.guideInlineCode}>{`<meta name="twitter:image" content="https://landing.monjoven.com/og-image.jpg">`}</code>
+                Line ~99: <code className={styles.guideInlineCode}>{`<meta name="twitter:image" content="https://solar.anvil.energy/og-image.jpg">`}</code>
               </li>
             </ul>
           </li>
@@ -117,17 +117,17 @@ const SEOSetupGuide = ({ styles }) => {
         <pre className={styles.guideCode}>
 {`// Organization details
 organization.name       → Your company's legal name
-organization.url        → https://landing.monjoven.com
+organization.url        → https://solar.anvil.energy
 organization.logo       → URL to your logo image
 organization.phone      → +91-9181956562
-organization.email      → dr@monjoven.com
+organization.email      → hello@anvil.energy
 organization.address    → Guwahati, Assam, India
 
 // FAQ section
 faqs                    → Replace with your actual FAQs (5-8 questions)
 
 // Local business
-localBusiness.type      → "MedicalBusiness" or "Physician"
+localBusiness.type      → "HomeAndConstructionBusiness" or "LocalBusiness"
 localBusiness.priceRange → "$$", "$$$", etc.
 localBusiness.openingHours → Your actual hours
 localBusiness.geo       → Your latitude and longitude (get from Google Maps)`}
@@ -150,7 +150,7 @@ localBusiness.geo       → Your latitude and longitude (get from Google Maps)`}
         </p>
         <ul style={{ paddingLeft: '24px', marginBottom: '16px' }}>
           <li className={styles.guideStepItem}>
-            Replace <code className={styles.guideInlineCode}>https://landing.monjoven.com/</code> with your actual domain
+            Replace <code className={styles.guideInlineCode}>https://solar.anvil.energy/</code> with your actual domain
           </li>
           <li className={styles.guideStepItem}>
             Update the <code className={styles.guideInlineCode}>{`<lastmod>`}</code> date to today's date
@@ -188,7 +188,7 @@ localBusiness.geo       → Your latitude and longitude (get from Google Maps)`}
             Open <code className={styles.guideInlineCode}>public/robots.txt</code>
           </li>
           <li className={styles.guideStepItem}>
-            Replace <code className={styles.guideInlineCode}>https://landing.monjoven.com/sitemap.xml</code> with your actual domain
+            Replace <code className={styles.guideInlineCode}>https://solar.anvil.energy/sitemap.xml</code> with your actual domain
           </li>
           <li className={styles.guideStepItem}>
             The file already blocks <code className={styles.guideInlineCode}>/admin/</code> and <code className={styles.guideInlineCode}>/thank-you</code> from being indexed — don't change these

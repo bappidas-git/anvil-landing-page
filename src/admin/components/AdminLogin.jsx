@@ -42,11 +42,11 @@ const AdminLogin = () => {
           <div className={styles.loginLogo}>
             <img
               src="https://solar.anvil.energy/svgs/logo.svg"
-              alt="Monjoven"
+              alt="Anvil"
             />
           </div>
-          <h1 className={styles.loginTitle}>Monjoven Admin Panel</h1>
-          <p className={styles.loginSubtitle}>Lead Management System</p>
+          <h1 className={styles.loginTitle}>Anvil Admin</h1>
+          <p className={styles.loginSubtitle}>Sign in to manage solar leads.</p>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>

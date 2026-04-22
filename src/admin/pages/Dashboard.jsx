@@ -95,10 +95,10 @@ const Dashboard = () => {
   }, []);
 
   const statCards = [
-    { label: 'Total Consultation Requests', value: stats?.totalLeads ?? 0, icon: 'mdi:account-multiple', colorClass: 'statIconBlue' },
+    { label: 'Total Solar Leads', value: stats?.totalLeads ?? 0, icon: 'mdi:account-multiple', colorClass: 'statIconBlue' },
     { label: 'Pending Follow-ups', value: stats?.newLeads24h ?? 0, icon: 'mdi:phone-in-talk', colorClass: 'statIconGreen' },
-    { label: 'Consultations Booked', value: stats?.weekLeads ?? 0, icon: 'mdi:calendar-check', colorClass: 'statIconPink' },
-    { label: 'Procedures Scheduled', value: `${stats?.conversionRate ?? 0}%`, icon: 'mdi:medical-bag', colorClass: 'statIconTeal' },
+    { label: 'Saathi Calls Booked', value: stats?.weekLeads ?? 0, icon: 'mdi:calendar-check', colorClass: 'statIconPink' },
+    { label: 'Site Surveys Scheduled', value: `${stats?.conversionRate ?? 0}%`, icon: 'mdi:solar-panel', colorClass: 'statIconTeal' },
   ];
 
   const recentLeads = stats?.recentLeads || [];
@@ -139,9 +139,9 @@ const Dashboard = () => {
       {/* Page Header */}
       <div className={styles.pageHeader}>
         <div>
-          <h1 className={styles.pageTitle}>Dashboard</h1>
+          <h1 className={styles.pageTitle}>Welcome back to Anvil Admin</h1>
           <p className={styles.pageSubtitle}>
-            Welcome to Monjoven Lead Management. Here&rsquo;s your consultation overview.
+            Here&rsquo;s your solar lead pipeline.
           </p>
         </div>
         <div className={styles.headerRight}>
@@ -211,7 +211,7 @@ const Dashboard = () => {
       {/* Recent Leads Section */}
       <div className={styles.recentSection}>
         <div className={styles.recentHeader}>
-          <h2 className={styles.sectionTitle}>Recent Consultation Requests</h2>
+          <h2 className={styles.sectionTitle}>Recent Solar Leads</h2>
           <Link to="/admin/lms" className={styles.viewAllLink}>
             View All <Icon icon="mdi:arrow-right" width={16} height={16} style={{ verticalAlign: 'middle' }} />
           </Link>
@@ -222,9 +222,9 @@ const Dashboard = () => {
             <div className={styles.emptyIcon}>
               <Icon icon="mdi:inbox-outline" width={56} height={56} />
             </div>
-            <p className={styles.emptyText}>No consultation requests yet</p>
+            <p className={styles.emptyText}>No solar leads yet</p>
             <p className={styles.emptySubtext}>
-              New consultation requests will appear here as they come in from your landing page forms.
+              New solar leads will appear here as they come in from your landing page forms.
             </p>
           </div>
         ) : (
@@ -234,7 +234,7 @@ const Dashboard = () => {
               <table className={styles.recentTable}>
                 <thead>
                   <tr>
-                    <th>Patient Name</th>
+                    <th>Name</th>
                     <th>Phone</th>
                     <th>Source</th>
                     <th>Status</th>
@@ -351,7 +351,7 @@ const Dashboard = () => {
 
       {/* Footer Badge */}
       <p className={styles.footerBadge}>
-        Monjoven Admin Panel | Lead Management System v1.0
+        Anvil Admin | Lead Management System v1.0
       </p>
 
       <Snackbar

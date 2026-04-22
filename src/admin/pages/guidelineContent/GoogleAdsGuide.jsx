@@ -58,7 +58,7 @@ const GoogleAdsGuide = ({ styles }) => {
           <li className={styles.guideStepItem}>Select campaign type: "Search"</li>
           <li className={styles.guideStepItem}>
             Campaign name: something descriptive like{' '}
-            <code className={styles.guideInlineCode}>Monjoven - Hair Transplant - Guwahati</code>
+            <code className={styles.guideInlineCode}>Anvil - Rooftop Solar - Guwahati</code>
           </li>
           <li className={styles.guideStepItem}>
             Networks: Uncheck "Display Network" and "Search Partners" (focus budget on Google
@@ -98,16 +98,16 @@ const GoogleAdsGuide = ({ styles }) => {
 
         <h3 className={styles.guideSubtitle}>Example Keywords</h3>
         <p className={styles.guideParagraph}>
-          For Monjoven Hair Transplant & Cosmetic Surgery, your keywords might look like:
+          For Anvil Rooftop Solar, your keywords might look like:
         </p>
         <pre className={styles.guideCode}>
-{`"best hair transplant in guwahati"
-"hair transplant near me"
-"hair transplant cost guwahati"
-"fue hair transplant assam"
-"rhinoplasty guwahati"
-"cosmetic surgery guwahati"
-"prp hair treatment guwahati"`}
+{`"best rooftop solar in guwahati"
+"solar panel installation near me"
+"rooftop solar cost"
+"on-grid solar system"
+"hybrid solar system price"
+"solar subsidy assam"
+"commercial solar installation"`}
         </pre>
 
         <h3 className={styles.guideSubtitle}>Match Types</h3>
@@ -181,25 +181,25 @@ Wikipedia`}
 
         <h3 className={styles.guideSubtitle}>Example Headlines</h3>
         <pre className={styles.guideCode}>
-{`Best Hair Transplant in Guwahati
-FUE Hair Transplant by Dr. Neog
-Book Consultation Today
-Hair Transplant Starting at ₹40,000
-#1 Cosmetic Surgery in Assam
-Natural-Looking Hair Restoration`}
+{`Best Rooftop Solar in Guwahati
+On-Grid & Hybrid Solar by Anvil
+Book a Free Site Survey Today
+Rooftop Solar with Subsidy Assistance
+#1 Solar Installer in Assam
+EMI Financing Available on Solar`}
         </pre>
 
         <h3 className={styles.guideSubtitle}>Example Descriptions</h3>
         <pre className={styles.guideCode}>
-{`Looking for hair transplant in Guwahati? Get a consultation with Dr. Porag Neog. Advanced FUE technique. Book now!
-Professional hair transplant & cosmetic surgery at Monjoven. Natural results guaranteed. Limited consultation slots available.`}
+{`Looking for rooftop solar in your city? Talk to an Anvil Saathi today. Subsidy help + site survey included. Book now!
+End-to-end rooftop solar with Anvil. Design, install, and financing under one roof. Limited site survey slots available.`}
         </pre>
 
         <h3 className={styles.guideSubtitle}>Tips for Better Ads</h3>
         <ol className={styles.guideStepList}>
-          <li className={styles.guideStepItem}>Include your unique selling points (Dr. Neog's expertise, FUE technique, natural results)</li>
-          <li className={styles.guideStepItem}>Use numbers and statistics ("1000+ procedures", "10+ years experience")</li>
-          <li className={styles.guideStepItem}>Include a clear call-to-action ("Book Consultation", "Call Now", "Get Expert Advice")</li>
+          <li className={styles.guideStepItem}>Include your unique selling points (Anvil Saathi support, subsidy assistance, financing)</li>
+          <li className={styles.guideStepItem}>Use numbers and statistics ("1000+ rooftops powered", "10+ years in clean energy")</li>
+          <li className={styles.guideStepItem}>Include a clear call-to-action ("Book Site Survey", "Call Saathi", "Get Solar Quote")</li>
           <li className={styles.guideStepItem}>Include your target keyword in at least 2-3 headlines</li>
           <li className={styles.guideStepItem}>Write at least 10 headlines and 4 descriptions for best results</li>
         </ol>
@@ -218,15 +218,15 @@ Professional hair transplant & cosmetic surgery at Monjoven. Natural results gua
           <tbody>
             <tr>
               <td className={styles.guideTableCell}>Sitelinks</td>
-              <td className={styles.guideTableCell}>Additional links below your ad (e.g., "Hair Transplant", "Rhinoplasty", "Contact Us")</td>
+              <td className={styles.guideTableCell}>Additional links below your ad (e.g., "On-Grid Solar", "Hybrid Solar", "Contact Us")</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>Callouts</td>
-              <td className={styles.guideTableCell}>Short highlight phrases (e.g., "Consultation", "Advanced FUE", "Natural Results")</td>
+              <td className={styles.guideTableCell}>Short highlight phrases (e.g., "Free Site Survey", "Subsidy Assistance", "EMI Financing")</td>
             </tr>
             <tr>
               <td className={styles.guideTableCell}>Structured Snippets</td>
-              <td className={styles.guideTableCell}>List of services under a category header (e.g., "Services: Hair Transplant, Rhinoplasty, PRP Therapy, Liposuction")</td>
+              <td className={styles.guideTableCell}>List of services under a category header (e.g., "Services: On-Grid Solar, Hybrid Solar, Commercial Solar, Subsidy Assistance")</td>
             </tr>
           </tbody>
         </table>

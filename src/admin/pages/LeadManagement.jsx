@@ -58,21 +58,21 @@ import styles from "./LeadManagement.module.css";
 
 // Status config
 const STATUS_OPTIONS = [
-  { value: "new", label: "New", color: "#2B7BD5", bg: "#EBF5FF" },
-  { value: "contacted", label: "Contacted", color: "#F59E0B", bg: "#FFF7ED" },
+  { value: "new", label: "New Lead", color: "#2B7BD5", bg: "#EBF5FF" },
+  { value: "contacted", label: "Saathi Called", color: "#F59E0B", bg: "#FFF7ED" },
   {
     value: "consultation_booked",
-    label: "Consultation Booked",
+    label: "Saathi Call Booked",
     color: "#8B5CF6",
     bg: "#F3E8FF",
   },
   {
     value: "procedure_scheduled",
-    label: "Procedure Scheduled",
+    label: "Site Survey Scheduled",
     color: "#0097A7",
     bg: "#E0F7FA",
   },
-  { value: "completed", label: "Completed", color: "#10B981", bg: "#ECFDF5" },
+  { value: "completed", label: "Solar Installed", color: "#10B981", bg: "#ECFDF5" },
   {
     value: "not_interested",
     label: "Not Interested",
@@ -104,12 +104,12 @@ const formatShortDate = (dateStr) => {
 
 // Columns config
 const COLUMNS = [
-  { id: "name", label: "Patient Name", sortable: true },
-  { id: "mobile", label: "Phone", sortable: true, width: 130 },
+  { id: "name", label: "Name", sortable: true },
+  { id: "mobile", label: "Mobile", sortable: true, width: 130 },
   { id: "email", label: "Email", sortable: true },
   {
     id: "service_interest",
-    label: "Service Interest",
+    label: "Interest",
     sortable: true,
     hideTablet: true,
   },
@@ -439,9 +439,9 @@ const LeadManagement = () => {
       {/* Page Header */}
       <div className={styles.pageHeader}>
         <div>
-          <h1 className={styles.pageTitle}>Consultation Requests</h1>
+          <h1 className={styles.pageTitle}>Solar Leads</h1>
           <p className={styles.pageSubtitle}>
-            View and manage all consultation requests in one place.
+            View and manage all solar leads in one place.
           </p>
         </div>
         <div className={styles.headerActions}>
@@ -636,7 +636,7 @@ const LeadManagement = () => {
         <div className={styles.filtersBar}>
           <TextField
             size="small"
-            placeholder="Search by patient name, email, or phone..."
+            placeholder="Search by name, email, or mobile..."
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);
@@ -897,11 +897,11 @@ const LeadManagement = () => {
             <div className={styles.emptyIcon}>
               <Icon icon="mdi:account-group-outline" width={64} height={64} />
             </div>
-            <p className={styles.emptyText}>No consultation requests found</p>
+            <p className={styles.emptyText}>No solar leads found</p>
             <p className={styles.emptySubtext}>
               {hasActiveFilters
                 ? "No results match your current filters. Try adjusting your search or filters."
-                : "New consultation requests will appear here as they come in from your landing page forms."}
+                : "New solar leads will appear here as they come in from your landing page forms."}
             </p>
             {hasActiveFilters && (
               <Button

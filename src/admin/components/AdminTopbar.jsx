@@ -59,7 +59,7 @@ const AdminTopbar = () => {
       <div className={styles.topbarLeft}>
         <img
           src="https://solar.anvil.energy/svgs/logo.svg"
-          alt="Monjoven"
+          alt="Anvil"
           className={styles.logo}
         />
         <span className={styles.divider} />
@@ -112,7 +112,7 @@ const AdminTopbar = () => {
             <div className={styles.mobileMenuHeader}>
               <img
                 src="https://solar.anvil.energy/svgs/logo.svg"
-                alt="Monjoven"
+                alt="Anvil"
                 className={styles.mobileMenuLogo}
               />
             </div>
@@ -151,7 +151,7 @@ const AdminTopbar = () => {
             </div>
 
             {/* Footer */}
-            <p className={styles.mobileMenuFooter}>Monjoven Admin Panel</p>
+            <p className={styles.mobileMenuFooter}>Anvil Admin</p>
           </div>
         </div>
       )}
