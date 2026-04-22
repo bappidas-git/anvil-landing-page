@@ -179,7 +179,7 @@
 }
 
 .mapAddress {
-  color: #E6E8EA;
+  color: var(--medium-gray);
   margin-bottom: var(--space-4);
   max-width: 300px;
 }
@@ -307,15 +307,15 @@
 
 .callUsBtn {
   border-color: rgba(255, 255, 255, 0.7) !important;
-  color: #FFFFFF !important;
+  color: var(--white) !important;
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(4px);
 }
 
 .callUsBtn:hover {
   background: rgba(255, 255, 255, 0.18) !important;
-  border-color: #FFFFFF !important;
-  color: #FFFFFF !important;
+  border-color: var(--white) !important;
+  color: var(--white) !important;
 }
 
 /* ========== Background Decorations ========== */
