@@ -1,6 +1,6 @@
 /* ============================================
    CTASection Component
-   Patient Testimonials & Social Proof
+   Customer Testimonials & Social Proof
    with CTA for booking consultations
    ============================================ */
 
@@ -14,53 +14,60 @@ import styles from "./CTASection.module.css";
 
 const testimonials = [
   {
-    name: "Kausar Shofi Ahmed",
-    location: "Guwahati, Assam",
+    name: "Rohit Verma",
+    location: "Gurugram, Haryana",
     rating: 5,
-    text: "I am very satisfied with the results of my hair transplant at Monjoven. Dr. Neog and his team are highly skilled and excellent. The entire process was smooth and comfortable.",
-    procedure: "Hair Transplant",
+    feedback:
+      "Our electricity bill dropped from ₹6,200 to ₹580 after Anvil's 5 kW system went live. The Saathi handled every single paper — I didn't chase DISCOM once.",
+    systemSize: "5 kW On-Grid",
   },
   {
-    name: "Medini Saharia",
-    location: "Assam",
+    name: "Sneha Iyer",
+    location: "Pune, Maharashtra",
     rating: 5,
-    text: "Amazing experience at Monjoven. The staff is very professional and caring. Dr. Porag Neog explained everything clearly and the results exceeded my expectations.",
-    procedure: "Hair Transplant",
+    feedback:
+      "We chose hybrid because power cuts here are brutal. Now the lights never go off. The app shows us how much we're saving every day — it's addictive.",
+    systemSize: "6 kW Hybrid + 8 kWh battery",
   },
   {
-    name: "Irfan Khan",
-    location: "International Patient",
+    name: "Anwar Khan",
+    location: "Hyderabad, Telangana",
     rating: 5,
-    text: "I've had three transplant sessions at Monjoven across 2017-2021. Every time the results were outstanding. Dr. Neog is truly one of the best in this field.",
-    procedure: "Hair Transplant (3 sessions)",
+    feedback:
+      "I compared four installers. Only Anvil's Saathi could explain net metering clearly. End-to-end in 4 weeks, subsidy credited to my bank in the 5th. No drama.",
+    systemSize: "4 kW On-Grid",
   },
   {
-    name: "Biki Patowary",
-    location: "Assam",
+    name: "Meera Pillai",
+    location: "Kochi, Kerala",
     rating: 5,
-    text: "The clinic environment is top-notch and the team is well-mannered and always smiling. My hair transplant results look completely natural. Highly recommend Monjoven!",
-    procedure: "Hair Transplant",
+    feedback:
+      "We run a small printing unit. Anvil's 25 kW commercial install pays for itself in under 4 years, and the AMC is included. Zero regrets.",
+    systemSize: "25 kW Commercial",
   },
   {
-    name: "Dipankar Borah",
-    location: "Northeast India",
+    name: "Harpreet Singh",
+    location: "Ludhiana, Punjab",
     rating: 5,
-    text: "Best hair transplant clinic in Northeast India. The procedure was painless and the results are incredible. Dr. Neog and his team made me feel comfortable throughout.",
-    procedure: "Hair Transplant",
+    feedback:
+      "The EMI option was a game-changer — 84 months, zero down payment. My monthly EMI is less than half of what my old electricity bill used to be.",
+    systemSize: "3 kW On-Grid",
   },
   {
-    name: "Manash Baishya",
-    location: "Assam",
+    name: "Deepika Rao",
+    location: "Bengaluru, Karnataka",
     rating: 5,
-    text: "Monjoven gave me back my confidence. The micro-FUE technique they use ensures minimal scarring and the most natural-looking results. Worth every penny!",
-    procedure: "Micro-FUE Hair Transplant",
+    feedback:
+      "Professional installers, neat cabling, clean commissioning. Even the neighbours have asked for Anvil's number. Highly recommend.",
+    systemSize: "7 kW Hybrid",
   },
 ];
 
 const trustBadges = [
-  { value: "5,000+", label: "Happy Patients", icon: "mdi:account-group" },
-  { value: "4.9/5", label: "Average Rating", icon: "mdi:star-circle" },
-  { value: "25+", label: "Yrs Plastic Surgery", icon: "mdi:shield-check" },
+  { value: "10,000+", label: "Happy homes powered", icon: "mdi:home-lightning-bolt" },
+  { value: "4.9/5", label: "Average customer rating", icon: "mdi:star-circle" },
+  { value: "300+", label: "Cities served PAN-India", icon: "mdi:map-marker-radius" },
+  { value: "25 yrs", label: "Panel warranty", icon: "mdi:shield-check" },
 ];
 
 const CARDS_PER_VIEW = 3;
@@ -173,14 +180,17 @@ const CTASection = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
             <Typography variant="overline" className={styles.overline}>
-              Patient Testimonials
+              Real customers, real savings
             </Typography>
             <Typography variant="h3" className={styles.title}>
-              What Our <span className={styles.highlight}>Patients Say</span>
+              Anvil families are{" "}
+              <span className={styles.highlight}>
+                saving ₹5,000+ every month.
+              </span>
             </Typography>
             <Typography variant="body1" className={styles.subtitle}>
-              Real experiences from patients who trusted Monjoven for their
-              transformation
+              See what homeowners and businesses across India are saying about
+              their Anvil Saathi.
             </Typography>
           </motion.div>
 
@@ -229,12 +239,12 @@ const CTASection = () => {
                     </div>
 
                     <p className={styles.testimonialText}>
-                      &ldquo;{testimonial.text}&rdquo;
+                      &ldquo;{testimonial.feedback}&rdquo;
                     </p>
 
                     <div className={styles.procedureBadge}>
-                      <Icon icon="mdi:medical-bag" />
-                      {testimonial.procedure}
+                      <Icon icon="mdi:solar-power-variant" />
+                      {testimonial.systemSize}
                     </div>
                   </motion.div>
                 ))}
@@ -291,11 +301,10 @@ const CTASection = () => {
           {/* CTA Area */}
           <motion.div variants={itemVariants} className={styles.ctaArea}>
             <Typography variant="h4" className={styles.ctaTitle}>
-              Ready to Start Your Transformation?
+              Join 10,000+ homes already saving with Anvil
             </Typography>
             <Typography variant="body1" className={styles.ctaSubtext}>
-              Book a consultation with Dr. Porag Neog and discover the best
-              treatment plan for you
+              Zero-obligation. Your Saathi calls within 30 minutes.
             </Typography>
 
             <div className={styles.ctaButtons}>
@@ -311,7 +320,7 @@ const CTASection = () => {
                   onClick={handleBookConsultation}
                   className={styles.primaryBtn}
                 >
-                  Book Consultation
+                  Book Your Free Call
                 </Button>
               </motion.div>
 
