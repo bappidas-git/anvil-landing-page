@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://www.monjoven.com/sitemap.xml
+Sitemap: https://solar.anvil.energy/sitemap.xml

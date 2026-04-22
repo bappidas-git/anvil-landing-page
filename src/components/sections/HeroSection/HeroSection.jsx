@@ -346,7 +346,7 @@ const HeroSection = () => {
                         fontSize: "0.875rem",
                       }}
                     >
-                      Get expert advice from Dr. Porag Neog
+                      Get expert advice from your Anvil Saathi
                     </Typography>
                   </div>
                   <div className={styles.formBody}>

@@ -119,9 +119,9 @@ const SEOSetupGuide = ({ styles }) => {
 organization.name       → Your company's legal name
 organization.url        → https://solar.anvil.energy
 organization.logo       → URL to your logo image
-organization.phone      → +91-9181956562
+organization.phone      → +91-1800-2020-001
 organization.email      → hello@anvil.energy
-organization.address    → Guwahati, Assam, India
+organization.address    → Gurugram, Haryana, India
 
 // FAQ section
 faqs                    → Replace with your actual FAQs (5-8 questions)
