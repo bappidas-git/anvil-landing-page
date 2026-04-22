@@ -1,8 +1,8 @@
-# Landing Page Boilerplate
+# Anvil — Rooftop Solar Landing Page
 
 ## Overview
 
-A high-converting, mobile-first landing page boilerplate built with React 18, Material UI, and Framer Motion. Designed for lead generation via Google Ads or any paid traffic source. Includes an admin panel with lead management, GTM integration, Meta CAPI, and Google Ads conversion tracking.
+A high-converting, mobile-first landing page for Anvil (India's rooftop solar partner). Built on React 18, Material UI, and Framer Motion. Designed for lead generation from Google Ads / Meta Ads traffic. Includes an admin panel with lead management, GTM integration, Meta CAPI, and Google Ads conversion tracking.
 
 ## Project Structure
 
@@ -20,12 +20,13 @@ A high-converting, mobile-first landing page boilerplate built with React 18, Ma
 
 ## Brand Color System (Defaults)
 
-- Primary: #2D3561 (Deep Navy)
-- Secondary/Accent: #2EC4B6 (Teal Green)
-- Accent Warm: #FF6B35 (Orange — CTAs only)
-- Light Teal: #E0F7F5 (Card backgrounds)
+- Primary: #0A1F3D (Anvil Deep Navy)
+- Secondary: #FFB800 (Solar Gold)
+- CTA Warm: #FF6B35 (Sunrise Orange — CTAs only)
+- Accent Green: #10B981 (Eco Green for savings)
+- Soft Gold BG: #FFF8E1
 - White: #FFFFFF
-- Text: #1B2A4A
+- Text: #0A1F3D
 
 To customize colors, update `src/styles/variables.css`, `src/theme/muiTheme.js`, and CSS variables in `.module.css` files.
 

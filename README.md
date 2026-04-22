@@ -1,6 +1,8 @@
-# Landing Page Boilerplate
+# Anvil — Rooftop Solar Landing Page
 
-A high-converting, mobile-first landing page boilerplate for lead generation via Google Ads or any paid traffic source. Built with React 18, Material UI v5, and Framer Motion.
+High-converting, mobile-first landing page for Anvil Solar with integrated lead capture, admin panel, and paid-ads analytics.
+
+Production-ready React 18 + Material UI + Framer Motion landing page optimised for Google Ads + Meta Ads traffic. Built for Anvil — India's hassle-free rooftop solar partner.
 
 ## Features
 
@@ -67,7 +69,7 @@ npm start
 npm run build
 ```
 
-Admin credentials: `monjoven` / `monjoven@2026vip` (configured in `.env`).
+Admin credentials: `anvil` / `anvil@2026vip` (configured in `.env`).
 
 ## Folder Structure
 
