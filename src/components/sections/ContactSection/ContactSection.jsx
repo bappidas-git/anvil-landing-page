@@ -1,6 +1,6 @@
 /* ============================================
    ContactSection Component
-   "Get in Touch" contact section with contact cards
+   "Talk to Anvil" contact section with contact cards
    and embedded lead form
    ============================================ */
 
@@ -11,6 +11,8 @@ import { Icon } from "@iconify/react";
 import UnifiedLeadForm from "../../common/UnifiedLeadForm/UnifiedLeadForm";
 import { useModal } from "../../../context/ModalContext";
 import styles from "./ContactSection.module.css";
+
+const SALES_EMAIL = process.env.REACT_APP_SALES_EMAIL || "hello@anvil.energy";
 
 const ContactSection = () => {
   const { openLeadDrawer } = useModal();
@@ -51,42 +53,39 @@ const ContactSection = () => {
     },
   };
 
-  // Contact info items
-  const contactInfo = [
+  // Contact methods (Anvil)
+  const contactMethods = [
     {
-      icon: "mdi:map-marker-outline",
-      title: "Clinic Address",
-      content: "VIP Road, Borbari, Six Mile, Near Pratiksha Hospital, Guwahati, Assam",
+      icon: "mdi:phone-in-talk",
+      title: "Call our toll-free",
+      value: "1800 2020 001",
+      href: "tel:+918002020001",
+      cta: "Call now",
     },
     {
-      icon: "mdi:phone-outline",
-      title: "Call / WhatsApp",
-      items: [
-        {
-          icon: "mdi:phone",
-          content: "+91 9181956562",
-          href: "tel:+919181956562",
-          ariaLabel: "Call us at +91 9181956562",
-        },
-        {
-          icon: "mdi:whatsapp",
-          content: "+91 9127062599",
-          href: "https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant.",
-          external: true,
-          ariaLabel: "Chat with us on WhatsApp at +91 9127062599",
-        },
-      ],
+      icon: "mdi:whatsapp",
+      title: "WhatsApp",
+      value: "Chat with Anvil Saathi",
+      href: `https://wa.me/918002020001?text=${encodeURIComponent(
+        "Hi Anvil — I'd like a solar savings plan"
+      )}`,
+      cta: "Open WhatsApp",
+      external: true,
     },
     {
-      icon: "mdi:email-outline",
-      title: "Email Us",
-      content: "dr@monjoven.com",
-      href: "mailto:dr@monjoven.com",
+      icon: "mdi:email",
+      title: "Email",
+      value: SALES_EMAIL,
+      href: `mailto:${SALES_EMAIL}`,
+      cta: "Send email",
     },
     {
-      icon: "mdi:clock-outline",
-      title: "Clinic Hours",
-      content: "Mon - Sat: 9:00 AM - 6:00 PM",
+      icon: "mdi:map-marker",
+      title: "HQ",
+      value: "Gurugram, Haryana",
+      href: "https://maps.google.com/?q=Gurugram,Haryana,India",
+      cta: "View on map",
+      external: true,
     },
   ];
 
@@ -94,7 +93,7 @@ const ContactSection = () => {
     openLeadDrawer("contact", {
       title: "Request a Callback",
       subtitle:
-        "Fill in your details and our team will reach out to you",
+        "Share your details and an Anvil Saathi will reach out shortly.",
     });
   };
 
@@ -110,26 +109,30 @@ const ContactSection = () => {
           {/* Section Header */}
           <motion.div variants={itemVariants} className={styles.sectionHeader}>
             <Typography variant="overline" className={styles.sectionOverline}>
-              Get In Touch
+              Talk to Anvil
             </Typography>
             <Typography variant="h2" className={styles.sectionTitle}>
-              Visit Our Clinic or Book a{" "}
-              <span className={styles.highlight}>Consultation</span>
+              Questions?{" "}
+              <span className={styles.highlight}>
+                Your Saathi is 30 minutes away.
+              </span>
             </Typography>
             <Typography variant="body1" className={styles.sectionSubtitle}>
-              Located in Guwahati, Assam — easily accessible from all parts of
-              Northeast India
+              Call, WhatsApp, or drop us a line. No pushy sales — just a solar
+              savings plan that actually makes sense.
             </Typography>
           </motion.div>
 
           {/* Quick Action Buttons (mobile-first, visible on all) */}
           <motion.div variants={itemVariants} className={styles.quickActions}>
-            <a href="tel:+919181956562" className={styles.quickActionBtn}>
+            <a href="tel:+918002020001" className={styles.quickActionBtn}>
               <Icon icon="mdi:phone" className={styles.quickActionIcon} />
               <span>Call Now</span>
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=919127062599&text=Hi%20Doctor%2C%0AI%20want%20to%20check%20if%20i%20am%20suitable%20for%20transplant."
+              href={`https://wa.me/918002020001?text=${encodeURIComponent(
+                "Hi Anvil — I'd like a solar savings plan"
+              )}`}
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.quickActionBtn} ${styles.quickActionWhatsapp}`}
@@ -157,71 +160,56 @@ const ContactSection = () => {
                 className={styles.contentWrapper}
               >
                 <div className={styles.contactGrid}>
-                  {contactInfo.map((item, index) => (
+                  {contactMethods.map((method, index) => (
                     <motion.div
                       key={index}
                       variants={itemVariants}
                       className={styles.contactCard}
                     >
                       <div className={styles.contactIcon}>
-                        <Icon icon={item.icon} />
+                        <Icon icon={method.icon} />
                       </div>
                       <div className={styles.contactText}>
                         <Typography
                           variant="subtitle2"
                           className={styles.contactTitle}
                         >
-                          {item.title}
+                          {method.title}
                         </Typography>
-                        {item.items ? (
-                          <div className={styles.contactLinkGroup}>
-                            {item.items.map((sub, subIndex) => (
-                              <a
-                                key={subIndex}
-                                href={sub.href}
-                                aria-label={sub.ariaLabel}
-                                className={styles.contactLinkItem}
-                                {...(sub.external
-                                  ? {
-                                      target: "_blank",
-                                      rel: "noopener noreferrer",
-                                    }
-                                  : {})}
-                              >
-                                <Icon
-                                  icon={sub.icon}
-                                  className={styles.contactSubIcon}
-                                  aria-hidden="true"
-                                />
-                                <span>{sub.content}</span>
-                              </a>
-                            ))}
-                          </div>
-                        ) : item.href ? (
-                          <a
-                            href={item.href}
-                            className={styles.contactLink}
-                            {...(item.external
-                              ? {
-                                  target: "_blank",
-                                  rel: "noopener noreferrer",
-                                }
-                              : {})}
-                          >
-                            {item.content}
-                          </a>
-                        ) : (
-                          <Typography
-                            variant="body2"
-                            className={styles.contactContent}
-                          >
-                            {item.content}
-                          </Typography>
-                        )}
+                        <Typography
+                          variant="body2"
+                          className={styles.contactContent}
+                        >
+                          {method.value}
+                        </Typography>
+                        <a
+                          href={method.href}
+                          className={styles.contactCta}
+                          aria-label={`${method.cta} — ${method.title}`}
+                          {...(method.external
+                            ? {
+                                target: "_blank",
+                                rel: "noopener noreferrer",
+                              }
+                            : {})}
+                        >
+                          <span>{method.cta}</span>
+                          <Icon
+                            icon="mdi:arrow-right"
+                            className={styles.contactCtaIcon}
+                            aria-hidden="true"
+                          />
+                        </a>
                       </div>
                     </motion.div>
                   ))}
                 </div>
+
+                {/* Hours strip */}
+                <motion.div variants={itemVariants} className={styles.hours}>
+                  <strong>Open hours:</strong> Mon–Sat, 9:00 AM – 7:00 PM IST ·
+                  Sunday closed
+                </motion.div>
               </motion.div>
             </Grid>
 
@@ -233,11 +221,8 @@ const ContactSection = () => {
               >
                 {/* Form Header */}
                 <div className={styles.formHeader}>
-                  <Typography variant="h5" className={styles.formTitle}>
-                    Request a Callback
-                  </Typography>
-                  <Typography variant="body2" className={styles.formSubtitle}>
-                    Fill in your details and our team will reach out to you
+                  <Typography variant="h5" component="h3" className={styles.formTitle}>
+                    Prefer to fill a form? We'll call you back.
                   </Typography>
                 </div>
 

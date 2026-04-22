@@ -152,11 +152,7 @@
   height: 48px;
   min-width: 48px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 184, 0, 0.15) 0%,
-    rgba(255, 184, 0, 0.08) 100%
-  );
+  background: var(--icon-gold-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,6 +219,47 @@
   font-size: 1rem;
   color: var(--accent-gold);
   flex-shrink: 0;
+}
+
+/* CTA link at bottom of each contact card */
+.contactCta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  color: var(--accent-gold);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  text-decoration: none;
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.contactCta:hover {
+  gap: var(--space-2);
+  color: var(--accent-gold-dark);
+}
+
+.contactCtaIcon {
+  font-size: 0.95rem;
+}
+
+/* Open-hours strip */
+.hours {
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  background: var(--icon-gold-bg);
+  border: 1px solid var(--border-gray);
+  border-radius: var(--radius-lg);
+  color: var(--text-dark-gray);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
+.hours strong {
+  color: var(--primary-dark);
+  font-weight: var(--fw-semibold);
 }
 
 /* Form Wrapper */
@@ -336,12 +373,18 @@
 
   .contactContent,
   .contactLink,
-  .contactLinkItem {
+  .contactLinkItem,
+  .contactCta {
     font-size: var(--fs-xs);
   }
 
   .contactSubIcon {
     font-size: 0.9rem;
+  }
+
+  .hours {
+    margin-top: var(--space-4);
+    font-size: var(--fs-xs);
   }
 
   .formWrapper {
