@@ -5,10 +5,10 @@ All notable changes to the Landing Page Boilerplate project.
 ## [2.0.0] - 2026-04-21 — Anvil Rebrand
 
 ### Changed
-- Full visual rebrand from Monjoven (hair transplant clinic) to Anvil (rooftop solar).
+- Full visual rebrand to Anvil (rooftop solar) from the prior boilerplate brand.
 - Updated color palette to Anvil navy (#0A1F3D) + solar gold (#FFB800) + sunrise orange (#FF6B35).
 - Replaced hero, about, services, features, stats, highlights, testimonials, and FAQ content with solar-industry messaging.
-- Converted the why-transplants-fail section into "Why Solar Installations Fail" objection handler.
+- Converted the legacy objection-handler section into "Why Solar Installations Fail".
 - Augmented UnifiedLeadForm with a solar-savings-calculator shell (no backend schema change).
 - Updated all SEO schemas to `SolarEnergyContractor` / `Organization` with Anvil values.
 - Migrated admin panel branding strings to Anvil.

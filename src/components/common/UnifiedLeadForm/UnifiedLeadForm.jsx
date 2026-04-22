@@ -6,7 +6,7 @@
    - Consent text
    - Redirect to Thank You page
    - Customizable title, subtitle, and phone CTA
-   Monjoven Hair Transplant & Cosmetic Surgery
+   Anvil — Rooftop Solar Landing Page
    ============================================ */
 
 import React, { useState, useCallback, useRef } from "react";
@@ -42,17 +42,16 @@ import {
 } from "../../../utils/validators";
 import styles from "./UnifiedLeadForm.module.css";
 
-// Service interest options for medical consultations
+// Service interest options for Anvil rooftop solar enquiries
 const SERVICE_OPTIONS = [
-  "Hair Transplant",
-  "Beard Transplant",
-  "Eyebrow Transplant",
-  "Rhinoplasty",
-  "Liposuction",
-  "Gynecomastia",
-  "PRP Therapy",
-  "Laser Therapy",
-  "Hairfall Consultation",
+  "On-Grid Solar",
+  "Hybrid Solar (with battery)",
+  "Off-Grid Solar",
+  "Commercial Rooftop Solar",
+  "Housing Society / RWA Solar",
+  "Solar + EV Charging",
+  "Battery Backup Upgrade",
+  "Site Survey / Savings Estimate",
   "Other",
 ];
 
@@ -139,11 +138,11 @@ const PrivacyPolicyContent = () => (
         Introduction
       </h3>
       <p style={{ fontSize: "14px", lineHeight: 1.6, color: "#374151" }}>
-        Monjoven Hair Transplant & Cosmetic Surgery ("we," "our," or "us")
-        respects your privacy and is committed to protecting your personal
-        and medical data. This Privacy Policy explains how we collect, use,
-        disclose, and safeguard your information when you visit our website
-        or engage with our services.
+        Anvil Energy ("we," "our," or "us") respects your privacy and is
+        committed to protecting your personal data. This Privacy Policy
+        explains how we collect, use, disclose, and safeguard your
+        information when you visit our website or engage with our rooftop
+        solar services.
       </p>
     </section>
 
@@ -281,8 +280,8 @@ const PrivacyPolicyContent = () => (
         }}
       >
         <li style={{ marginBottom: "6px" }}>
-          <strong>Monjoven Hair Transplant & Cosmetic Surgery:</strong> We share inquiry details within our
-          team for processing your consultation requests.
+          <strong>Anvil Energy:</strong> We share enquiry details within our
+          team for processing your site survey and savings estimate requests.
         </li>
         <li style={{ marginBottom: "6px" }}>
           <strong>Service Providers:</strong> Third-party vendors who assist us
@@ -394,11 +393,11 @@ const PrivacyPolicyContent = () => (
           marginTop: "8px",
         }}
       >
-        <strong>Monjoven Hair Transplant & Cosmetic Surgery</strong>
+        <strong>Anvil Energy</strong>
         <br />
-        Email: dr@monjoven.com
+        Email: hello@anvil.energy
         <br />
-        Phone: +91-9181956562
+        Phone: 1800 2020 001
       </p>
     </section>
 
@@ -760,7 +759,7 @@ const UnifiedLeadForm = ({
         // Show success alert ON TOP of drawer
         await showSuccess(
           'Thank You!',
-          "Your consultation request has been received. Dr. Neog's team will contact you within 24 hours to schedule your appointment."
+          "Your request has been received. Your Anvil Saathi will contact you within 24 hours to schedule your free site survey."
         );
 
         // THEN reset form
@@ -1323,7 +1322,7 @@ const UnifiedLeadForm = ({
                 Terms & Conditions and Privacy Policy
               </button>
 
-              . By submitting this form, I agree to receive communication from Monjoven regarding consultation and services.
+              . By submitting this form, I agree to receive communication from Anvil regarding my rooftop solar enquiry and related services.
             </Typography>
           </motion.div>
         )}
@@ -1351,9 +1350,9 @@ const UnifiedLeadForm = ({
           >
             Or call us directly
           </Typography>
-          <a href="tel:+919181956562" className={styles.phoneLink}>
+          <a href="tel:+918002020001" className={styles.phoneLink}>
             <Icon icon="mdi:phone" />
-            <span>+91-9181956562</span>
+            <span>1800 2020 001</span>
           </a>
         </div>
       )}

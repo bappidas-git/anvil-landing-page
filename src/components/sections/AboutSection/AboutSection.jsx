@@ -82,7 +82,7 @@ const doctorProfile = {
 };
 
 // Supporting image
-const clinicImage = {
+const rooftopImage = {
   src: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=1200&q=80&auto=format&fit=crop",
   alt: "Anvil solar installation on a residential rooftop",
 };
@@ -273,8 +273,8 @@ const AboutSection = () => {
                 transition={{ duration: 0.3 }}
               >
                 <img
-                  src={clinicImage.src}
-                  alt={clinicImage.alt}
+                  src={rooftopImage.src}
+                  alt={rooftopImage.alt}
                   className={styles.gridImage}
                   loading="lazy"
                 />

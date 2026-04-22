@@ -1,7 +1,7 @@
 {
-  "short_name": "Monjoven",
-  "name": "Monjoven - Hair Transplant & Cosmetic Surgery",
-  "description": "Northeast India's premier hair transplant and cosmetic surgery clinic",
+  "short_name": "Anvil",
+  "name": "Anvil — Rooftop Solar for Homes & Businesses",
+  "description": "End-to-end rooftop solar installation across India — design, PM Surya Ghar subsidy, financing, installation, and lifetime support from your Anvil Saathi.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -24,9 +24,9 @@
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#1A5276",
+  "theme_color": "#0A1F3D",
   "background_color": "#FFFFFF",
-  "categories": ["business", "health"],
+  "categories": ["business", "energy", "utilities"],
   "lang": "en",
   "dir": "ltr",
   "scope": "/",
