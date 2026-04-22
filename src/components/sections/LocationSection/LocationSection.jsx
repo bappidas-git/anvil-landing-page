@@ -1,18 +1,20 @@
 /* ============================================
    LocationSection Component
-   Our Locations section showing business location info
+   PAN-India service footprint section
    ============================================ */
 
 import React from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography, Chip } from "@mui/material";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import SectionTitle from "../../common/SectionTitle/SectionTitle";
 import Button from "../../common/Button/Button";
 import { locationData } from "../../../data/locationData";
+import { useModal } from "../../../context/ModalContext";
 import styles from "./LocationSection.module.css";
 
 const LocationSection = () => {
+  const { openLeadDrawer } = useModal();
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,9 +58,9 @@ const LocationSection = () => {
     },
   };
 
-  const handleGetDirections = () => {
+  const handleViewHQ = () => {
     window.open(
-      "https://www.google.com/maps/search/Monjoven+Clinic+Six+Mile+Guwahati",
+      "https://www.google.com/maps/search/Anvil+Energy+Gurugram+Haryana",
       "_blank",
       "noopener,noreferrer",
     );
@@ -66,23 +68,27 @@ const LocationSection = () => {
 
   const connectivityHighlights = [
     {
-      icon: "mdi:airplane",
-      title: "Well-connected by air — Guwahati LGBI Airport nearby",
+      icon: "mdi:account-hard-hat",
+      title:
+        "Dedicated local crews now stationed in Guwahati, Dimapur & Bhubaneswar",
       color: "#FF9800",
     },
     {
-      icon: "mdi:train",
-      title: "Accessible by rail from all Northeast states",
+      icon: "mdi:shield-check",
+      title:
+        "Backed by 300+ successful PAN-India installations and a 25-year output warranty",
       color: "#2196F3",
     },
     {
-      icon: "mdi:hospital-building",
-      title: "Located near Pratiksha Hospital, Six Mile, Guwahati",
+      icon: "mdi:file-document-check",
+      title:
+        "Zero-paperwork promise — we handle DISCOM, subsidy & net-metering end-to-end",
       color: "#9C27B0",
     },
     {
-      icon: "mdi:account-group",
-      title: "Patients visiting from all 8 Northeastern states",
+      icon: "mdi:headset",
+      title:
+        "Multilingual toll-free support in English, Hindi, Assamese & Odia — 1800 2020 001",
       color: "#4CAF50",
     },
   ];
@@ -92,10 +98,10 @@ const LocationSection = () => {
       <Container maxWidth="xl">
         {/* Section Title */}
         <SectionTitle
-          badge="LOCATIONS"
-          title="Serving All of"
-          highlight="Northeast India"
-          subtitle="Conveniently located in Guwahati with patients visiting from across the Northeast and beyond"
+          badge="NOW LIVE IN THE NORTHEAST & ODISHA"
+          title="Anvil is now in Assam, Nagaland & Bhubaneswar."
+          highlight="Assam, Nagaland & Bhubaneswar."
+          subtitle="After powering 300+ successful rooftop and commercial installations across India, Anvil's proven solar teams have launched in the Northeast and Odisha — bringing the same extraordinary, hassle-free installation experience that has made us a trusted PAN-India name."
           align="center"
           variant="light"
           badgeVariant="gold"
@@ -108,7 +114,7 @@ const LocationSection = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           <Grid container spacing={4} className={styles.mainContent}>
-            {/* Centre Info Card */}
+            {/* HQ Info Card */}
             <Grid item xs={12} md={5}>
               <motion.div
                 variants={itemVariants}
@@ -116,7 +122,7 @@ const LocationSection = () => {
               >
                 <div className={styles.centreHeader}>
                   <div className={styles.centreIconWrapper}>
-                    <Icon icon="mdi:hospital-building" />
+                    <Icon icon="mdi:office-building-marker" />
                   </div>
                   <div>
                     <Typography variant="h5" className={styles.centreName}>
@@ -127,6 +133,13 @@ const LocationSection = () => {
                       className={styles.centreAddress}
                     >
                       {locationData.address}
+                    </Typography>
+                    <Typography
+                      variant="caption"
+                      className={styles.centreAddress}
+                      sx={{ display: "block", marginTop: "0.35rem", fontWeight: 600 }}
+                    >
+                      Regional teams now live in Assam, Nagaland & Odisha
                     </Typography>
                   </div>
                 </div>
@@ -141,7 +154,7 @@ const LocationSection = () => {
                         variant="caption"
                         className={styles.contactLabel}
                       >
-                        Phone
+                        Toll-free
                       </Typography>
                       <Typography
                         variant="body2"
@@ -183,8 +196,8 @@ const LocationSection = () => {
                 <div className={styles.mapContainer}>
                   <div className={styles.mapPlaceholder}>
                     <img
-                      src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1200&q=80&auto=format&fit=crop"
-                      alt="Monjoven Clinic Location Map - Six Mile, Guwahati"
+                      src={locationData.mapUrl}
+                      alt="Anvil Energy HQ — Gurugram, Haryana"
                       className={styles.mapImage}
                     />
                     <div className={styles.mapOverlay}>
@@ -193,16 +206,16 @@ const LocationSection = () => {
                         className={styles.mapPinIcon}
                       />
                       <Typography variant="h6" className={styles.mapTitle}>
-                        Monjoven Clinic
+                        {locationData.name}
                       </Typography>
                       <Typography variant="body2" className={styles.mapAddress}>
-                        Six Mile, Guwahati, Assam
+                        {locationData.city}, {locationData.state}
                       </Typography>
                       <Button
                         variant="primary"
                         size="small"
                         startIcon="mdi:map-marker"
-                        onClick={handleGetDirections}
+                        onClick={handleViewHQ}
                         className={styles.mapButton}
                       >
                         View on Google Maps
@@ -213,6 +226,56 @@ const LocationSection = () => {
               </motion.div>
             </Grid>
           </Grid>
+        </motion.div>
+
+        {/* Now Live Cities - New Market Entry */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className={styles.areasSection}
+        >
+          <motion.div variants={itemVariants}>
+            <Typography variant="h5" className={styles.areasTitle}>
+              Now powering homes & businesses in these cities
+            </Typography>
+          </motion.div>
+          <motion.div variants={itemVariants} className={styles.areasGrid}>
+            {locationData.nearbyAreas.map((area) => (
+              <Chip
+                key={area}
+                label={area}
+                icon={<Icon icon="mdi:solar-power-variant" />}
+                className={styles.areaPill}
+              />
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* PAN-India Track Record */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className={styles.areasSection}
+        >
+          <motion.div variants={itemVariants}>
+            <Typography variant="h5" className={styles.areasTitle}>
+              Proven across India — the same team is now in your city
+            </Typography>
+          </motion.div>
+          <motion.div variants={itemVariants} className={styles.areasGrid}>
+            {locationData.servingStates.map((state) => (
+              <Chip
+                key={state}
+                label={state}
+                icon={<Icon icon="mdi:flag-outline" />}
+                className={styles.areaPill}
+              />
+            ))}
+          </motion.div>
         </motion.div>
 
         {/* Connectivity Highlights - 2x2 Grid */}
@@ -266,26 +329,27 @@ const LocationSection = () => {
               className={styles.ctaTitle}
               sx={{ color: "#fff", marginBottom: "2rem" }}
             >
-              Ready to Transform Your Look? Visit Us Today
+              Book your free site survey in Assam, Nagaland or Bhubaneswar — zero
+              paperwork, zero hassle.
             </Typography>
           </motion.div>
           <motion.div variants={itemVariants} className={styles.ctaButtons}>
             <Button
               variant="primary"
               size="large"
-              startIcon="mdi:directions"
-              onClick={handleGetDirections}
+              startIcon="mdi:calendar-check"
+              onClick={() => openLeadDrawer("location-section-site-survey")}
             >
-              Get Directions
+              Book Free Site Survey
             </Button>
             <Button
               variant="outline"
               size="large"
               startIcon="mdi:phone"
-              href="tel:+919181956562"
+              href={`tel:${locationData.phone}`}
               className={styles.callUsBtn}
             >
-              Call Us
+              Call {locationData.phoneDisplay}
             </Button>
           </motion.div>
         </motion.div>
