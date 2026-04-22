@@ -5,7 +5,7 @@
 
 .thankYouPage {
   min-height: 100vh;
-  background: linear-gradient(180deg, #0A1F3D 0%, #0A1F3D 50%, #0A1F3D 100%);
+  background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary-dark) 50%, var(--primary-dark) 100%);
   position: relative;
   overflow: hidden;
   padding: 60px 0 80px;
@@ -52,141 +52,76 @@
   text-align: center;
 }
 
-/* Success Icon */
-.successIcon {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 32px;
+/* Success Card */
+.successCard {
+  max-width: 680px;
+  margin: 0 auto 40px;
+  padding: 48px 32px 40px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-2xl);
+  text-align: center;
 }
 
-.iconWrapper {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+.checkmark {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 24px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, var(--success-light) 0%, var(--success) 100%);
+  color: var(--white);
+  font-size: 54px;
+  font-weight: 700;
+  line-height: 96px;
   box-shadow: 0 12px 40px rgba(76, 175, 80, 0.4);
 }
 
-.iconWrapper svg {
-  font-size: 64px;
-  color: #FFFFFF;
+.successCard h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 1.4rem + 1.75vw, 2.5rem);
+  color: var(--white);
+  line-height: 1.2;
+  margin: 0 0 16px;
 }
 
-.iconRing {
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border: 3px solid rgba(76, 175, 80, 0.3);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.iconRing2 {
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
-  border: 2px solid rgba(76, 175, 80, 0.15);
-  border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite 0.5s;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.5;
-  }
-}
-
-/* Thank You Message */
-.thankYouMessage {
-  margin-bottom: 32px;
-}
-
-.title {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem) !important;
-  color: #FFFFFF !important;
-  margin-bottom: 12px !important;
-  line-height: 1.2 !important;
-}
-
-.subtitle {
-  font-size: 1.125rem !important;
-  color: #FFFFFFB3 !important;
-  font-weight: 400 !important;
-}
-
-/* Response Notice */
-.responseNotice {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  background: linear-gradient(135deg, rgba(255, 184, 0, 0.15) 0%, rgba(255, 184, 0, 0.08) 100%);
-  border: 1px solid rgba(255, 184, 0, 0.3);
-  border-radius: 20px;
-  padding: 24px 28px;
-  margin: 0 auto 40px;
-  max-width: 600px;
-  text-align: left;
-}
-
-.noticeIcon {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #FFB800 0%, #FFC939 100%);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.noticeIcon svg {
-  font-size: 26px;
-  color: #0A1F3D;
-}
-
-.noticeContent {
-  flex: 1;
-}
-
-.noticeTitle {
-  font-size: 1.0625rem !important;
-  font-weight: 600 !important;
-  color: #FFB800 !important;
-  margin-bottom: 6px !important;
-}
-
-.noticeDesc {
-  font-size: 0.9375rem !important;
-  color: #FFFFFFA6 !important;
-  line-height: 1.5 !important;
-}
-
-/* Next Steps Section */
-.nextStepsSection {
-  margin-bottom: 40px;
-  max-width: 600px;
+.subline {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  max-width: 560px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.nextStepsList {
+.subline strong {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+/* Next Steps */
+.nextSteps {
+  max-width: 680px;
+  margin: 0 auto 40px;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-2xl);
+  text-align: left;
+}
+
+.nextSteps h2 {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.nextSteps ol {
+  counter-reset: step;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -195,327 +130,141 @@
   gap: 14px;
 }
 
-.nextStepItem {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  padding: 16px 20px;
-  text-align: left;
+.nextSteps li {
+  counter-increment: step;
+  position: relative;
+  padding: 14px 18px 14px 56px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9375rem;
+  line-height: 1.55;
 }
 
-.stepNumber {
-  flex-shrink: 0;
+.nextSteps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, #FFB800 0%, #FFC939 100%);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.875rem;
+  background: var(--accent-gold-gradient);
+  color: var(--primary-dark);
   font-weight: 700;
-  color: #0A1F3D;
-}
-
-.stepText {
-  font-size: 0.9375rem;
-  font-weight: 400;
-  color: #FFFFFFCC;
-  line-height: 1.5;
-}
-
-/* Highlights Section */
-.highlightsSection {
-  margin-bottom: 40px;
-}
-
-.sectionLabel {
-  font-size: 0.75rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  color: #FFFFFF80 !important;
-  margin-bottom: 20px !important;
-}
-
-.highlightsGrid {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.highlightCard {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  padding: 14px 20px;
-  cursor: default;
-  transition: all 0.2s ease;
-}
-
-.highlightIcon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.highlightIcon svg {
-  font-size: 22px;
-}
-
-.highlightLabel {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: #FFFFFF;
-}
-
-/* Contact Card */
-.contactCard {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  padding: 32px;
-  margin-bottom: 40px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contactHeader {
-  text-align: center;
-  margin-bottom: 28px;
-}
-
-.companyBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 184, 0, 0.15);
-  border: 1px solid rgba(255, 184, 0, 0.3);
-  border-radius: 20px;
-  padding: 8px 16px;
-  margin-bottom: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #FFB800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.companyBadge svg {
-  font-size: 16px;
-}
-
-.companyName {
-  font-family: var(--font-heading) !important;
-  font-weight: 700 !important;
-  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2rem) !important;
-  color: #FFFFFF !important;
-}
-
-.contactGrid {
-  text-align: left;
-}
-
-.contactItem {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-}
-
-.addressItem {
-  margin-top: 8px;
-}
-
-.contactIconWrapper {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 184, 0, 0.12);
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.contactIconWrapper svg {
-  font-size: 24px;
-  color: #FFB800;
-}
-
-.contactDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.contactLabel {
-  font-size: 0.75rem;
+.nextSteps li strong {
+  color: var(--white);
   font-weight: 600;
-  color: #FFFFFF80 !important;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
-.contactValue {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #FFFFFF;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contactValue:hover {
-  color: #FFB800;
-}
-
-.contactValueAlt {
-  font-size: 0.9375rem;
-  color: #FFFFFFB3 !important;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contactValueAlt:hover {
-  color: #FFB800;
-}
-
-/* CTA Section */
-.ctaSection {
+/* Quick Actions */
+.quickActions {
   display: flex;
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-bottom: 32px;
 }
 
-.backHomeBtn {
+.primaryAction {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50px;
   padding: 14px 28px;
-  color: #FFFFFFB3 !important;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.backHomeBtn:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.backHomeBtn svg {
-  font-size: 20px;
-}
-
-/* WhatsApp Button */
-.whatsappBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
   background: #25D366;
   border: 2px solid #25D366;
-  border-radius: 50px;
-  padding: 14px 28px;
-  color: #FFFFFF;
+  border-radius: var(--radius-full);
+  color: var(--white);
   font-size: 0.9375rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.whatsappBtn:hover {
+.primaryAction:hover {
   background: #1ebe5d;
   border-color: #1ebe5d;
-  color: #FFFFFF;
 }
 
-.whatsappBtn svg {
-  font-size: 20px;
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-/* Responsive Styles */
+.secondaryAction:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Trust Row */
+.trustRow {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.trustRow span {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .thankYouPage {
     padding: 40px 0 60px;
   }
 
-  .successIcon {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 24px;
+  .successCard {
+    padding: 36px 24px 28px;
   }
 
-  .iconWrapper svg {
-    font-size: 52px;
+  .checkmark {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 46px;
   }
 
-  .responseNotice {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    padding: 20px;
-  }
-
-  .noticeContent {
-    text-align: center;
-  }
-
-  .highlightsGrid {
-    gap: 12px;
-  }
-
-  .highlightCard {
-    padding: 12px 16px;
-  }
-
-  .highlightIcon {
-    width: 36px;
-    height: 36px;
-  }
-
-  .highlightLabel {
-    font-size: 0.8125rem;
-  }
-
-  .contactCard {
+  .nextSteps {
     padding: 24px 20px;
   }
 
-  .contactItem {
+  .quickActions {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
+    align-items: stretch;
   }
 
-  .contactDetails {
-    align-items: center;
+  .primaryAction,
+  .secondaryAction {
+    justify-content: center;
   }
 
-  .nextStepItem {
-    padding: 14px 16px;
-  }
-
-  .ctaSection {
-    flex-direction: column;
-    align-items: center;
+  .trustRow {
+    gap: 12px 20px;
   }
 }
 
@@ -524,47 +273,16 @@
     padding: 32px 0 48px;
   }
 
-  .successIcon {
-    width: 80px;
-    height: 80px;
-  }
-
-  .iconWrapper svg {
-    font-size: 44px;
-  }
-
-  .title {
-    font-size: 1.75rem !important;
-  }
-
-  .subtitle {
-    font-size: 1rem !important;
-  }
-
-  .highlightCard {
-    width: calc(50% - 6px);
+  .trustRow {
     flex-direction: column;
-    padding: 14px;
-    gap: 8px;
-    text-align: center;
-  }
-
-  .companyName {
-    font-size: 1.375rem !important;
-  }
-
-  .backHomeBtn,
-  .whatsappBtn {
-    width: 100%;
-    justify-content: center;
-    padding: 14px 24px;
+    align-items: center;
+    gap: 10px;
   }
 }
 
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .iconRing,
-  .iconRing2 {
+  .checkmark {
     animation: none;
   }
 }
