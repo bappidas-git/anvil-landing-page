@@ -10,9 +10,11 @@ import { Icon } from "@iconify/react";
 import SectionTitle from "../../common/SectionTitle/SectionTitle";
 import Button from "../../common/Button/Button";
 import { locationData } from "../../../data/locationData";
+import { useModal } from "../../../context/ModalContext";
 import styles from "./LocationSection.module.css";
 
 const LocationSection = () => {
+  const { openLeadDrawer } = useModal();
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,23 +68,27 @@ const LocationSection = () => {
 
   const connectivityHighlights = [
     {
-      icon: "mdi:map-marker-radius",
-      title: "Headquartered in Gurugram with PAN-India installer network",
+      icon: "mdi:account-hard-hat",
+      title:
+        "Dedicated local crews now stationed in Guwahati, Dimapur & Bhubaneswar",
       color: "#FF9800",
     },
     {
-      icon: "mdi:home-city",
-      title: "Active in 300+ cities across every major state",
+      icon: "mdi:shield-check",
+      title:
+        "Backed by 300+ successful PAN-India installations and a 25-year output warranty",
       color: "#2196F3",
     },
     {
-      icon: "mdi:solar-power-variant",
-      title: "Local crews trained on state-specific subsidy filings",
+      icon: "mdi:file-document-check",
+      title:
+        "Zero-paperwork promise — we handle DISCOM, subsidy & net-metering end-to-end",
       color: "#9C27B0",
     },
     {
       icon: "mdi:headset",
-      title: "Toll-free support: 1800 2020 001 (Mon–Sat, 9am–7pm)",
+      title:
+        "Multilingual toll-free support in English, Hindi, Assamese & Odia — 1800 2020 001",
       color: "#4CAF50",
     },
   ];
@@ -92,10 +98,10 @@ const LocationSection = () => {
       <Container maxWidth="xl">
         {/* Section Title */}
         <SectionTitle
-          badge="PAN-INDIA"
-          title="Solar-ready in 300+ cities."
-          highlight="300+ cities."
-          subtitle="Anvil's vetted installer teams serve every major metro and tier-2 city across India. Enter your state in the calculator to check local incentives."
+          badge="NOW LIVE IN THE NORTHEAST & ODISHA"
+          title="Anvil is now in Assam, Nagaland & Bhubaneswar."
+          highlight="Assam, Nagaland & Bhubaneswar."
+          subtitle="After powering 300+ successful rooftop and commercial installations across India, Anvil's proven solar teams have launched in the Northeast and Odisha — bringing the same extraordinary, hassle-free installation experience that has made us a trusted PAN-India name."
           align="center"
           variant="light"
           badgeVariant="gold"
@@ -127,6 +133,13 @@ const LocationSection = () => {
                       className={styles.centreAddress}
                     >
                       {locationData.address}
+                    </Typography>
+                    <Typography
+                      variant="caption"
+                      className={styles.centreAddress}
+                      sx={{ display: "block", marginTop: "0.35rem", fontWeight: 600 }}
+                    >
+                      Regional teams now live in Assam, Nagaland & Odisha
                     </Typography>
                   </div>
                 </div>
@@ -215,7 +228,7 @@ const LocationSection = () => {
           </Grid>
         </motion.div>
 
-        {/* Serving PAN-India - Nearby Areas */}
+        {/* Now Live Cities - New Market Entry */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -225,7 +238,7 @@ const LocationSection = () => {
         >
           <motion.div variants={itemVariants}>
             <Typography variant="h5" className={styles.areasTitle}>
-              We install across Delhi NCR and beyond
+              Now powering homes & businesses in these cities
             </Typography>
           </motion.div>
           <motion.div variants={itemVariants} className={styles.areasGrid}>
@@ -233,14 +246,14 @@ const LocationSection = () => {
               <Chip
                 key={area}
                 label={area}
-                icon={<Icon icon="mdi:map-marker-outline" />}
+                icon={<Icon icon="mdi:solar-power-variant" />}
                 className={styles.areaPill}
               />
             ))}
           </motion.div>
         </motion.div>
 
-        {/* States We Serve */}
+        {/* PAN-India Track Record */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -250,7 +263,7 @@ const LocationSection = () => {
         >
           <motion.div variants={itemVariants}>
             <Typography variant="h5" className={styles.areasTitle}>
-              States we serve
+              Proven across India — the same team is now in your city
             </Typography>
           </motion.div>
           <motion.div variants={itemVariants} className={styles.areasGrid}>
@@ -316,17 +329,18 @@ const LocationSection = () => {
               className={styles.ctaTitle}
               sx={{ color: "#fff", marginBottom: "2rem" }}
             >
-              Ready to go solar? Talk to an Anvil energy advisor today.
+              Book your free site survey in Assam, Nagaland or Bhubaneswar — zero
+              paperwork, zero hassle.
             </Typography>
           </motion.div>
           <motion.div variants={itemVariants} className={styles.ctaButtons}>
             <Button
               variant="primary"
               size="large"
-              startIcon="mdi:map-marker"
-              onClick={handleViewHQ}
+              startIcon="mdi:calendar-check"
+              onClick={() => openLeadDrawer("location-section-site-survey")}
             >
-              View HQ on Map
+              Book Free Site Survey
             </Button>
             <Button
               variant="outline"
