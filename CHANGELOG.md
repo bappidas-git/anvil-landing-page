@@ -2,6 +2,15 @@
 
 All notable changes to the Landing Page Boilerplate project.
 
+## [2.0.1] - 2026-04-22 — Production Readiness Verification
+
+### Verified
+- `npm install` succeeds (1553 packages, 0 vulnerabilities surfaced).
+- `npm run build` compiles successfully with zero errors and zero code warnings.
+- Final grep sweep returns zero hits outside `prompts/`: no `Monjoven`, no legacy colors (`#1A5276`, `#148F77`, `#1ABC9C`), no legacy Cloudinary account (`dn9gyaiik`).
+- Built `index.html` ships Anvil `<title>`, meta description, OG/Twitter tags, canonical, and JSON-LD `Organization` / `SolarEnergyContractor` schemas pointing at `solar.anvil.energy`.
+- Build artifacts (`robots.txt`, `manifest.json`, `sitemap.xml`) are Anvil-branded and use the `solar.anvil.energy` domain.
+
 ## [2.0.0] - 2026-04-21 — Anvil Rebrand
 
 ### Changed
