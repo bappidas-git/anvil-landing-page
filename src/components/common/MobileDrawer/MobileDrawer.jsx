@@ -23,13 +23,11 @@ import styles from "./MobileDrawer.module.css";
 
 // Navigation menu items
 const menuItems = [
-  { id: "home", label: "Home", icon: "mdi:home", href: "#home" },
-  { id: "calculator", label: "Solar Calculator", icon: "mdi:calculator", href: "#calculator" },
-  { id: "services", label: "Solar Solutions", icon: "mdi:solar-panel", href: "#services" },
-  { id: "about", label: "Why Anvil", icon: "mdi:shield-sun", href: "#about" },
-  { id: "stats", label: "Savings", icon: "mdi:chart-line", href: "#stats" },
-  { id: "faq", label: "FAQ", icon: "mdi:help-circle-outline", href: "#faq" },
-  { id: "contact", label: "Contact", icon: "mdi:phone", href: "#contact" },
+  { id: "calculator", label: "See My Savings", icon: "mdi:calculator-variant-outline", href: "#calculator" },
+  { id: "solutions", label: "Solutions", icon: "mdi:view-grid-outline", href: "#solutions" },
+  { id: "how-it-works", label: "How It Works", icon: "mdi:timeline-check-outline", href: "#how-it-works" },
+  { id: "subsidies", label: "Subsidies & EMI", icon: "mdi:bank-outline", href: "#subsidies" },
+  { id: "faq", label: "FAQs", icon: "mdi:help-circle-outline", href: "#faq" },
 ];
 
 const SALES_PHONE_DISPLAY = process.env.REACT_APP_SALES_PHONE || "+91 1800 2020 001";
