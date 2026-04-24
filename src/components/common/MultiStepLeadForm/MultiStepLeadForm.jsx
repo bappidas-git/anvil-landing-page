@@ -13,6 +13,7 @@ import { AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import StepIndicator from "./StepIndicator";
 import StepShell from "./steps/StepShell";
+import Step1BillRegion from "./steps/Step1BillRegion";
 import useLeadFormMachine from "./useLeadFormMachine";
 import styles from "./MultiStepLeadForm.module.css";
 
@@ -61,16 +62,18 @@ const MultiStepLeadForm = ({
       return (
         <StepShell
           stepKey="step-1"
-          title="Tell us about your place"
-          subtitle="A couple of quick questions so we can tailor your savings plan."
+          title="Quick question 1 of 3"
+          subtitle="Tell us about your bill and location."
           onPrimary={handlePrimary}
           showBack={false}
           primaryLabel="Continue"
           isSubmitting={isSubmitting}
         >
-          <div data-testid="multistep-placeholder-1">
-            Step 1 placeholder — see prompt 06.md
-          </div>
+          <Step1BillRegion
+            data={state.data}
+            errors={state.errors}
+            onChange={actions.setField}
+          />
         </StepShell>
       );
     }
