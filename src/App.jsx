@@ -45,6 +45,7 @@ const ThankYouPage = lazy(() => import('./pages/ThankYou/ThankYou'));
 const AdminLayout = lazy(() => import('./admin/components/AdminLayout'));
 
 // Lazy loaded sections for performance (Below the fold)
+const SolutionsSection = lazy(() => import('./components/sections/SolutionsSection/SolutionsSection'));
 const AboutSection = lazy(() => import('./components/sections/AboutSection/AboutSection'));
 const WhyTransplantsFailCTA = lazy(() => import('./components/sections/WhyTransplantsFailCTA/WhyTransplantsFailCTA'));
 const ServicesSection = lazy(() => import('./components/sections/ServicesSection/ServicesSection'));
@@ -327,6 +328,7 @@ const useIdlePreload = () => {
         () => import('./components/sections/CTASection/CTASection'),
         () => import('./components/sections/ContactSection/ContactSection'),
         () => import('./components/sections/SecondaryCTASection/SecondaryCTASection'),
+        () => import('./components/sections/SolutionsSection/SolutionsSection'),
       ];
 
       let currentIndex = 0;
@@ -442,6 +444,12 @@ const HomePageContent = () => {
         <TrustBar />
 
         {/* Lazy loaded sections with error boundaries */}
+        <ErrorBoundary>
+          <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
+            <SolutionsSection />
+          </Suspense>
+        </ErrorBoundary>
+
         <ErrorBoundary>
           <Suspense fallback={<SectionLoader height={400} variant="skeleton" />}>
             <AboutSection />
