@@ -1,0 +1,308 @@
+/* ============================================
+   MultiStepLeadForm styles
+   ============================================ */
+
+.wrapper {
+  width: 100%;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--elev-3);
+  color: var(--primary-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wrapperDefault {
+  background: var(--surface);
+  color: var(--primary-dark);
+}
+
+.wrapperDark {
+  background: var(--primary-dark);
+  color: var(--white);
+}
+
+.wrapperDrawer {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.indicatorWrap {
+  padding: 4px 2px 0;
+}
+
+.stepStage {
+  position: relative;
+  min-height: 240px;
+  overflow: hidden;
+}
+
+.stepShell {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.stepHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stepTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem);
+  line-height: 1.25;
+  color: inherit;
+}
+
+.stepSubtitle {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-gray);
+}
+
+.wrapperDark .stepSubtitle,
+.wrapperDrawer .stepSubtitle {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1.5px solid var(--border-gray);
+  color: var(--text-dark-gray);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.backButton:hover:not(:disabled) {
+  border-color: var(--accent-gold);
+  background: rgba(255, 184, 0, 0.08);
+}
+
+.backButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wrapperDark .backButton,
+.wrapperDrawer .backButton {
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.wrapperDark .backButton:hover:not(:disabled),
+.wrapperDrawer .backButton:hover:not(:disabled) {
+  border-color: var(--accent-gold-light);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.backSpacer {
+  display: inline-block;
+  width: 1px;
+}
+
+.primaryButton {
+  margin-left: auto;
+  padding: 12px 22px !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.loadingState {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loadingState :global(.MuiCircularProgress-root) {
+  color: currentColor;
+}
+
+.footerTrust {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: var(--text-gray);
+  flex-wrap: wrap;
+}
+
+.wrapperDark .footerTrust,
+.wrapperDrawer .footerTrust {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ===== Success card ===== */
+
+.successCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.successBadge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.14);
+  color: var(--savings-green);
+  font-size: 36px;
+}
+
+.successTitle {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: inherit;
+}
+
+.successLead {
+  margin: 0;
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  max-width: 360px;
+}
+
+.wrapperDark .successLead,
+.wrapperDrawer .successLead {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.successSteps {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+  text-align: left;
+}
+
+.successSteps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text-dark-gray);
+}
+
+.wrapperDark .successSteps li,
+.wrapperDrawer .successSteps li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.successSteps li svg {
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.whatsappButton {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.whatsappButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(37, 211, 102, 0.42);
+}
+
+.whatsappButton svg {
+  font-size: 20px;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .wrapperDrawer {
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .stepStage {
+    min-height: 220px;
+  }
+
+  .primaryButton {
+    padding: 12px 16px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .backButton {
+    padding: 10px 14px;
+    font-size: 0.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsappButton,
+  .backButton,
+  .primaryButton {
+    transition: none !important;
+  }
+}
