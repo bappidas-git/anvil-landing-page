@@ -22,13 +22,11 @@ const SALES_PHONE_TEL =
 
 // Navigation items
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Solar Calculator", href: "#calculator" },
-  { label: "Solar Solutions", href: "#services" },
-  { label: "Why Anvil", href: "#about" },
-  { label: "Savings", href: "#stats" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
+  { label: "See My Savings", href: "#calculator", icon: "mdi:calculator-variant-outline" },
+  { label: "Solutions", href: "#solutions", icon: "mdi:view-grid-outline" },
+  { label: "How It Works", href: "#how-it-works", icon: "mdi:timeline-check-outline" },
+  { label: "Subsidies & EMI", href: "#subsidies", icon: "mdi:bank-outline" },
+  { label: "FAQs", href: "#faq", icon: "mdi:help-circle-outline" },
 ];
 
 const Header = ({ forceCloseMenu = false }) => {
@@ -38,12 +36,6 @@ const Header = ({ forceCloseMenu = false }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const { openLeadDrawer } = useModal();
-
-  const handleOpenLeadForm = (source) => {
-    trackCTAClick("book_your_free_call", "header", source);
-    openLeadDrawer("book-meeting");
-    setIsMobileMenuOpen(false);
-  };
 
   // Close mobile menu when bottom drawer opens
   useEffect(() => {
@@ -231,11 +223,13 @@ const Header = ({ forceCloseMenu = false }) => {
                 className={styles.callButton}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleOpenLeadForm("header_desktop");
+                  trackCTAClick("get_free_quote", "header", "header_cta");
+                  openLeadDrawer("header_cta");
+                  setIsMobileMenuOpen(false);
                 }}
               >
                 <Icon icon="mdi:phone" className={styles.callButtonIcon} />
-                Book Your Free Call
+                Get Free Quote
               </a>
             </motion.div>
           )}
@@ -317,13 +311,11 @@ const Header = ({ forceCloseMenu = false }) => {
 // Helper function to get navigation icons
 const getNavIcon = (label) => {
   const icons = {
-    Home: "mdi:home-outline",
-    "Solar Calculator": "mdi:calculator-variant-outline",
-    "Solar Solutions": "mdi:solar-panel",
-    "Why Anvil": "mdi:star-outline",
-    Savings: "mdi:piggy-bank-outline",
-    FAQ: "mdi:help-circle-outline",
-    Contact: "mdi:phone-outline",
+    "See My Savings": "mdi:calculator-variant-outline",
+    Solutions: "mdi:view-grid-outline",
+    "How It Works": "mdi:timeline-check-outline",
+    "Subsidies & EMI": "mdi:bank-outline",
+    FAQs: "mdi:help-circle-outline",
   };
   return icons[label] || "mdi:circle-outline";
 };
