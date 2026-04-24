@@ -48,6 +48,7 @@ const AdminLayout = lazy(() => import('./admin/components/AdminLayout'));
 const SolutionsSection = lazy(() => import('./components/sections/SolutionsSection/SolutionsSection'));
 const CalculatorSection = lazy(() => import('./components/sections/CalculatorSection/CalculatorSection'));
 const HowItWorksSection = lazy(() => import('./components/sections/HowItWorksSection/HowItWorksSection'));
+const SubsidiesSection = lazy(() => import('./components/sections/SubsidiesSection/SubsidiesSection'));
 const AboutSection = lazy(() => import('./components/sections/AboutSection/AboutSection'));
 const WhyTransplantsFailCTA = lazy(() => import('./components/sections/WhyTransplantsFailCTA/WhyTransplantsFailCTA'));
 const ServicesSection = lazy(() => import('./components/sections/ServicesSection/ServicesSection'));
@@ -333,6 +334,7 @@ const useIdlePreload = () => {
         () => import('./components/sections/SolutionsSection/SolutionsSection'),
         () => import('./components/sections/CalculatorSection/CalculatorSection'),
         () => import('./components/sections/HowItWorksSection/HowItWorksSection'),
+        () => import('./components/sections/SubsidiesSection/SubsidiesSection'),
       ];
 
       let currentIndex = 0;
@@ -463,6 +465,12 @@ const HomePageContent = () => {
         <ErrorBoundary>
           <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
             <HowItWorksSection />
+          </Suspense>
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
+            <SubsidiesSection />
           </Suspense>
         </ErrorBoundary>
 

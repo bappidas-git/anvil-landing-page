@@ -4,7 +4,7 @@
    the left, live output panel on the right.
    ============================================ */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
 import CalculatorInputs from './CalculatorInputs';
@@ -16,6 +16,17 @@ import styles from './CalculatorSection.module.css';
 const CalculatorSection = () => {
   const { inputs, setters, outputs } = useSolarCalculator();
   const { openLeadDrawer } = useModal();
+
+  // Expose a tiny bridge so other sections (e.g. SubsidiesSection) can
+  // pre-select the calculator's state before scrolling here.
+  useEffect(() => {
+    window.__anvilCalc = { setState: setters.setState };
+    return () => {
+      if (window.__anvilCalc && window.__anvilCalc.setState === setters.setState) {
+        delete window.__anvilCalc;
+      }
+    };
+  }, [setters.setState]);
 
   return (
     <Section id="calculator" variant="default" size="lg">
