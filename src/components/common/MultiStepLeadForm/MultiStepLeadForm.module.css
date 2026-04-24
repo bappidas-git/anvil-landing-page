@@ -4,14 +4,14 @@
 
 .wrapper {
   width: 100%;
-  padding: 24px;
-  border-radius: 16px;
+  padding: 28px;
+  border-radius: 20px;
   background: var(--surface);
   box-shadow: var(--elev-3);
   color: var(--primary-dark);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
 }
 
 .wrapperDefault {
@@ -19,17 +19,47 @@
   color: var(--primary-dark);
 }
 
+/* Dark variant — used in the hero column. Glass/card on navy. */
 .wrapperDark {
-  background: var(--primary-dark);
+  background: linear-gradient(180deg, #0F2A52 0%, #0A1F3D 100%);
   color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 184, 0, 0.12) inset;
+  --form-heading: #ffffff;
+  --form-hint: rgba(255, 255, 255, 0.72);
+  --form-label: rgba(255, 255, 255, 0.9);
+  --context-chip-bg: rgba(255, 255, 255, 0.06);
+  --context-chip-border: rgba(255, 255, 255, 0.14);
+  --context-chip-text: rgba(255, 255, 255, 0.82);
+  --context-chip-strong: #ffffff;
+  --step-track-bg: rgba(255, 255, 255, 0.16);
+  --step-circle-pending: rgba(255, 255, 255, 0.16);
+  --step-circle-pending-text: rgba(255, 255, 255, 0.72);
+  --form-active-label: #ffffff;
 }
 
+/* Drawer variant — transparent so drawer bg shows through */
 .wrapperDrawer {
   background: transparent;
   box-shadow: none;
   padding: 0;
-  height: 100%;
+  height: auto;
   width: 100%;
+  color: var(--white);
+  gap: 18px;
+  --form-heading: #ffffff;
+  --form-hint: rgba(255, 255, 255, 0.72);
+  --form-label: rgba(255, 255, 255, 0.9);
+  --context-chip-bg: rgba(255, 255, 255, 0.06);
+  --context-chip-border: rgba(255, 255, 255, 0.14);
+  --context-chip-text: rgba(255, 255, 255, 0.82);
+  --context-chip-strong: #ffffff;
+  --step-track-bg: rgba(255, 255, 255, 0.16);
+  --step-circle-pending: rgba(255, 255, 255, 0.16);
+  --step-circle-pending-text: rgba(255, 255, 255, 0.72);
+  --form-active-label: #ffffff;
 }
 
 .indicatorWrap {
@@ -38,48 +68,48 @@
 
 .stepStage {
   position: relative;
-  min-height: 240px;
-  overflow: hidden;
+  min-height: 260px;
 }
 
 .stepShell {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
   width: 100%;
 }
 
 .stepHeader {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .stepTitle {
   margin: 0;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem);
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.4rem);
   line-height: 1.25;
   color: inherit;
+  letter-spacing: -0.01em;
 }
 
 .stepSubtitle {
   margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.55;
   color: var(--text-gray);
 }
 
 .wrapperDark .stepSubtitle,
 .wrapperDrawer .stepSubtitle {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .stepBody {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .stepNav {
@@ -87,7 +117,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .backButton {
@@ -104,7 +134,8 @@
   cursor: pointer;
   transition:
     border-color 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .backButton:hover:not(:disabled) {
@@ -126,7 +157,8 @@
 .wrapperDark .backButton:hover:not(:disabled),
 .wrapperDrawer .backButton:hover:not(:disabled) {
   border-color: var(--accent-gold-light);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
 }
 
 .backSpacer {
@@ -136,13 +168,15 @@
 
 .primaryButton {
   margin-left: auto;
-  padding: 12px 22px !important;
+  padding: 13px 24px !important;
   font-size: 0.95rem !important;
   font-weight: 700 !important;
   border-radius: 12px !important;
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
+  min-width: 140px;
+  justify-content: center !important;
 }
 
 .loadingState {
@@ -157,17 +191,27 @@
 
 .footerTrust {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 4px;
   font-size: 0.75rem;
   color: var(--text-gray);
   flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-gray);
+}
+
+.footerTrust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
 }
 
 .wrapperDark .footerTrust,
 .wrapperDrawer .footerTrust {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.78);
+  border-top-color: rgba(255, 255, 255, 0.12);
 }
 
 /* ===== Success card ===== */
@@ -275,8 +319,8 @@
 
 @media (max-width: 480px) {
   .wrapper {
-    padding: 18px;
-    border-radius: 14px;
+    padding: 20px;
+    border-radius: 16px;
   }
 
   .wrapperDrawer {
@@ -291,6 +335,7 @@
   .primaryButton {
     padding: 12px 16px !important;
     font-size: 0.9rem !important;
+    min-width: 120px;
   }
 
   .backButton {

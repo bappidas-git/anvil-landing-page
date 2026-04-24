@@ -230,25 +230,9 @@
 
 .formCard {
   width: 100%;
-  max-width: 420px;
-  background: var(--white);
+  max-width: 460px;
   border-radius: 20px;
-  overflow: hidden;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.25),
-    0 10px 30px rgba(0, 0, 0, 0.15),
-    0 0 0 1px rgba(255, 184, 0, 0.15);
   position: relative;
-}
-
-.formCard::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--accent-gold-gradient-horizontal);
 }
 
 .formHeader {

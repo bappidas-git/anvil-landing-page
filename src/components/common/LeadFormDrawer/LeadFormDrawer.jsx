@@ -132,25 +132,27 @@ const LeadFormDrawer = ({
                 animate="visible"
               >
                 <div className={styles.headerIcon}>
-                  <Icon icon="mdi:stethoscope" />
+                  <Icon icon="mdi:solar-power-variant" />
                 </div>
                 <Typography variant="h4" id="drawer-title" className={styles.title}>
                   {title}
                 </Typography>
-                <Typography className={styles.subtitle} sx={{ color: '#FFFFFFB3 !important' }}>
+                <Typography className={styles.subtitle}>
                   {subtitle}
                 </Typography>
               </motion.div>
 
               {/* Multi-Step Lead Form */}
-              <MultiStepLeadForm
-                source={source || 'drawer'}
-                solution={solution || null}
-                calculatorSnapshot={calculatorSnapshot || null}
-                variant="drawer"
-                onClose={onClose}
-                onSuccess={onSubmitSuccess}
-              />
+              <div className={styles.formHost}>
+                <MultiStepLeadForm
+                  source={source || 'drawer'}
+                  solution={solution || null}
+                  calculatorSnapshot={calculatorSnapshot || null}
+                  variant="drawer"
+                  onClose={onClose}
+                  onSuccess={onSubmitSuccess}
+                />
+              </div>
             </div>
 
             {/* Decorative Elements */}

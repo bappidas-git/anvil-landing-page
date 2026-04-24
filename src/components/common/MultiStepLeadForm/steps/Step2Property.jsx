@@ -169,8 +169,10 @@ const Step2Property = ({ data, errors, onChange }) => {
                 }
               >
                 <Icon icon={option.icon} className={styles.chipBigIcon} aria-hidden="true" />
-                <span className={styles.chipBigLabel}>{option.label}</span>
-                <span className={styles.benefit}>{option.benefit}</span>
+                <span className={styles.chipBigContent}>
+                  <span className={styles.chipBigLabel}>{option.label}</span>
+                  <span className={styles.benefit}>{option.benefit}</span>
+                </span>
                 {isSelected && (
                   <Icon
                     icon="mdi:check-circle"
