@@ -61,7 +61,7 @@ const FeaturesSection = lazy(() => import('./components/sections/FeaturesSection
 const LocationSection = lazy(() => import('./components/sections/LocationSection/LocationSection'));
 const CTASection = lazy(() => import('./components/sections/CTASection/CTASection'));
 const ContactSection = lazy(() => import('./components/sections/ContactSection/ContactSection'));
-const SecondaryCTASection = lazy(() => import('./components/sections/SecondaryCTASection/SecondaryCTASection'));
+const FinalCTASection = lazy(() => import('./components/sections/FinalCTASection/FinalCTASection'));
 
 // ===========================================
 // Error Boundary Component
@@ -334,7 +334,7 @@ const useIdlePreload = () => {
         () => import('./components/sections/HighlightsSection/HighlightsSection'),
         () => import('./components/sections/CTASection/CTASection'),
         () => import('./components/sections/ContactSection/ContactSection'),
-        () => import('./components/sections/SecondaryCTASection/SecondaryCTASection'),
+        () => import('./components/sections/FinalCTASection/FinalCTASection'),
         () => import('./components/sections/SolutionsSection/SolutionsSection'),
         () => import('./components/sections/CalculatorSection/CalculatorSection'),
         () => import('./components/sections/HowItWorksSection/HowItWorksSection'),
@@ -556,7 +556,7 @@ const HomePageContent = () => {
 
         <ErrorBoundary>
           <Suspense fallback={<SectionLoader height={500} variant="default" />}>
-            <SecondaryCTASection />
+            <FinalCTASection />
           </Suspense>
         </ErrorBoundary>
       </main>
