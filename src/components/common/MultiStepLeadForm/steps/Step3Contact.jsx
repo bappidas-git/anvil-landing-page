@@ -120,9 +120,12 @@ const Step3Contact = ({ data, errors, onChange }) => {
       )}
 
       <div className={styles.field}>
+        <label className={styles.fieldLabel} htmlFor="lead-full-name">
+          Full name <span className={styles.required} aria-hidden="true">*</span>
+        </label>
         <TextField
           fullWidth
-          label="Full name"
+          id="lead-full-name"
           placeholder="e.g. Ankit Deka"
           value={data.name}
           onChange={(event) => onChange("name", event.target.value)}
@@ -132,7 +135,7 @@ const Step3Contact = ({ data, errors, onChange }) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Icon icon="mdi:account-outline" />
+                <Icon icon="mdi:account-outline" className={styles.fieldIcon} />
               </InputAdornment>
             ),
           }}
@@ -140,9 +143,12 @@ const Step3Contact = ({ data, errors, onChange }) => {
       </div>
 
       <div className={styles.field}>
+        <label className={styles.fieldLabel} htmlFor="lead-mobile">
+          Mobile number <span className={styles.required} aria-hidden="true">*</span>
+        </label>
         <TextField
           fullWidth
-          label="Mobile number"
+          id="lead-mobile"
           placeholder="10-digit mobile"
           value={data.mobile}
           onChange={(event) => onChange("mobile", event.target.value)}
@@ -165,9 +171,12 @@ const Step3Contact = ({ data, errors, onChange }) => {
       </div>
 
       <div className={styles.field}>
+        <label className={styles.fieldLabel} htmlFor="lead-email">
+          Email <span className={styles.optional}>(optional — we'll send your savings plan)</span>
+        </label>
         <TextField
           fullWidth
-          label="Email (optional — we'll send your savings plan)"
+          id="lead-email"
           placeholder="your@email.com"
           value={data.email}
           onChange={(event) => onChange("email", event.target.value)}
@@ -177,7 +186,7 @@ const Step3Contact = ({ data, errors, onChange }) => {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Icon icon="mdi:email-outline" />
+                <Icon icon="mdi:email-outline" className={styles.fieldIcon} />
               </InputAdornment>
             ),
           }}
@@ -189,7 +198,6 @@ const Step3Contact = ({ data, errors, onChange }) => {
           checked={Boolean(data.consent)}
           onChange={(event) => onChange("consent", event.target.checked)}
           size="small"
-          sx={{ padding: "2px 6px 0 0" }}
         />
         <span>
           I agree to be contacted by Anvil on WhatsApp / call / email about my
