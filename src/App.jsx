@@ -359,6 +359,8 @@ const LeadFormDrawerWrapper = () => {
       title={drawerConfig.title}
       subtitle={drawerConfig.subtitle}
       source={drawerConfig.source}
+      solution={drawerConfig.solution}
+      calculatorSnapshot={drawerConfig.calculatorSnapshot}
     />
   );
 };

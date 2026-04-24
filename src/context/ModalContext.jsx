@@ -73,6 +73,8 @@ export const ModalProvider = ({ children }) => {
     title: DRAWER_TITLES.default.title,
     subtitle: DRAWER_TITLES.default.subtitle,
     source: 'general',
+    solution: null,
+    calculatorSnapshot: null,
   });
 
   // Open modal with type and optional data
@@ -153,18 +155,29 @@ export const ModalProvider = ({ children }) => {
     openModal(MODAL_TYPES.SUCCESS, { message, title });
   }, [openModal]);
 
-  // Open lead form drawer with specific title based on context
-  const openLeadDrawer = useCallback((titleKey = 'default', extraData = {}) => {
-    const titleConfig = DRAWER_TITLES[titleKey] || DRAWER_TITLES.default;
+  // Open lead form drawer. Accepts either:
+  //   - a string source/titleKey (legacy): openLeadDrawer('hero-primary')
+  //   - a string + extraData (legacy):     openLeadDrawer('contact', { title, subtitle })
+  //   - an object config (new):            openLeadDrawer({ source, solution, calculatorSnapshot, title, subtitle })
+  const openLeadDrawer = useCallback((sourceOrConfig = 'default', extraData = {}) => {
+    const config =
+      typeof sourceOrConfig === 'string'
+        ? { source: sourceOrConfig, ...extraData }
+        : { ...(sourceOrConfig || {}) };
+
+    const source = config.source || 'default';
+    const titleConfig = DRAWER_TITLES[source] || DRAWER_TITLES.default;
+
     setDrawerConfig({
-      title: extraData.title || titleConfig.title,
-      subtitle: extraData.subtitle || titleConfig.subtitle,
-      source: titleKey,
-      ...extraData,
+      title: config.title || titleConfig.title,
+      subtitle: config.subtitle || titleConfig.subtitle,
+      source,
+      solution: config.solution || null,
+      calculatorSnapshot: config.calculatorSnapshot || null,
     });
     setIsDrawerOpen(true);
     // Track which CTA triggered the drawer
-    trackCTAClick(`drawer_${titleKey}`, 'drawer', titleConfig.title);
+    trackCTAClick(`drawer_${source}`, 'drawer', titleConfig.title);
     // Save current scroll position before locking body
     const scrollY = window.scrollY;
     document.body.dataset.scrollY = scrollY;
