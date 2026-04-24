@@ -27,6 +27,8 @@ import MobileDrawer from './components/common/MobileDrawer/MobileDrawer';
 import LeadFormDrawer from './components/common/LeadFormDrawer/LeadFormDrawer';
 import EngagementTracker from './components/common/EngagementTracker/EngagementTracker';
 import SEOHead from './components/common/SEO/SEOHead';
+import StickyMobileCTA from './components/common/StickyMobileCTA/StickyMobileCTA';
+import FloatingContacts from './components/common/FloatingContacts/FloatingContacts';
 import useGTMTracking from './hooks/useGTMTracking';
 import { initGTM } from './utils/gtm';
 import { initConsentMode } from './utils/consentMode';
@@ -700,6 +702,12 @@ const App = () => {
                 }
               />
             </Routes>
+
+            {/* Sticky mobile CTA bar (<=768px) and floating WhatsApp/Call pills (>=769px).
+                Both are global so they appear on every non-admin / non-thank-you route;
+                each component guards its own visibility via useLocation(). */}
+            <StickyMobileCTA />
+            <FloatingContacts />
 
             {/* Lead Form Drawer - Available globally */}
             <LeadFormDrawerWrapper />
