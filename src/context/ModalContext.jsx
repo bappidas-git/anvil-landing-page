@@ -82,6 +82,10 @@ export const DRAWER_TITLES = {
     title: 'Lock In Your Savings Plan',
     subtitle: 'We\'ll prepare a personalised quote based on your calculator inputs.',
   },
+  'subsidy_card': {
+    title: 'See Your Exact Subsidy',
+    subtitle: 'Share a few quick details and we\'ll calculate your PM Surya Ghar + state subsidy.',
+  },
   'default': {
     title: 'Get Your Free Solar Quote',
     subtitle: 'Fill the form and an Anvil Saathi will assist you.',
