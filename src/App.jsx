@@ -55,10 +55,6 @@ const FinancingSection = lazy(() => import('./components/sections/FinancingSecti
 const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection/TestimonialsSection'));
 const InstallGallery = lazy(() => import('./components/sections/InstallGallery/InstallGallery'));
 const FAQSection = lazy(() => import('./components/sections/FAQSection/FAQSection'));
-const FeaturesSection = lazy(() => import('./components/sections/FeaturesSection/FeaturesSection'));
-const LocationSection = lazy(() => import('./components/sections/LocationSection/LocationSection'));
-const CTASection = lazy(() => import('./components/sections/CTASection/CTASection'));
-const ContactSection = lazy(() => import('./components/sections/ContactSection/ContactSection'));
 const FinalCTASection = lazy(() => import('./components/sections/FinalCTASection/FinalCTASection'));
 
 // ===========================================
@@ -324,10 +320,6 @@ const useIdlePreload = () => {
     // Preload sections during idle time
     if ('requestIdleCallback' in window) {
       const sections = [
-        () => import('./components/sections/LocationSection/LocationSection'),
-        () => import('./components/sections/FeaturesSection/FeaturesSection'),
-        () => import('./components/sections/CTASection/CTASection'),
-        () => import('./components/sections/ContactSection/ContactSection'),
         () => import('./components/sections/FinalCTASection/FinalCTASection'),
         () => import('./components/sections/SolutionsSection/SolutionsSection'),
         () => import('./components/sections/CalculatorSection/CalculatorSection'),
@@ -497,30 +489,6 @@ const HomePageContent = () => {
         <ErrorBoundary>
           <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
             <FAQSection />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={600} variant="skeleton" />}>
-            <FeaturesSection />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={400} variant="skeleton" />}>
-            <LocationSection />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={300} variant="default" />}>
-            <CTASection />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
-            <ContactSection />
           </Suspense>
         </ErrorBoundary>
 
