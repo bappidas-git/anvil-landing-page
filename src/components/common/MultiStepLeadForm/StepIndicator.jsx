@@ -23,7 +23,8 @@ const StepIndicator = ({ current, total = 3, labels = [] }) => {
       aria-valuemin={1}
       aria-valuemax={total}
       aria-valuenow={typeof current === "number" ? current : total}
-      aria-label={`Step ${activeIndex} of ${total}`}
+      aria-label="Form progress"
+      aria-valuetext={`Step ${activeIndex} of ${total}`}
     >
       <div className={styles.track}>
         <motion.div

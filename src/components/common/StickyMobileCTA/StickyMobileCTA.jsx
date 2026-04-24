@@ -66,7 +66,7 @@ const StickyMobileCTA = () => {
             onClick={handleCallClick}
             aria-label="Call Anvil"
           >
-            <Icon icon="mdi:phone" />
+            <Icon icon="mdi:phone" aria-hidden="true" />
             <span>Call</span>
           </a>
 
@@ -76,9 +76,9 @@ const StickyMobileCTA = () => {
             rel="noopener noreferrer"
             className={`${styles.cell} ${styles.whatsapp}`}
             onClick={handleWhatsAppClick}
-            aria-label="Chat on WhatsApp"
+            aria-label="WhatsApp Anvil"
           >
-            <Icon icon="mdi:whatsapp" />
+            <Icon icon="mdi:whatsapp" aria-hidden="true" />
             <span>WhatsApp</span>
           </a>
 
@@ -86,9 +86,9 @@ const StickyMobileCTA = () => {
             type="button"
             className={`${styles.cell} ${styles.primary}`}
             onClick={handleQuoteClick}
-            aria-label="Get a free solar quote"
+            aria-label="Get a free quote"
           >
-            <Icon icon="mdi:flash" />
+            <Icon icon="mdi:flash" aria-hidden="true" />
             <span>Get Quote</span>
           </button>
         </motion.div>

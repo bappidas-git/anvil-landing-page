@@ -137,6 +137,11 @@
   flex-direction: column;
   gap: 14px;
   transition: opacity 0.2s ease;
+  /* Reset fieldset defaults */
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
 }
 
 .stepBodySubmitting {

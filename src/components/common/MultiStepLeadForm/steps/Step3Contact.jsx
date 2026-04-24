@@ -211,8 +211,9 @@ const Step3Contact = ({ data, errors, context, onChange }) => {
           checked={Boolean(data.consent)}
           onChange={(event) => onChange("consent", event.target.checked)}
           size="small"
+          inputProps={{ "aria-describedby": "lead-consent-help" }}
         />
-        <span>
+        <span id="lead-consent-help">
           I agree to be contacted by Anvil on WhatsApp / call / email about my
           rooftop solar enquiry. See{" "}
           <a

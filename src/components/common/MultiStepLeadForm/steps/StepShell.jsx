@@ -35,6 +35,7 @@ const StepShell = ({
   primaryIcon = "mdi:arrow-right",
   showBack = true,
   isSubmitting = false,
+  legend,
 }) => {
   const reduced = useReducedMotion();
   const variants = reduced ? fadeVariants : slideVariants;
@@ -58,9 +59,14 @@ const StepShell = ({
         {subtitle && <p className={shellStyles.stepSubtitle}>{subtitle}</p>}
       </header>
 
-      <div className={bodyClassName} aria-busy={isSubmitting || undefined}>
+      <fieldset
+        className={bodyClassName}
+        aria-busy={isSubmitting || undefined}
+        disabled={isSubmitting}
+      >
+        {legend && <legend className="sr-only">{legend}</legend>}
         {children}
-      </div>
+      </fieldset>
 
       <div className={shellStyles.stepNav}>
         {showBack ? (
@@ -70,7 +76,7 @@ const StepShell = ({
             onClick={onBack}
             disabled={isSubmitting}
           >
-            <Icon icon="mdi:arrow-left" />
+            <Icon icon="mdi:arrow-left" aria-hidden="true" />
             <span>Back</span>
           </button>
         ) : (
@@ -82,6 +88,7 @@ const StepShell = ({
           variant="primary"
           onClick={onPrimary}
           disabled={isSubmitting}
+          aria-busy={isSubmitting || undefined}
           className={shellStyles.primaryButton}
         >
           {isSubmitting ? (
@@ -92,7 +99,7 @@ const StepShell = ({
           ) : (
             <>
               <span>{primaryLabel}</span>
-              {primaryIcon && <Icon icon={primaryIcon} />}
+              {primaryIcon && <Icon icon={primaryIcon} aria-hidden="true" />}
             </>
           )}
         </Button>
