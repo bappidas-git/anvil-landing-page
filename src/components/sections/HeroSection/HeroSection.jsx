@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
+  Box,
   Container,
   Typography,
   Grid,
@@ -191,20 +192,20 @@ const HeroSection = () => {
                   sx={{
                     color: "#FFFFFF",
                     fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                    fontWeight: 700,
+                    fontWeight: 800,
                     fontSize: {
-                      xs: "2.25rem",
-                      sm: "2.75rem",
-                      md: "3.25rem",
-                      lg: "3.5rem",
+                      xs: "2.5rem",
+                      sm: "3rem",
+                      md: "3.75rem",
+                      lg: "4.25rem",
                     },
-                    lineHeight: 1.1,
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.02em",
                     marginTop: "1.5rem",
                   }}
                 >
-                  Cut your power bill by up to{" "}
-                  <span className={styles.accent}>90%</span>
-                  <br />with rooftop solar built for your home.
+                  Slash your power bill.{" "}
+                  <span className={styles.accent}>Own your sun.</span>
                 </Typography>
               </motion.div>
 
@@ -214,17 +215,29 @@ const HeroSection = () => {
                   variant="h6"
                   className={styles.heroSubtitle}
                   sx={{
-                    color: "rgba(255, 255, 255, 0.85)",
-                    fontWeight: 400,
-                    fontSize: { xs: "0.95rem", md: "1.125rem" },
-                    marginTop: "1rem",
-                    maxWidth: "600px",
-                    lineHeight: 1.6,
+                    color: "#FFFFFF",
+                    fontWeight: 500,
+                    fontSize: { xs: "1.05rem", md: "1.25rem" },
+                    marginTop: "1.25rem",
+                    maxWidth: "620px",
+                    lineHeight: 1.55,
                   }}
                 >
-                  Free site survey. PM Surya Ghar subsidy up to ₹78,000.
-                  Zero-down-payment EMIs from 7%. Trusted by homeowners across
-                  Assam, Nagaland & Bhubaneswar.
+                  Save up to{" "}
+                  <Box
+                    component="span"
+                    sx={{ color: "#FFB800", fontWeight: 700 }}
+                  >
+                    90% on electricity
+                  </Box>{" "}
+                  with rooftop solar — plus a{" "}
+                  <Box
+                    component="span"
+                    sx={{ color: "#FFB800", fontWeight: 700 }}
+                  >
+                    ₹78,000 PM Surya Ghar subsidy
+                  </Box>{" "}
+                  and zero-down-payment EMIs from 7%. Free site survey.
                 </Typography>
               </motion.div>
 
