@@ -14,6 +14,7 @@ import { Icon } from "@iconify/react";
 import StepIndicator from "./StepIndicator";
 import StepShell from "./steps/StepShell";
 import Step1BillRegion from "./steps/Step1BillRegion";
+import Step2Property from "./steps/Step2Property";
 import useLeadFormMachine from "./useLeadFormMachine";
 import styles from "./MultiStepLeadForm.module.css";
 
@@ -82,16 +83,18 @@ const MultiStepLeadForm = ({
       return (
         <StepShell
           stepKey="step-2"
-          title="A bit about your rooftop"
-          subtitle="Helps us match the right system for your home."
+          title="Quick question 2 of 3"
+          subtitle="A little about your property so we get the design right."
           onBack={actions.back}
           onPrimary={handlePrimary}
           primaryLabel="Continue"
           isSubmitting={isSubmitting}
         >
-          <div data-testid="multistep-placeholder-2">
-            Step 2 placeholder — see prompt 07.md
-          </div>
+          <Step2Property
+            data={state.data}
+            errors={state.errors}
+            onChange={actions.setField}
+          />
         </StepShell>
       );
     }
