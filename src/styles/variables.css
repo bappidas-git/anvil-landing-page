@@ -277,6 +277,17 @@
   --blur-xl: 24px;
 }
 
+/* ========== Semantic Aliases (used by newer Anvil components) ========== */
+:root {
+  --ink: var(--primary-dark);
+  --ink-muted: var(--text-gray);
+  --surface: var(--white);
+  --surface-muted: var(--light-gray);
+  --brand: var(--accent-gold);
+  --cta: var(--cta-primary);
+  --savings: var(--savings-green);
+}
+
 /* ========== Admin Panel Colors (Anvil) ========== */
 :root {
   --admin-primary: #0A1F3D;
