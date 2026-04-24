@@ -1,11 +1,12 @@
 /* ============================================
    useSolarCalculator
    Encapsulates all state for the solar savings
-   calculator. Outputs are intentionally empty in
-   this prompt — they will be populated later.
+   calculator and derives live outputs via
+   solarMath.
    ============================================ */
 
 import { useCallback, useMemo, useState } from 'react';
+import { calculateSystem } from '../utils/solarMath';
 
 export const SUN_HOURS_BY_STATE = {
   Assam: 4.8,
@@ -67,7 +68,15 @@ const useSolarCalculator = () => {
     [setMonthlyBill, setRoofArea, setState, reset]
   );
 
-  const outputs = useMemo(() => ({}), []);
+  const outputs = useMemo(
+    () =>
+      calculateSystem({
+        monthlyBill: inputs.monthlyBill,
+        roofArea: inputs.roofArea,
+        sunHours: inputs.sunHours,
+      }),
+    [inputs.monthlyBill, inputs.roofArea, inputs.sunHours]
+  );
 
   return { inputs, setters, outputs };
 };

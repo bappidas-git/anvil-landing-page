@@ -1,45 +1,21 @@
 /* ============================================
    CalculatorSection
    Interactive solar savings calculator: inputs on
-   the left, live output on the right. Output is a
-   placeholder here and will be replaced later.
+   the left, live output panel on the right.
    ============================================ */
 
 import React from 'react';
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
 import CalculatorInputs from './CalculatorInputs';
+import CalculatorOutput from './CalculatorOutput';
 import useSolarCalculator from '../../../hooks/useSolarCalculator';
+import { useModal } from '../../../context/ModalContext';
 import styles from './CalculatorSection.module.css';
 
-const CalculatorOutputPlaceholder = ({ inputs }) => (
-  <div className={styles.outputPlaceholder}>
-    <div className={styles.placeholderInner}>
-      <div className={styles.placeholderTitle}>Live savings preview</div>
-      <ul className={styles.placeholderList}>
-        <li>
-          <span>Monthly bill</span>
-          <strong>₹{inputs.monthlyBill.toLocaleString('en-IN')}</strong>
-        </li>
-        <li>
-          <span>Roof area</span>
-          <strong>{inputs.roofArea.toLocaleString('en-IN')} sq ft</strong>
-        </li>
-        <li>
-          <span>State</span>
-          <strong>{inputs.state}</strong>
-        </li>
-        <li>
-          <span>Peak sun hours</span>
-          <strong>~{inputs.sunHours} hrs/day</strong>
-        </li>
-      </ul>
-    </div>
-  </div>
-);
-
 const CalculatorSection = () => {
-  const { inputs, setters } = useSolarCalculator();
+  const { inputs, setters, outputs } = useSolarCalculator();
+  const { openLeadDrawer } = useModal();
 
   return (
     <Section id="calculator" variant="default" size="lg">
@@ -54,7 +30,16 @@ const CalculatorSection = () => {
           <CalculatorInputs inputs={inputs} setters={setters} />
         </div>
         <div className={styles.outputCol}>
-          <CalculatorOutputPlaceholder inputs={inputs} />
+          <CalculatorOutput
+            outputs={outputs}
+            inputs={inputs}
+            onGetQuote={(snapshot) =>
+              openLeadDrawer({
+                source: 'calculator',
+                calculatorSnapshot: snapshot,
+              })
+            }
+          />
         </div>
       </div>
     </Section>
