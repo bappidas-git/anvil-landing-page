@@ -5,7 +5,7 @@
    "Get My Detailed Quote" CTA.
    ============================================ */
 
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 import styles from './CalculatorOutput.module.css';
@@ -32,6 +32,13 @@ const CalculatorOutput = ({ outputs, inputs, onGetQuote }) => {
     [co2PerYearKg]
   );
 
+  // Debounced announcement so screen readers aren't spammed while dragging sliders
+  const [announcedSavings, setAnnouncedSavings] = useState(monthlySavings);
+  useEffect(() => {
+    const timer = setTimeout(() => setAnnouncedSavings(monthlySavings), 300);
+    return () => clearTimeout(timer);
+  }, [monthlySavings]);
+
   const handleGetQuote = () => {
     if (typeof onGetQuote !== 'function') return;
     onGetQuote({
@@ -45,7 +52,7 @@ const CalculatorOutput = ({ outputs, inputs, onGetQuote }) => {
 
   return (
     <div className={styles.panel}>
-      <div className={styles.primary}>
+      <div className={styles.primary} aria-live="polite" aria-atomic="true">
         <div className={styles.primaryLabel}>You could save</div>
         <motion.div
           key={monthlySavings}
@@ -53,9 +60,13 @@ const CalculatorOutput = ({ outputs, inputs, onGetQuote }) => {
           initial={{ scale: 1 }}
           animate={{ scale: [1, 1.06, 1] }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
+          aria-hidden="true"
         >
           ₹ {formatINR(monthlySavings)}
         </motion.div>
+        <span className="sr-only">
+          You could save ₹{formatINR(announcedSavings)} every month.
+        </span>
         <div className={styles.primarySub}>
           every month — ₹{lakhs} lakh over 25 years
         </div>
@@ -66,25 +77,25 @@ const CalculatorOutput = ({ outputs, inputs, onGetQuote }) => {
 
       <div className={styles.grid}>
         <div className={styles.metric}>
-          <Icon icon="mdi:solar-power" className={styles.metricIcon} />
+          <Icon icon="mdi:solar-power" className={styles.metricIcon} aria-hidden="true" />
           <div className={styles.metricLabel}>System size</div>
           <div className={styles.metricValue}>{systemKw} kW</div>
         </div>
 
         <div className={styles.metric}>
-          <Icon icon="mdi:cash-clock" className={styles.metricIcon} />
+          <Icon icon="mdi:cash-clock" className={styles.metricIcon} aria-hidden="true" />
           <div className={styles.metricLabel}>Payback period</div>
           <div className={styles.metricValue}>{paybackYears} years</div>
         </div>
 
         <div className={styles.metric}>
-          <Icon icon="mdi:tag-outline" className={styles.metricIcon} />
+          <Icon icon="mdi:tag-outline" className={styles.metricIcon} aria-hidden="true" />
           <div className={styles.metricLabel}>Net cost after subsidy</div>
           <div className={styles.metricValue}>₹{formatINR(netCost)}</div>
         </div>
 
         <div className={styles.metric}>
-          <Icon icon="mdi:leaf" className={styles.metricIcon} />
+          <Icon icon="mdi:leaf" className={styles.metricIcon} aria-hidden="true" />
           <div className={styles.metricLabel}>CO₂ offset / year</div>
           <div className={styles.metricValue}>{co2Tonnes} tonnes</div>
         </div>

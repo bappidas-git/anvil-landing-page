@@ -21,6 +21,10 @@ const SolutionCard = ({ solution, onCtaClick }) => {
     }
   };
 
+  const imageAlt = solution.title
+    ? `${solution.title} solar installation`
+    : '';
+
   return (
     <article className={styles.card} aria-labelledby={`solution-${solution.id}-title`}>
       <div className={styles.imageWrap}>
@@ -28,7 +32,7 @@ const SolutionCard = ({ solution, onCtaClick }) => {
           <img
             className={styles.image}
             src={solution.image}
-            alt={solution.title || ''}
+            alt={imageAlt}
             loading="lazy"
           />
         ) : null}
@@ -53,7 +57,12 @@ const SolutionCard = ({ solution, onCtaClick }) => {
           <ul className={styles.benefits}>
             {solution.benefits.map((benefit, idx) => (
               <li key={idx} className={styles.benefit}>
-                <Icon icon="mdi:check-circle" width={14} height={14} />
+                <Icon
+                  icon="mdi:check-circle"
+                  width={14}
+                  height={14}
+                  aria-hidden="true"
+                />
                 <span>{benefit}</span>
               </li>
             ))}
@@ -66,7 +75,12 @@ const SolutionCard = ({ solution, onCtaClick }) => {
           onClick={handleCtaClick}
         >
           <span>{ctaLabel}</span>
-          <Icon icon="mdi:arrow-right" width={16} height={16} />
+          <Icon
+            icon="mdi:arrow-right"
+            width={16}
+            height={16}
+            aria-hidden="true"
+          />
         </button>
       </div>
     </article>

@@ -10,8 +10,8 @@ import styles from './FAQSection.module.css';
 
 const FAQItem = ({ item, index, defaultExpanded }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
-  const panelId = `faq-panel-${index}`;
-  const headerId = `faq-header-${index}`;
+  const summaryId = `faq-${index}-summary`;
+  const panelId = `faq-${index}-panel`;
 
   return (
     <Accordion
@@ -20,7 +20,7 @@ const FAQItem = ({ item, index, defaultExpanded }) => {
       onChange={(_, isExpanded) => setExpanded(isExpanded)}
     >
       <AccordionSummary
-        id={headerId}
+        id={summaryId}
         aria-controls={panelId}
         className={styles.question}
       >
@@ -32,7 +32,11 @@ const FAQItem = ({ item, index, defaultExpanded }) => {
         </span>
         <span>{item.q}</span>
       </AccordionSummary>
-      <AccordionDetails id={panelId} className={styles.answer}>
+      <AccordionDetails
+        id={panelId}
+        aria-labelledby={summaryId}
+        className={styles.answer}
+      >
         {item.a}
       </AccordionDetails>
     </Accordion>
