@@ -7,35 +7,16 @@
    ============================================ */
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Icon } from '@iconify/react';
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
+import Reveal from '../../common/Reveal/Reveal';
 import { useModal } from '../../../context/ModalContext';
 import { financingTiers, financingPartners } from '../../../data/financingData';
 import styles from './FinancingSection.module.css';
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
-
 const FinancingSection = () => {
   const { openLeadDrawer } = useModal();
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   const handleApply = (tier) => {
     openLeadDrawer({
@@ -52,46 +33,40 @@ const FinancingSection = () => {
         subtitle="Zero-down-payment EMIs from our partner banks. Most Anvil customers' EMI is less than their old electricity bill."
       />
 
-      <motion.div
-        ref={ref}
-        className={styles.tierGrid}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-      >
-        {financingTiers.map((tier) => (
-          <motion.article
-            key={tier.duration}
-            className={`${styles.tier} ${tier.featured ? styles.featured : ''}`}
-            variants={cardVariants}
-          >
-            {tier.featured && <span className={styles.ribbon}>Most Popular</span>}
-
-            <Icon
-              icon={tier.icon}
-              className={styles.tierIcon}
-              style={{ color: tier.accent }}
-              aria-hidden="true"
-            />
-            <span className={styles.tierLabel}>{tier.label}</span>
-            <span className={styles.tierDuration}>{tier.duration}</span>
-            <span className={styles.tierRate}>Interest rate: {tier.interestRate}</span>
-            <span className={styles.tierEmi}>{tier.emiFor3kw}</span>
-            <p className={styles.tierBestFor}>
-              <strong>Best for:</strong> {tier.bestFor}
-            </p>
-
-            <button
-              type="button"
-              className={styles.tierCta}
-              onClick={() => handleApply(tier)}
+      <div className={styles.tierGrid}>
+        {financingTiers.map((tier, index) => (
+          <Reveal key={tier.duration} delay={index * 80}>
+            <article
+              className={`${styles.tier} ${tier.featured ? styles.featured : ''}`}
             >
-              Apply with this plan
-              <Icon icon="mdi:arrow-right" aria-hidden="true" />
-            </button>
-          </motion.article>
+              {tier.featured && <span className={styles.ribbon}>Most Popular</span>}
+
+              <Icon
+                icon={tier.icon}
+                className={styles.tierIcon}
+                style={{ color: tier.accent }}
+                aria-hidden="true"
+              />
+              <span className={styles.tierLabel}>{tier.label}</span>
+              <span className={styles.tierDuration}>{tier.duration}</span>
+              <span className={styles.tierRate}>Interest rate: {tier.interestRate}</span>
+              <span className={styles.tierEmi}>{tier.emiFor3kw}</span>
+              <p className={styles.tierBestFor}>
+                <strong>Best for:</strong> {tier.bestFor}
+              </p>
+
+              <button
+                type="button"
+                className={styles.tierCta}
+                onClick={() => handleApply(tier)}
+              >
+                Apply with this plan
+                <Icon icon="mdi:arrow-right" aria-hidden="true" />
+              </button>
+            </article>
+          </Reveal>
         ))}
-      </motion.div>
+      </div>
 
       <div className={styles.partnerBar}>
         <p className={styles.partnerCaption}>

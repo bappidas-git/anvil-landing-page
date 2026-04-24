@@ -7,31 +7,13 @@
    ============================================ */
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 import { Icon } from '@iconify/react';
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
+import Reveal from '../../common/Reveal/Reveal';
 import { useModal } from '../../../context/ModalContext';
 import { centralSubsidy, stateData } from '../../../data/subsidiesData';
 import styles from './SubsidiesSection.module.css';
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
 
 // Map data-facing state labels to the calculator's state select values.
 const CALCULATOR_STATE_KEYS = {
@@ -42,7 +24,6 @@ const CALCULATOR_STATE_KEYS = {
 
 const SubsidiesSection = () => {
   const { openLeadDrawer } = useModal();
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
 
   const handleStateCalculate = (stateLabel) => {
     const targetId = 'calculator';
@@ -70,13 +51,7 @@ const SubsidiesSection = () => {
       />
 
       {/* Central subsidy showcase card */}
-      <motion.div
-        className={styles.central}
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] }}
-      >
+      <Reveal className={styles.central} threshold={0.2}>
         <div className={styles.centralMedia}>
           <img
             src={centralSubsidy.image}
@@ -122,65 +97,59 @@ const SubsidiesSection = () => {
             <Icon icon="mdi:arrow-right" aria-hidden="true" />
           </button>
         </div>
-      </motion.div>
+      </Reveal>
 
       {/* State grid */}
-      <motion.div
-        ref={ref}
-        className={styles.stateGrid}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-      >
-        {stateData.map((s) => (
-          <motion.article
-            key={s.state}
-            className={styles.stateCard}
-            style={{ borderTopColor: s.accent }}
-            variants={cardVariants}
-          >
-            <img
-              src={s.image}
-              alt={`${s.state} rooftop solar`}
-              className={styles.stateImage}
-              loading="lazy"
-            />
-            <div className={styles.stateBody}>
-              <h4 className={styles.stateName}>
-                <Icon icon={s.icon} aria-hidden="true" style={{ color: s.accent }} />
-                {s.state}
-              </h4>
+      <div className={styles.stateGrid}>
+        {stateData.map((s, index) => (
+          <Reveal key={s.state} delay={index * 80}>
+            <article
+              className={styles.stateCard}
+              style={{ borderTopColor: s.accent }}
+            >
+              <img
+                src={s.image}
+                alt={`${s.state} rooftop solar`}
+                className={styles.stateImage}
+                loading="lazy"
+              />
+              <div className={styles.stateBody}>
+                <h4 className={styles.stateName}>
+                  <Icon icon={s.icon} aria-hidden="true" style={{ color: s.accent }} />
+                  {s.state}
+                </h4>
 
-              <div className={styles.stateRow}>
-                <span>Avg. monthly bill</span>
-                <span>{s.avgBill}</span>
+                <div className={styles.stateRow}>
+                  <span>Avg. monthly bill</span>
+                  <span>{s.avgBill}</span>
+                </div>
+
+                <div className={styles.stateRow}>
+                  <span>Avg. annual savings</span>
+                  <strong>{s.avgSavings}</strong>
+                </div>
+
+                <p className={styles.stateNote}>
+                  <strong>Subsidies:</strong> {s.subsidyNote}
+                </p>
+
+                <p className={styles.stateNote}>
+                  <strong>Local note:</strong> {s.climate}
+                </p>
+
+                <button
+                  type="button"
+                  className={styles.stateCta}
+                  onClick={() => handleStateCalculate(s.state)}
+                >
+                  Calculate for my {s.state} home
+                  <Icon icon="mdi:arrow-right" aria-hidden="true" />
+                </button>
               </div>
-
-              <div className={styles.stateRow}>
-                <span>Avg. annual savings</span>
-                <strong>{s.avgSavings}</strong>
-              </div>
-
-              <p className={styles.stateNote}>
-                <strong>Subsidies:</strong> {s.subsidyNote}
-              </p>
-
-              <p className={styles.stateNote}>
-                <strong>Local note:</strong> {s.climate}
-              </p>
-
-              <button
-                type="button"
-                className={styles.stateCta}
-                onClick={() => handleStateCalculate(s.state)}
-              >
-                Calculate for my {s.state} home
-                <Icon icon="mdi:arrow-right" aria-hidden="true" />
-              </button>
-            </div>
-          </motion.article>
+            </article>
+          </Reveal>
         ))}
-      </motion.div>
+      </div>
     </Section>
   );
 };

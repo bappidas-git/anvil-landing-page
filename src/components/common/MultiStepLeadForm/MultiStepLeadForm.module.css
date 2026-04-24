@@ -136,6 +136,12 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  transition: opacity 0.2s ease;
+}
+
+.stepBodySubmitting {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .stepNav {

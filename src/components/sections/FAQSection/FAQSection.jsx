@@ -3,6 +3,7 @@ import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
+import Reveal from '../../common/Reveal/Reveal';
 import { useModal } from '../../../context/ModalContext';
 import { faqData } from '../../../data/faqData';
 import styles from './FAQSection.module.css';
@@ -55,12 +56,13 @@ const FAQSection = () => {
 
       <div className={styles.wrap}>
         {faqData.map((item, index) => (
-          <FAQItem
-            key={item.q}
-            item={item}
-            index={index}
-            defaultExpanded={index === 0}
-          />
+          <Reveal key={item.q} delay={index * 60}>
+            <FAQItem
+              item={item}
+              index={index}
+              defaultExpanded={index === 0}
+            />
+          </Reveal>
         ))}
       </div>
 

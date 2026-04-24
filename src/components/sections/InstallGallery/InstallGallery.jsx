@@ -2,6 +2,7 @@ import React from 'react';
 
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
+import Reveal from '../../common/Reveal/Reveal';
 import GalleryCard from './GalleryCard';
 import { installGalleryData } from '../../../data/installGalleryData';
 import styles from './InstallGallery.module.css';
@@ -16,14 +17,15 @@ const InstallGallery = () => {
       />
 
       <div className={styles.grid}>
-        {installGalleryData.map((item) => (
-          <GalleryCard
-            key={item.id}
-            location={item.location}
-            systemKw={item.systemKw}
-            type={item.type}
-            image={item.image}
-          />
+        {installGalleryData.map((item, index) => (
+          <Reveal key={item.id} delay={index * 80}>
+            <GalleryCard
+              location={item.location}
+              systemKw={item.systemKw}
+              type={item.type}
+              image={item.image}
+            />
+          </Reveal>
         ))}
       </div>
     </Section>

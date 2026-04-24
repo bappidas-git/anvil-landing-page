@@ -14,6 +14,7 @@ import 'swiper/css/pagination';
 
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
+import Reveal from '../../common/Reveal/Reveal';
 import TestimonialCard from './TestimonialCard';
 import { testimonialsData } from '../../../data/testimonialsData';
 import styles from './TestimonialsSection.module.css';
@@ -27,7 +28,7 @@ const TestimonialsSection = () => {
         subtitle="Every review is verified. Every savings number comes from a live meter."
       />
 
-      <div className={styles.sliderWrap}>
+      <Reveal variant="fade" className={styles.sliderWrap}>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation
@@ -53,7 +54,7 @@ const TestimonialsSection = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </Reveal>
 
       <p className={styles.summary}>
         <span className={styles.summaryStrong}>⭐ 4.9 / 5</span> from 200+ verified reviews · Google rated
