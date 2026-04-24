@@ -1,7 +1,7 @@
 /* ============================================
    LeadFormDrawer Component
    Full-width side drawer from left with lead form
-   Uses UnifiedLeadForm for consistent functionality
+   Uses MultiStepLeadForm for the 3-step capture flow
    ============================================ */
 
 import React, { useEffect } from 'react';
@@ -9,7 +9,7 @@ import { createPortal } from 'react-dom';
 import { Typography, IconButton } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
-import UnifiedLeadForm from '../UnifiedLeadForm/UnifiedLeadForm';
+import MultiStepLeadForm from '../MultiStepLeadForm';
 import styles from './LeadFormDrawer.module.css';
 
 const LeadFormDrawer = ({
@@ -18,6 +18,8 @@ const LeadFormDrawer = ({
   title = 'Book Your Consultation',
   subtitle = 'Fill in your details and our specialist will contact you',
   source = 'general',
+  solution = null,
+  calculatorSnapshot = null,
   onSubmitSuccess,
 }) => {
   // Handle body scroll lock
@@ -140,20 +142,14 @@ const LeadFormDrawer = ({
                 </Typography>
               </motion.div>
 
-              {/* Unified Lead Form */}
-              <UnifiedLeadForm
+              {/* Multi-Step Lead Form */}
+              <MultiStepLeadForm
+                source={source || 'drawer'}
+                solution={solution || null}
+                calculatorSnapshot={calculatorSnapshot || null}
                 variant="drawer"
-                source={source}
-                showTitle={false}
-                showSubtitle={false}
-                showCourseFields={true}
-                showTrustBadges={true}
-                showConsent={true}
-                showPhoneButton={true}
-                submitButtonText="Book Consultation"
                 onClose={onClose}
-                onSubmitSuccess={onSubmitSuccess}
-                formId={`drawer-form-${source}`}
+                onSuccess={onSubmitSuccess}
               />
             </div>
 

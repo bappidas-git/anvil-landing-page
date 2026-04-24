@@ -17,6 +17,7 @@ import {
 import { Icon } from "@iconify/react";
 import { useModal } from "../../../context/ModalContext";
 import { trackCTAClick } from "../../../utils/gtm";
+import MultiStepLeadForm from "../../common/MultiStepLeadForm";
 import styles from "./HeroSection.module.css";
 
 // Set REACT_APP_HERO_VIDEO_URL in .env to enable hero background video
@@ -242,7 +243,9 @@ const HeroSection = () => {
                       "hero",
                       "Get My Free Savings Plan",
                     );
-                    openLeadDrawer("hero-primary");
+                    openLeadDrawer({
+                      source: isMobile ? "hero_mobile" : "hero_primary",
+                    });
                   }}
                   sx={{
                     backgroundColor: "#FF6B35",
@@ -324,15 +327,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
               >
                 <div id="hero-form-slot" className={styles.formCard}>
-                  {/* MultiStepLeadForm will be mounted here in prompt 09 */}
-                  <div style={{ padding: "32px", color: "#FFFFFF", textAlign: "center", minHeight: "420px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <div>
-                      <strong style={{ fontSize: "1.1rem" }}>Get your free savings plan</strong>
-                      <div style={{ opacity: 0.75, marginTop: "8px", fontSize: "0.9rem" }}>
-                        Multi-step form mounts here (prompt 09)
-                      </div>
-                    </div>
-                  </div>
+                  <MultiStepLeadForm source="hero" variant="dark" />
                 </div>
               </motion.div>
             </Grid>
