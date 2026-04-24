@@ -8,16 +8,30 @@ export const seoConfig = {
   // =========================================
   // Site-level Settings
   // =========================================
-  siteName: "Anvil",
-  siteUrl: "https://solar.anvil.energy",
-  defaultTitle: "Anvil Solar | Rooftop Solar for Homes & Businesses",
-  titleTemplate: "%s | Anvil Solar",
+  siteName: "Anvil Energy",
+  siteUrl: "https://phpstack-780646-6370629.cloudwaysapps.com",
+  defaultTitle:
+    "Rooftop Solar in Assam, Nagaland & Bhubaneswar | Anvil Energy",
+  titleTemplate: "%s | Anvil Energy",
   defaultDescription:
-    "Switch to rooftop solar with Anvil. End-to-end installation, PM Surya Ghar subsidy, zero-hassle financing, and lifetime support. Calculate your savings today.",
+    "Cut your electricity bill by up to 90% with Anvil rooftop solar. PM Surya Ghar subsidy up to ₹78,000, zero-down-payment EMI from 7%, 25-year warranty. Free site visit across Assam, Nagaland & Bhubaneswar.",
+  defaultKeywords:
+    "rooftop solar, solar panels Assam, solar panels Guwahati, solar Nagaland, solar Bhubaneswar, PM Surya Ghar, solar subsidy, home solar India, solar installation, solar EMI, solar calculator",
   defaultImage:
-    "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&h=630&q=80&auto=format&fit=crop",
+    "https://placehold.co/1200x630?text=Anvil+Rooftop+Solar+For+Indian+Homes",
+  twitterHandle: "@anvilenergy",
   locale: "en_IN",
   language: "en",
+  themeColor: "#0A1F3D",
+
+  // =========================================
+  // Primary Contact (top-level convenience)
+  // =========================================
+  contact: {
+    phone: "+911800202001",
+    email: "hello@anvil.energy",
+    whatsapp: "911800202001",
+  },
 
   // =========================================
   // Organization Details
@@ -25,18 +39,22 @@ export const seoConfig = {
   organization: {
     name: "Anvil Energy",
     alternateName: "Anvil",
-    url: "https://solar.anvil.energy",
-    logo: "https://solar.anvil.energy/svgs/logo.svg",
+    url: "https://phpstack-780646-6370629.cloudwaysapps.com",
+    logo: "https://placehold.co/400x400?text=Anvil+Logo",
+    image:
+      "https://placehold.co/1200x630?text=Anvil+Rooftop+Solar",
     email: "hello@anvil.energy",
-    phone: "+91-1800-2020-001",
+    phone: "+911800202001",
     description:
-      "End-to-end rooftop solar installation for homes and businesses across India. Anvil handles design, PM Surya Ghar subsidy, financing, installation, net metering, and lifetime support so you can switch to solar with zero hassle.",
+      "Rooftop solar for homes across Assam, Nagaland, Bhubaneswar and PAN-India. PM Surya Ghar subsidy, EMI financing, 25-year warranty.",
     address: {
-      streetAddress: "Anvil Energy HQ",
-      addressLocality: "Gurugram",
-      addressRegion: "Haryana",
-      postalCode: "122001",
+      addressRegion: "Assam / Nagaland / Odisha / PAN-India",
       addressCountry: "IN",
+    },
+    areaServed: ["Assam", "Nagaland", "Odisha", "India"],
+    aggregateRating: {
+      ratingValue: "4.9",
+      reviewCount: "200",
     },
     sameAs: [
       "https://www.facebook.com/anvilenergy",
@@ -56,11 +74,12 @@ export const seoConfig = {
   // =========================================
   pages: {
     home: {
-      title: "Anvil Solar | Rooftop Solar for Homes & Businesses in India",
+      title:
+        "Rooftop Solar in Assam, Nagaland & Bhubaneswar | Anvil Energy",
       description:
-        "Switch to rooftop solar with Anvil. End-to-end installation, PM Surya Ghar subsidy, zero-hassle financing, and lifetime support. Book your free consultation today.",
+        "Cut your electricity bill by up to 90% with Anvil rooftop solar. PM Surya Ghar subsidy up to ₹78,000, zero-down-payment EMI from 7%. Free site visit across Assam, Nagaland & Bhubaneswar.",
       keywords:
-        "rooftop solar India, home solar, PM Surya Ghar, solar calculator, on-grid solar, hybrid solar, solar subsidy, Anvil Saathi",
+        "rooftop solar Assam, solar Guwahati, solar Nagaland, solar Bhubaneswar, PM Surya Ghar, solar subsidy, solar EMI, home solar India",
     },
     thankYou: {
       title: "Thank You | Your Anvil Saathi Will Call You Shortly",
@@ -135,7 +154,7 @@ export const seoConfig = {
   // LocalBusiness Schema Settings
   // =========================================
   localBusiness: {
-    type: "SolarEnergyContractor",
+    type: "LocalBusiness",
     priceRange: "₹₹",
     openingHours: {
       days: [
@@ -149,10 +168,6 @@ export const seoConfig = {
       opens: "09:00",
       closes: "19:00",
     },
-    geo: {
-      latitude: "28.4595",
-      longitude: "77.0266",
-    },
     knowsAbout: [
       "Rooftop Solar",
       "On-Grid Solar",
@@ -161,8 +176,6 @@ export const seoConfig = {
       "PM Surya Ghar Yojana",
       "Solar Financing",
     ],
-    isAcceptingNewPatients: true,
-    hasMap: "https://www.google.com/maps/place/Gurugram,+Haryana,+India",
     availableService: [
       {
         name: "Rooftop Solar Installation",
