@@ -1,27 +1,24 @@
 /* ============================================
    MultiStepLeadForm (shell)
-   Three-step lead capture wizard. This file wires
-   up the state machine, step indicator, step shell
-   and success card. Step UIs (bill/state selectors,
-   property questions, contact fields) land in
-   prompts 06–08 and will be swapped into the
-   placeholders below.
+   Three-step lead capture wizard. Wires the state
+   machine, step indicator, step shell, and the
+   success state. Step UIs (bill/state selectors,
+   property questions, contact fields) each live in
+   `./steps/`.
    ============================================ */
 
 import React from "react";
 import { AnimatePresence } from "framer-motion";
-import { Icon } from "@iconify/react";
 import StepIndicator from "./StepIndicator";
 import StepShell from "./steps/StepShell";
 import Step1BillRegion from "./steps/Step1BillRegion";
 import Step2Property from "./steps/Step2Property";
+import Step3Contact from "./steps/Step3Contact";
+import SuccessState from "./steps/SuccessState";
 import useLeadFormMachine from "./useLeadFormMachine";
 import styles from "./MultiStepLeadForm.module.css";
 
 const STEP_LABELS = ["Your home", "Rooftop", "Contact"];
-
-const WHATSAPP_HREF =
-  "https://wa.me/911800202001?text=Hi%20Anvil%2C%20I%20just%20submitted%20a%20rooftop%20solar%20enquiry.";
 
 const variantClass = (variant) => {
   switch (variant) {
@@ -39,6 +36,7 @@ const MultiStepLeadForm = ({
   solution = null,
   calculatorSnapshot = null,
   variant = "default",
+  submitButtonText = "Get My Free Savings Plan",
   onClose,
   onSuccess,
 }) => {
@@ -57,6 +55,14 @@ const MultiStepLeadForm = ({
       actions.next();
     }
   };
+
+  if (step === "success") {
+    return (
+      <div className={`${styles.wrapper} ${variantClass(variant)}`}>
+        <SuccessState name={state.data.name} />
+      </div>
+    );
+  }
 
   const renderStepBody = () => {
     if (step === 1) {
@@ -107,61 +113,21 @@ const MultiStepLeadForm = ({
           subtitle="Your details stay private — we'll only use them to send your plan."
           onBack={actions.back}
           onPrimary={handlePrimary}
-          primaryLabel="Get My Free Savings Plan"
+          primaryLabel={submitButtonText}
           primaryIcon="mdi:calendar-check"
           isSubmitting={isSubmitting}
         >
-          <div data-testid="multistep-placeholder-3">
-            Step 3 placeholder — see prompt 08.md
-          </div>
+          <Step3Contact
+            data={state.data}
+            errors={state.errors}
+            onChange={actions.setField}
+          />
         </StepShell>
       );
     }
 
     return null;
   };
-
-  if (step === "success") {
-    const firstName = (state.data.name || "").trim().split(/\s+/)[0] || "there";
-    return (
-      <div className={`${styles.wrapper} ${variantClass(variant)}`}>
-        <div className={styles.successCard}>
-          <div className={styles.successBadge}>
-            <Icon icon="mdi:check-circle" />
-          </div>
-          <h3 className={styles.successTitle}>
-            Thank you, {firstName}!
-          </h3>
-          <p className={styles.successLead}>
-            Your Anvil Saathi will be in touch within 24 hours.
-          </p>
-          <ul className={styles.successSteps}>
-            <li>
-              <Icon icon="mdi:phone-in-talk" aria-hidden="true" />
-              <span>Quick WhatsApp / call from your Saathi</span>
-            </li>
-            <li>
-              <Icon icon="mdi:home-search" aria-hidden="true" />
-              <span>Free site survey at a time that suits you</span>
-            </li>
-            <li>
-              <Icon icon="mdi:file-chart" aria-hidden="true" />
-              <span>Personalised savings plan with subsidy & EMI options</span>
-            </li>
-          </ul>
-          <a
-            className={styles.whatsappButton}
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon icon="mdi:whatsapp" />
-            <span>Talk on WhatsApp</span>
-          </a>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className={`${styles.wrapper} ${variantClass(variant)}`}>

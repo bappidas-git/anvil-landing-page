@@ -7,7 +7,6 @@
    ============================================ */
 
 import { useCallback, useMemo, useReducer } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   submitLeadToWebhook,
   isDuplicateLead,
@@ -24,11 +23,7 @@ import {
   getMobileErrorMessage,
   getEmailErrorMessage,
 } from "../../../utils/validators";
-import {
-  showSuccess,
-  showError,
-  showInfo,
-} from "../../../utils/swalHelper";
+import { showError, showInfo } from "../../../utils/swalHelper";
 
 const INITIAL_DATA = {
   monthlyBill: "",
@@ -164,7 +159,6 @@ const useLeadFormMachine = (initialContext = {}) => {
     initialContext,
     buildInitialState
   );
-  const navigate = useNavigate();
 
   const setField = useCallback((field, value) => {
     let coerced = value;
@@ -220,7 +214,7 @@ const useLeadFormMachine = (initialContext = {}) => {
         name: data.name.trim(),
         mobile: data.mobile.trim(),
         email: data.email.trim(),
-        service_interest: data.systemPreference || context.solution || "",
+        service_interest: context.solution || data.systemPreference || "",
         message: enrichedMessage || "",
         source,
       };
@@ -265,18 +259,11 @@ const useLeadFormMachine = (initialContext = {}) => {
         sessionStorage.setItem("lead_submitted", "true");
         sessionStorage.setItem("lead_name", data.name);
 
-        await showSuccess(
-          "Thank You!",
-          "Your request has been received. Your Anvil Saathi will contact you within 24 hours to schedule your free site survey."
-        );
-
         dispatch({ type: "SET_STEP", step: "success" });
         dispatch({ type: "SET_SUBMITTING", value: false });
 
         if (onSuccess) onSuccess({ ...data });
         if (onClose) onClose();
-
-        navigate("/thank-you");
 
         return { success: true };
       } catch (error) {
@@ -289,7 +276,7 @@ const useLeadFormMachine = (initialContext = {}) => {
         return { success: false };
       }
     },
-    [state, navigate]
+    [state]
   );
 
   const actions = useMemo(
