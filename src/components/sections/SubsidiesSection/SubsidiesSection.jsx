@@ -58,6 +58,9 @@ const SubsidiesSection = () => {
             alt={centralSubsidy.name}
             className={styles.centralImage}
             loading="lazy"
+            decoding="async"
+            width="800"
+            height="400"
           />
         </div>
 
@@ -112,6 +115,9 @@ const SubsidiesSection = () => {
                 alt={`${s.state} rooftop solar`}
                 className={styles.stateImage}
                 loading="lazy"
+                decoding="async"
+                width="600"
+                height="360"
               />
               <div className={styles.stateBody}>
                 <h4 className={styles.stateName}>

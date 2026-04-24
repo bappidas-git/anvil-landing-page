@@ -32,6 +32,9 @@ const HowItWorksSection = () => {
                 alt={step.title}
                 className={styles.image}
                 loading="lazy"
+                decoding="async"
+                width="600"
+                height="400"
               />
             </article>
           </Reveal>

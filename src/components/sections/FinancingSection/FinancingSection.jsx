@@ -80,6 +80,9 @@ const FinancingSection = () => {
               alt={partner.name}
               className={styles.partnerLogo}
               loading="lazy"
+              decoding="async"
+              width="160"
+              height="60"
             />
           ))}
         </div>

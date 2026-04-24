@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
