@@ -94,15 +94,28 @@ const formatBillLabel = (bill) => {
   }
 };
 
-const Step3Contact = ({ data, errors, onChange }) => {
+const Step3Contact = ({ data, errors, context, onChange }) => {
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
-  const contextParts = [
+  const snapshot = context?.calculatorSnapshot;
+
+  const snapshotParts = snapshot
+    ? [
+        snapshot.state,
+        snapshot.systemKw != null && `${snapshot.systemKw} kW`,
+        snapshot.monthlySavings != null &&
+          `save ₹${Number(snapshot.monthlySavings).toLocaleString("en-IN")}/mo`,
+      ].filter(Boolean)
+    : [];
+
+  const dataParts = [
     data.monthlyBill && `${formatBillLabel(data.monthlyBill)} bill`,
     data.state,
     data.propertyType,
     data.systemPreference,
   ].filter(Boolean);
+
+  const contextParts = snapshotParts.length > 0 ? snapshotParts : dataParts;
 
   return (
     <div>

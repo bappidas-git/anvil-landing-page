@@ -222,6 +222,13 @@ export const ModalProvider = ({ children }) => {
   // Close lead form drawer
   const closeLeadDrawer = useCallback(() => {
     setIsDrawerOpen(false);
+    setDrawerConfig({
+      title: DRAWER_TITLES.default.title,
+      subtitle: DRAWER_TITLES.default.subtitle,
+      source: 'general',
+      solution: null,
+      calculatorSnapshot: null,
+    });
     document.body.classList.remove('drawer-open');
     document.body.style.overflow = '';
     document.body.style.position = '';

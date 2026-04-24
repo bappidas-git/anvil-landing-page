@@ -9,6 +9,7 @@
 
 import React from "react";
 import { AnimatePresence } from "framer-motion";
+import { Icon } from "@iconify/react";
 import StepIndicator from "./StepIndicator";
 import StepShell from "./steps/StepShell";
 import Step1BillRegion from "./steps/Step1BillRegion";
@@ -46,7 +47,7 @@ const MultiStepLeadForm = ({
     calculatorSnapshot,
   });
 
-  const { step, isSubmitting } = state;
+  const { step, isSubmitting, initialStepSkipped } = state;
 
   const handlePrimary = () => {
     if (step === 3) {
@@ -86,12 +87,14 @@ const MultiStepLeadForm = ({
     }
 
     if (step === 2) {
+      const canBack = !initialStepSkipped;
       return (
         <StepShell
           stepKey="step-2"
           title="Quick question 2 of 3"
           subtitle="A little about your property so we get the design right."
-          onBack={actions.back}
+          onBack={canBack ? actions.back : undefined}
+          showBack={canBack}
           onPrimary={handlePrimary}
           primaryLabel="Continue"
           isSubmitting={isSubmitting}
@@ -120,6 +123,7 @@ const MultiStepLeadForm = ({
           <Step3Contact
             data={state.data}
             errors={state.errors}
+            context={state.context}
             onChange={actions.setField}
           />
         </StepShell>
@@ -131,6 +135,17 @@ const MultiStepLeadForm = ({
 
   return (
     <div className={`${styles.wrapper} ${variantClass(variant)}`}>
+      {initialStepSkipped && (
+        <div className={styles.prefillPill} role="status">
+          <Icon
+            icon="mdi:check-circle"
+            aria-hidden="true"
+            className={styles.prefillPillIcon}
+          />
+          <span>Your answers from the calculator are saved.</span>
+        </div>
+      )}
+
       <div className={styles.indicatorWrap}>
         <StepIndicator current={step} total={3} labels={STEP_LABELS} />
       </div>
