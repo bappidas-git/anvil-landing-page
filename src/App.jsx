@@ -49,6 +49,7 @@ const SolutionsSection = lazy(() => import('./components/sections/SolutionsSecti
 const CalculatorSection = lazy(() => import('./components/sections/CalculatorSection/CalculatorSection'));
 const HowItWorksSection = lazy(() => import('./components/sections/HowItWorksSection/HowItWorksSection'));
 const SubsidiesSection = lazy(() => import('./components/sections/SubsidiesSection/SubsidiesSection'));
+const FinancingSection = lazy(() => import('./components/sections/FinancingSection/FinancingSection'));
 const AboutSection = lazy(() => import('./components/sections/AboutSection/AboutSection'));
 const WhyTransplantsFailCTA = lazy(() => import('./components/sections/WhyTransplantsFailCTA/WhyTransplantsFailCTA'));
 const ServicesSection = lazy(() => import('./components/sections/ServicesSection/ServicesSection'));
@@ -335,6 +336,7 @@ const useIdlePreload = () => {
         () => import('./components/sections/CalculatorSection/CalculatorSection'),
         () => import('./components/sections/HowItWorksSection/HowItWorksSection'),
         () => import('./components/sections/SubsidiesSection/SubsidiesSection'),
+        () => import('./components/sections/FinancingSection/FinancingSection'),
       ];
 
       let currentIndex = 0;
@@ -471,6 +473,12 @@ const HomePageContent = () => {
         <ErrorBoundary>
           <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
             <SubsidiesSection />
+          </Suspense>
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
+            <FinancingSection />
           </Suspense>
         </ErrorBoundary>
 
