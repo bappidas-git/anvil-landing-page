@@ -55,10 +55,6 @@ const FinancingSection = lazy(() => import('./components/sections/FinancingSecti
 const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection/TestimonialsSection'));
 const InstallGallery = lazy(() => import('./components/sections/InstallGallery/InstallGallery'));
 const FAQSection = lazy(() => import('./components/sections/FAQSection/FAQSection'));
-const AboutSection = lazy(() => import('./components/sections/AboutSection/AboutSection'));
-const WhyTransplantsFailCTA = lazy(() => import('./components/sections/WhyTransplantsFailCTA/WhyTransplantsFailCTA'));
-const ServicesSection = lazy(() => import('./components/sections/ServicesSection/ServicesSection'));
-const HighlightsSection = lazy(() => import('./components/sections/HighlightsSection/HighlightsSection'));
 const FeaturesSection = lazy(() => import('./components/sections/FeaturesSection/FeaturesSection'));
 const LocationSection = lazy(() => import('./components/sections/LocationSection/LocationSection'));
 const CTASection = lazy(() => import('./components/sections/CTASection/CTASection'));
@@ -328,12 +324,8 @@ const useIdlePreload = () => {
     // Preload sections during idle time
     if ('requestIdleCallback' in window) {
       const sections = [
-        () => import('./components/sections/AboutSection/AboutSection'),
-        () => import('./components/sections/WhyTransplantsFailCTA/WhyTransplantsFailCTA'),
-        () => import('./components/sections/ServicesSection/ServicesSection'),
         () => import('./components/sections/LocationSection/LocationSection'),
         () => import('./components/sections/FeaturesSection/FeaturesSection'),
-        () => import('./components/sections/HighlightsSection/HighlightsSection'),
         () => import('./components/sections/CTASection/CTASection'),
         () => import('./components/sections/ContactSection/ContactSection'),
         () => import('./components/sections/FinalCTASection/FinalCTASection'),
@@ -505,30 +497,6 @@ const HomePageContent = () => {
         <ErrorBoundary>
           <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
             <FAQSection />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={400} variant="skeleton" />}>
-            <AboutSection />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={500} variant="default" />}>
-            <WhyTransplantsFailCTA />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={400} variant="skeleton" />}>
-            <ServicesSection />
-          </Suspense>
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <Suspense fallback={<SectionLoader height={500} variant="skeleton" />}>
-            <HighlightsSection />
           </Suspense>
         </ErrorBoundary>
 
