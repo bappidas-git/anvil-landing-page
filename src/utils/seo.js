@@ -5,6 +5,7 @@
    ============================================ */
 
 import { seoConfig } from '../config/seo';
+import { faqData } from '../data/faqData';
 
 // =========================================
 // Page SEO — Update document title & meta tags
@@ -137,8 +138,8 @@ export function generateOrganizationSchema(config) {
     address: {
       '@type': 'PostalAddress',
       ...(org.address.streetAddress && { streetAddress: org.address.streetAddress }),
-      addressLocality: org.address.addressLocality,
-      addressRegion: org.address.addressRegion,
+      ...(org.address.addressLocality && { addressLocality: org.address.addressLocality }),
+      ...(org.address.addressRegion && { addressRegion: org.address.addressRegion }),
       ...(org.address.postalCode && { postalCode: org.address.postalCode }),
       addressCountry: org.address.addressCountry,
     },
@@ -164,21 +165,24 @@ export function generateOrganizationSchema(config) {
 }
 
 /**
- * Generate FAQPage schema.
- * @param {Array<{question: string, answer: string}>} [faqs] - Array of FAQ items
+ * Generate FAQPage schema. Reads from the live FAQ data file
+ * (src/data/faqData.js) so the rich result stays in sync with what
+ * users see on the page.
+ * @param {Array} [faqs] - Array of FAQ items. Accepts either
+ *   {q, a} (faqData) or {question, answer} shapes.
  * @returns {Object} JSON-LD FAQPage schema
  */
 export function generateFAQSchema(faqs) {
-  const faqItems = faqs || seoConfig.faqs;
+  const faqItems = faqs || faqData;
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqItems.map((faq) => ({
       '@type': 'Question',
-      name: faq.question,
+      name: faq.q || faq.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: faq.answer,
+        text: faq.a || faq.answer,
       },
     })),
   };
@@ -195,27 +199,45 @@ export function generateLocalBusinessSchema(config) {
 
   const schema = {
     '@context': 'https://schema.org',
-    '@type': biz.type,
+    '@type': biz.type || 'LocalBusiness',
     name: org.name,
-    image: org.logo,
+    url: org.url,
+    logo: org.logo,
+    image: org.image || org.logo,
+    description: org.description,
     telephone: org.phone,
     email: org.email,
+    priceRange: biz.priceRange,
     address: {
       '@type': 'PostalAddress',
       ...(org.address.streetAddress && { streetAddress: org.address.streetAddress }),
-      addressLocality: org.address.addressLocality,
-      addressRegion: org.address.addressRegion,
+      ...(org.address.addressLocality && { addressLocality: org.address.addressLocality }),
+      ...(org.address.addressRegion && { addressRegion: org.address.addressRegion }),
       ...(org.address.postalCode && { postalCode: org.address.postalCode }),
       addressCountry: org.address.addressCountry,
     },
-    priceRange: biz.priceRange,
-    openingHoursSpecification: {
+  };
+
+  if (org.areaServed && org.areaServed.length > 0) {
+    schema.areaServed = org.areaServed;
+  }
+
+  if (org.aggregateRating && org.aggregateRating.ratingValue) {
+    schema.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: org.aggregateRating.ratingValue,
+      reviewCount: org.aggregateRating.reviewCount,
+    };
+  }
+
+  if (biz.openingHours) {
+    schema.openingHoursSpecification = {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: biz.openingHours.days,
       opens: biz.openingHours.opens,
       closes: biz.openingHours.closes,
-    },
-  };
+    };
+  }
 
   if (biz.geo && biz.geo.latitude && biz.geo.longitude) {
     schema.geo = {
@@ -225,32 +247,43 @@ export function generateLocalBusinessSchema(config) {
     };
   }
 
-  if (org.url) {
-    schema.url = org.url;
-  }
-
-  // MedicalBusiness-specific properties
-  if (biz.medicalSpecialty) {
-    schema.medicalSpecialty = biz.medicalSpecialty;
-  }
-
-  if (biz.isAcceptingNewPatients !== undefined) {
-    schema.isAcceptingNewPatients = biz.isAcceptingNewPatients;
-  }
-
   if (biz.hasMap) {
     schema.hasMap = biz.hasMap;
   }
 
   if (biz.availableService && biz.availableService.length > 0) {
     schema.availableService = biz.availableService.map((service) => ({
-      '@type': 'MedicalProcedure',
+      '@type': 'Service',
       name: service.name,
       description: service.description,
     }));
   }
 
   return schema;
+}
+
+/**
+ * Generate a top-level Service schema for Anvil's core offering
+ * (rooftop solar installation with PM Surya Ghar subsidy).
+ * @returns {Object} JSON-LD Service schema
+ */
+export function generateRooftopSolarServiceSchema() {
+  const org = seoConfig.organization;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Rooftop Solar Installation',
+    provider: {
+      '@type': 'Organization',
+      name: org.name,
+    },
+    areaServed: org.areaServed || ['Assam', 'Nagaland', 'Odisha', 'India'],
+    offers: {
+      '@type': 'Offer',
+      description:
+        'Residential rooftop solar with PM Surya Ghar subsidy up to ₹78,000 and 0% down EMI from 7% p.a.',
+    },
+  };
 }
 
 /**
@@ -383,8 +416,9 @@ export function generateProductSchema(products) {
  */
 export function injectDefaultSchemas() {
   injectSchema('schema-organization', generateOrganizationSchema());
-  injectSchema('schema-faq', generateFAQSchema());
   injectSchema('schema-localbusiness', generateLocalBusinessSchema());
+  injectSchema('schema-service', generateRooftopSolarServiceSchema());
+  injectSchema('schema-faq', generateFAQSchema());
   injectSchema(
     'schema-breadcrumb',
     generateBreadcrumbSchema([

@@ -10,53 +10,81 @@ import { useLocation } from 'react-router-dom';
 import { seoConfig } from '../../../config/seo';
 import {
   updatePageSEO,
-  injectDefaultSchemas,
+  injectSchema,
   removeSchema,
+  generateOrganizationSchema,
+  generateLocalBusinessSchema,
+  generateRooftopSolarServiceSchema,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+  generateWebPageSchema,
 } from '../../../utils/seo';
+
+// Schema IDs owned by this component — kept in one place so route changes
+// can add/remove them cleanly.
+const HOME_SCHEMA_IDS = [
+  'schema-organization',
+  'schema-localbusiness',
+  'schema-service',
+  'schema-faq',
+  'schema-breadcrumb',
+  'schema-webpage',
+];
 
 const SEOHead = () => {
   const location = useLocation();
 
-  // Inject default schemas on mount
-  useEffect(() => {
-    injectDefaultSchemas();
-  }, []);
-
-  // Update page SEO based on current route
+  // Update page SEO + structured data based on current route
   useEffect(() => {
     const { pathname } = location;
+    const canonicalUrl = seoConfig.siteUrl + pathname;
 
     if (pathname === '/') {
-      // Home page
       updatePageSEO({
         title: seoConfig.pages.home.title,
         description: seoConfig.pages.home.description,
-        url: seoConfig.siteUrl + '/',
+        url: canonicalUrl,
       });
+
+      // Home-only structured data: LocalBusiness, Service, FAQPage
+      // + supporting Organization, Breadcrumb, WebPage
+      injectSchema('schema-localbusiness', generateLocalBusinessSchema());
+      injectSchema('schema-service', generateRooftopSolarServiceSchema());
+      injectSchema('schema-faq', generateFAQSchema());
+      injectSchema('schema-organization', generateOrganizationSchema());
+      injectSchema(
+        'schema-breadcrumb',
+        generateBreadcrumbSchema([
+          { name: 'Home', url: seoConfig.siteUrl + '/' },
+        ])
+      );
+      injectSchema(
+        'schema-webpage',
+        generateWebPageSchema({
+          name: seoConfig.pages.home.title,
+          description: seoConfig.pages.home.description,
+          url: seoConfig.siteUrl + '/',
+        })
+      );
     } else if (pathname === '/thank-you') {
-      // Thank You page — noindex
       updatePageSEO({
         title: seoConfig.pages.thankYou.title,
         description: seoConfig.pages.thankYou.description,
-        url: seoConfig.siteUrl + '/thank-you',
+        url: canonicalUrl,
         robots: 'noindex, nofollow',
       });
+      // Thank-you is noindex but keep canonical so crawlers reconcile the URL.
+      HOME_SCHEMA_IDS.forEach(removeSchema);
     } else if (pathname.startsWith('/admin')) {
-      // Admin pages — noindex
       updatePageSEO({
         title: seoConfig.pages.admin.title,
         robots: 'noindex, nofollow',
+        url: canonicalUrl,
       });
-      // Remove public schemas from admin pages
-      removeSchema('schema-organization');
-      removeSchema('schema-faq');
-      removeSchema('schema-localbusiness');
-      removeSchema('schema-breadcrumb');
-      removeSchema('schema-webpage');
+      HOME_SCHEMA_IDS.forEach(removeSchema);
     }
   }, [location]);
 
-  // This component does not render anything visible
   return null;
 };
 
