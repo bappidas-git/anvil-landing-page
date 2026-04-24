@@ -34,6 +34,9 @@ const SolutionCard = ({ solution, onCtaClick }) => {
             src={solution.image}
             alt={imageAlt}
             loading="lazy"
+            decoding="async"
+            width="800"
+            height="500"
           />
         ) : null}
       </div>

@@ -19,6 +19,15 @@
     <!-- End Google Tag Manager -->
 
     <meta charset="utf-8" />
+
+    <!-- =========================================
+         Early Preconnect / DNS Prefetch (perf)
+         ========================================= -->
+    <link rel="preconnect" href="https://placehold.co" crossorigin />
+    <link rel="dns-prefetch" href="https://placehold.co" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link rel="icon" type="image/svg+xml" href="https://solar.anvil.energy/svgs/logo.svg" />
     <link rel="alternate icon" href="%PUBLIC_URL%/favicon.png" type="image/png" />
 
@@ -155,6 +164,17 @@
     <!-- =========================================
          Preload Critical Resources
          ========================================= -->
+    <!-- Hero background image (desktop) — rendered as CSS background in HeroSection;
+         preload so LCP paint doesn't wait for JS. Mobile hero uses a different URL
+         and is preloaded inside the component at runtime via the Image() object. -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://placehold.co/1600x900?text=Assam+Home+With+Rooftop+Solar+Panels+Sunrise"
+      imagesrcset="https://placehold.co/1600x900?text=Assam+Home+With+Rooftop+Solar+Panels+Sunrise"
+      fetchpriority="high"
+      media="(min-width: 900px)"
+    />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"

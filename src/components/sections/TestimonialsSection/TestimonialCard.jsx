@@ -21,6 +21,9 @@ const TestimonialCard = ({ testimonial }) => {
         alt={`Rooftop solar installation in ${city}`}
         className={styles.photo}
         loading="lazy"
+        decoding="async"
+        width="600"
+        height="400"
       />
 
       <div className={styles.body}>
@@ -49,6 +52,9 @@ const TestimonialCard = ({ testimonial }) => {
             alt={name}
             className={styles.avatar}
             loading="lazy"
+            decoding="async"
+            width="120"
+            height="120"
           />
           <div className={styles.identity}>
             <span className={styles.name}>{name}</span>

@@ -9,6 +9,9 @@ const GalleryCard = ({ location, systemKw, type, image }) => {
           src={image}
           alt={`${systemKw} ${type} solar installation in ${location}`}
           loading="lazy"
+          decoding="async"
+          width="1200"
+          height="800"
         />
         <span className={styles.kwBadge}>{systemKw}</span>
       </div>

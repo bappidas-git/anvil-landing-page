@@ -83,6 +83,8 @@ const Footer = () => {
                     alt={s.label}
                     width={36}
                     height={36}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </a>
               ))}
@@ -149,6 +151,10 @@ const Footer = () => {
               src={badge.src}
               alt={badge.alt}
               className={styles.certBadge}
+              loading="lazy"
+              decoding="async"
+              width="120"
+              height="48"
             />
           ))}
         </div>
