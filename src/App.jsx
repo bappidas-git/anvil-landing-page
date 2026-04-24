@@ -19,6 +19,7 @@ import { ModalProvider, useModal } from './context/ModalContext';
 // Components (Eager loaded for critical path - Above the fold)
 import Header from './components/common/Header/Header';
 import HeroSection from './components/sections/HeroSection/HeroSection';
+import TrustBar from './components/sections/TrustBar/TrustBar';
 import Footer from './components/common/Footer/Footer';
 import Modal from './components/common/Modal/Modal';
 import MobileNavigation from './components/common/MobileNavigation/MobileNavigation';
@@ -436,6 +437,9 @@ const HomePageContent = () => {
       <main id="main-content" className="main-content">
         {/* Hero Section - Critical, loaded immediately */}
         <HeroSection />
+
+        {/* Trust Bar - Eager-loaded, sits directly under hero */}
+        <TrustBar />
 
         {/* Lazy loaded sections with error boundaries */}
         <ErrorBoundary>
