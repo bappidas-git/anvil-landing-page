@@ -15,7 +15,6 @@ import {
   Button,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-import UnifiedLeadForm from "../../common/UnifiedLeadForm/UnifiedLeadForm";
 import { useModal } from "../../../context/ModalContext";
 import { trackCTAClick } from "../../../utils/gtm";
 import styles from "./HeroSection.module.css";
@@ -24,10 +23,10 @@ import styles from "./HeroSection.module.css";
 // Hero images with fallbacks
 const HERO_IMAGES = {
   desktop: [
-    "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80&auto=format&fit=crop",
+    "https://placehold.co/1600x900?text=Assam+Home+With+Rooftop+Solar+Panels+Sunrise",
   ],
   mobile: [
-    "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=800&q=80&auto=format&fit=crop",
+    "https://placehold.co/800x1000?text=Rooftop+Solar+Installation+Northeast+India",
   ],
 };
 
@@ -81,10 +80,10 @@ const buttonVariants = {
 
 // Trust indicators data
 const trustIndicators = [
-  { icon: "mdi:solar-power", text: "PAN-India installation" },
-  { icon: "mdi:bank", text: "PM Surya Ghar subsidy included" },
-  { icon: "mdi:shield-check", text: "25-year panel warranty" },
-  { icon: "mdi:currency-inr", text: "Zero down-payment EMI" },
+  { icon: "mdi:sun-wireless", text: "Free design + savings plan" },
+  { icon: "mdi:bank", text: "PM Surya Ghar subsidy ₹78,000" },
+  { icon: "mdi:shield-sun", text: "25-yr panel warranty" },
+  { icon: "mdi:whatsapp", text: "WhatsApp support 7 days" },
 ];
 
 const HeroSection = () => {
@@ -167,7 +166,7 @@ const HeroSection = () => {
               <motion.div variants={badgeVariants}>
                 <Chip
                   icon={<span className={styles.pulseDot} />}
-                  label="⚡ India's hassle-free rooftop solar partner"
+                  label="Serving Assam • Nagaland • Bhubaneswar"
                   className={styles.launchBadge}
                   sx={{
                     backgroundColor: "#FFB800",
@@ -202,8 +201,9 @@ const HeroSection = () => {
                     marginTop: "1.5rem",
                   }}
                 >
-                  Cut your electricity bill by up to{" "}
-                  <span className={styles.accent}>90%</span> with rooftop solar.
+                  Cut your power bill by up to{" "}
+                  <span className={styles.accent}>90%</span>
+                  <br />with rooftop solar built for your home.
                 </Typography>
               </motion.div>
 
@@ -221,9 +221,9 @@ const HeroSection = () => {
                     lineHeight: 1.6,
                   }}
                 >
-                  Anvil handles everything — design, PM Surya Ghar subsidy,
-                  financing, installation, and lifetime support. Get your free
-                  personalised savings plan in under 60 seconds.
+                  Free site survey. PM Surya Ghar subsidy up to ₹78,000.
+                  Zero-down-payment EMIs from 7%. Trusted by homeowners across
+                  Assam, Nagaland & Bhubaneswar.
                 </Typography>
               </motion.div>
 
@@ -240,9 +240,9 @@ const HeroSection = () => {
                     trackCTAClick(
                       "hero_primary_cta",
                       "hero",
-                      "Book Your Free Call",
+                      "Get My Free Savings Plan",
                     );
-                    openLeadDrawer("apply-now");
+                    openLeadDrawer("hero-primary");
                   }}
                   sx={{
                     backgroundColor: "#FF6B35",
@@ -262,7 +262,7 @@ const HeroSection = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Book Your Free Call →
+                  Get My Free Savings Plan →
                 </Button>
                 <Button
                   variant="outlined"
@@ -274,7 +274,7 @@ const HeroSection = () => {
                     trackCTAClick(
                       "hero_secondary_cta",
                       "hero",
-                      "Calculate My Savings",
+                      "See My Savings",
                     );
                   }}
                   sx={{
@@ -295,7 +295,7 @@ const HeroSection = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  Calculate My Savings
+                  See My Savings
                 </Button>
               </motion.div>
 
@@ -314,7 +314,7 @@ const HeroSection = () => {
             </motion.div>
           </Grid>
 
-          {/* Right Content - Lead Form (Desktop only) */}
+          {/* Right Content - Lead Form Slot (Desktop only) */}
           {isDesktop && (
             <Grid item lg={5}>
               <motion.div
@@ -323,45 +323,15 @@ const HeroSection = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
               >
-                <div className={styles.formCard}>
-                  <div className={styles.formHeader}>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        color: "#FFFFFF",
-                        fontWeight: 700,
-                        fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
-                        textAlign: "center",
-                        fontSize: "1.25rem",
-                      }}
-                    >
-                      Book Your Consultation
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "rgba(255, 255, 255, 0.8)",
-                        textAlign: "center",
-                        marginTop: "0.25rem",
-                        fontSize: "0.875rem",
-                      }}
-                    >
-                      Get expert advice from your Anvil Saathi
-                    </Typography>
-                  </div>
-                  <div className={styles.formBody}>
-                    <UnifiedLeadForm
-                      variant="hero"
-                      source="hero"
-                      showTitle={false}
-                      showSubtitle={false}
-                      showCourseFields={true}
-                      showTrustBadges={true}
-                      showConsent={true}
-                      showPhoneButton={false}
-                      submitButtonText="Book Consultation"
-                      formId="hero-form"
-                    />
+                <div id="hero-form-slot" className={styles.formCard}>
+                  {/* MultiStepLeadForm will be mounted here in prompt 09 */}
+                  <div style={{ padding: "32px", color: "#FFFFFF", textAlign: "center", minHeight: "420px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div>
+                      <strong style={{ fontSize: "1.1rem" }}>Get your free savings plan</strong>
+                      <div style={{ opacity: 0.75, marginTop: "8px", fontSize: "0.9rem" }}>
+                        Multi-step form mounts here (prompt 09)
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
