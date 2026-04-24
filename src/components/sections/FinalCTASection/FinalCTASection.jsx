@@ -9,6 +9,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Section from "../../common/Section";
+import Reveal from "../../common/Reveal/Reveal";
 import MultiStepLeadForm from "../../common/MultiStepLeadForm";
 import styles from "./FinalCTASection.module.css";
 
@@ -24,7 +25,7 @@ const FinalCTASection = () => {
   return (
     <Section id="final-cta" variant="dark" size="lg">
       <div className={styles.grid}>
-        <div className={styles.left}>
+        <Reveal variant="slide-left" className={styles.left}>
           <span className={styles.eyebrow}>Ready to save?</span>
           <h2 className={styles.title}>
             Your free savings plan is 60 seconds away.
@@ -36,15 +37,15 @@ const FinalCTASection = () => {
           </p>
 
           <ul className={styles.checklist}>
-            {CHECKLIST.map((item) => (
-              <li key={item} className={styles.checkItem}>
+            {CHECKLIST.map((item, index) => (
+              <Reveal key={item} as="li" delay={index * 80} className={styles.checkItem}>
                 <Icon
                   icon="mdi:check-circle"
                   aria-hidden="true"
                   className={styles.checkIcon}
                 />
                 <span>{item}</span>
-              </li>
+              </Reveal>
             ))}
           </ul>
 
@@ -67,11 +68,11 @@ const FinalCTASection = () => {
           <p className={styles.reassure}>
             Free &amp; no obligation. 24-hour response guaranteed.
           </p>
-        </div>
+        </Reveal>
 
-        <div className={styles.formWrap}>
+        <Reveal variant="slide-up" className={styles.formWrap} delay={120}>
           <MultiStepLeadForm source="final-cta" variant="dark" />
-        </div>
+        </Reveal>
       </div>
     </Section>
   );

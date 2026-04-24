@@ -7,6 +7,7 @@
 import React from 'react';
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
+import Reveal from '../../common/Reveal/Reveal';
 import SolutionCard from './SolutionCard';
 import solutionsData from '../../../data/solutionsData';
 import { useModal } from '../../../context/ModalContext';
@@ -31,12 +32,13 @@ const SolutionsSection = () => {
       />
 
       <div className={styles.grid}>
-        {solutionsData.map((solution) => (
-          <SolutionCard
-            key={solution.id}
-            solution={solution}
-            onCtaClick={handleCtaClick}
-          />
+        {solutionsData.map((solution, index) => (
+          <Reveal key={solution.id} delay={index * 80}>
+            <SolutionCard
+              solution={solution}
+              onCtaClick={handleCtaClick}
+            />
+          </Reveal>
         ))}
       </div>
     </Section>

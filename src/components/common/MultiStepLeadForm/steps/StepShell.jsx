@@ -9,12 +9,19 @@ import { motion } from "framer-motion";
 import { CircularProgress } from "@mui/material";
 import { Icon } from "@iconify/react";
 import Button from "../../Button/Button";
+import useReducedMotion from "../../../../hooks/useReducedMotion";
 import shellStyles from "../MultiStepLeadForm.module.css";
 
 const slideVariants = {
-  enter: { opacity: 0, x: 24 },
-  center: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -24 },
+  enter: { opacity: 0, x: 32 },
+  centre: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: -32 },
+};
+
+const fadeVariants = {
+  enter: { opacity: 0 },
+  centre: { opacity: 1 },
+  exit: { opacity: 0 },
 };
 
 const StepShell = ({
@@ -28,25 +35,32 @@ const StepShell = ({
   primaryIcon = "mdi:arrow-right",
   showBack = true,
   isSubmitting = false,
-  direction = 1,
 }) => {
+  const reduced = useReducedMotion();
+  const variants = reduced ? fadeVariants : slideVariants;
+
+  const bodyClassName = `${shellStyles.stepBody} ${
+    isSubmitting ? shellStyles.stepBodySubmitting : ""
+  }`.trim();
+
   return (
     <motion.div
       key={stepKey}
       className={shellStyles.stepShell}
-      variants={slideVariants}
+      variants={variants}
       initial="enter"
-      animate="center"
+      animate="centre"
       exit="exit"
-      transition={{ type: "tween", duration: 0.25, ease: "easeOut" }}
-      custom={direction}
+      transition={{ duration: reduced ? 0.15 : 0.28, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <header className={shellStyles.stepHeader}>
         {title && <h3 className={shellStyles.stepTitle}>{title}</h3>}
         {subtitle && <p className={shellStyles.stepSubtitle}>{subtitle}</p>}
       </header>
 
-      <div className={shellStyles.stepBody}>{children}</div>
+      <div className={bodyClassName} aria-busy={isSubmitting || undefined}>
+        {children}
+      </div>
 
       <div className={shellStyles.stepNav}>
         {showBack ? (
