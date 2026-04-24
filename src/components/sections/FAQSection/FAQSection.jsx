@@ -1,0 +1,81 @@
+import React, { useState } from 'react';
+import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+
+import Section from '../../common/Section';
+import SectionHeading from '../../common/SectionHeading';
+import { useModal } from '../../../context/ModalContext';
+import { faqData } from '../../../data/faqData';
+import styles from './FAQSection.module.css';
+
+const FAQItem = ({ item, index, defaultExpanded }) => {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+  const panelId = `faq-panel-${index}`;
+  const headerId = `faq-header-${index}`;
+
+  return (
+    <Accordion
+      className={styles.item}
+      defaultExpanded={defaultExpanded}
+      onChange={(_, isExpanded) => setExpanded(isExpanded)}
+    >
+      <AccordionSummary
+        id={headerId}
+        aria-controls={panelId}
+        className={styles.question}
+      >
+        <span
+          className={`${styles.plus} ${expanded ? styles.expanded : ''}`}
+          aria-hidden="true"
+        >
+          +
+        </span>
+        <span>{item.q}</span>
+      </AccordionSummary>
+      <AccordionDetails id={panelId} className={styles.answer}>
+        {item.a}
+      </AccordionDetails>
+    </Accordion>
+  );
+};
+
+const FAQSection = () => {
+  const { openLeadDrawer } = useModal();
+
+  const handleTalkToSaathi = () => {
+    openLeadDrawer({ source: 'faq' });
+  };
+
+  return (
+    <Section id="faq" variant="default" size="lg">
+      <SectionHeading
+        eyebrow="Common questions"
+        title="Answered, honestly — no jargon."
+        subtitle="Still unsure? Ask on WhatsApp: 1800 2020 001 — we reply within 10 minutes on weekdays."
+      />
+
+      <div className={styles.wrap}>
+        {faqData.map((item, index) => (
+          <FAQItem
+            key={item.q}
+            item={item}
+            index={index}
+            defaultExpanded={index === 0}
+          />
+        ))}
+      </div>
+
+      <div className={styles.bottomHelp}>
+        <span className={styles.text}>Still have questions?</span>
+        <button
+          type="button"
+          className={styles.btn}
+          onClick={handleTalkToSaathi}
+        >
+          Talk to an Anvil Saathi
+        </button>
+      </div>
+    </Section>
+  );
+};
+
+export default FAQSection;
