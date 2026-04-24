@@ -43,13 +43,50 @@ const INITIAL_CONTEXT = {
   calculatorSnapshot: null,
 };
 
-const buildInitialState = (initialContext = {}) => ({
-  step: 1,
-  data: { ...INITIAL_DATA },
-  errors: {},
-  isSubmitting: false,
-  context: { ...INITIAL_CONTEXT, ...initialContext },
-});
+// Keep in sync with Step1BillRegion STATE_OPTIONS.
+const STEP1_STATE_VALUES = ["Assam", "Nagaland", "Odisha", "Other"];
+
+function bucketBill(n) {
+  const num = Number(n);
+  if (!Number.isFinite(num) || num <= 0) return "";
+  if (num < 2000) return "<2000";
+  if (num < 5000) return "2000-5000";
+  if (num < 10000) return "5000-10000";
+  return "10000+";
+}
+
+const mapSnapshotState = (rawState) => {
+  if (!rawState) return "";
+  return STEP1_STATE_VALUES.includes(rawState) ? rawState : "Other";
+};
+
+const buildInitialState = (initialContext = {}) => {
+  const context = { ...INITIAL_CONTEXT, ...initialContext };
+  const data = { ...INITIAL_DATA };
+  let step = 1;
+  let initialStepSkipped = false;
+
+  const snap = context.calculatorSnapshot;
+  if (snap) {
+    const bill = bucketBill(snap.monthlyBill);
+    const state = mapSnapshotState(snap.state);
+    if (bill) data.monthlyBill = bill;
+    if (state) data.state = state;
+    if (bill && state) {
+      step = 2;
+      initialStepSkipped = true;
+    }
+  }
+
+  return {
+    step,
+    data,
+    errors: {},
+    isSubmitting: false,
+    context,
+    initialStepSkipped,
+  };
+};
 
 // ----- reducer -----
 
@@ -69,9 +106,12 @@ const reducer = (state, action) => {
       return { ...state, errors: action.errors };
     case "GO_NEXT":
       return { ...state, step: state.step === 3 ? 3 : state.step + 1, errors: {} };
-    case "GO_BACK":
+    case "GO_BACK": {
       if (state.step === 1 || state.step === "success") return state;
+      const minStep = state.initialStepSkipped ? 2 : 1;
+      if (state.step <= minStep) return state;
       return { ...state, step: state.step - 1, errors: {} };
+    }
     case "SET_SUBMITTING":
       return { ...state, isSubmitting: action.value };
     case "SET_STEP":
@@ -128,25 +168,28 @@ const validateStep = (step, data) => {
 // ----- message serialization -----
 
 const buildEnrichedMessage = (data, context) => {
-  const parts = [
-    data.monthlyBill && `Bill: ₹${data.monthlyBill}`,
-    data.state && `State: ${data.state}`,
-    data.propertyType && `Property: ${data.propertyType}`,
-    data.roofType && `Roof: ${data.roofType}`,
-    data.systemPreference && `System: ${data.systemPreference}`,
-    context?.solution && `Solution: ${context.solution}`,
-  ];
+  const parts = [];
 
-  if (context?.calculatorSnapshot) {
-    const snap = context.calculatorSnapshot;
-    const snapParts = [
-      snap.estimatedSavings != null &&
-        `Est. savings: ₹${snap.estimatedSavings}`,
-      snap.systemKw != null && `System: ${snap.systemKw} kW`,
-      snap.payback != null && `Payback: ${snap.payback} yrs`,
+  const snap = context?.calculatorSnapshot;
+  if (snap) {
+    const calcBits = [
+      snap.systemKw != null && `${snap.systemKw}kW`,
+      snap.monthlySavings != null &&
+        `save ₹${Number(snap.monthlySavings).toLocaleString("en-IN")}/mo`,
+      snap.paybackYears != null && `payback ${snap.paybackYears}yr`,
+      snap.state && `${snap.state}`,
+      snap.monthlyBill != null && `bill ₹${snap.monthlyBill}`,
     ].filter(Boolean);
-    if (snapParts.length) parts.push(`Calculator: ${snapParts.join(", ")}`);
+    if (calcBits.length) parts.push(`Calc: ${calcBits.join(", ")}`);
+  } else {
+    if (data.monthlyBill) parts.push(`Bill: ₹${data.monthlyBill}`);
+    if (data.state) parts.push(`State: ${data.state}`);
   }
+
+  if (data.propertyType) parts.push(`Property: ${data.propertyType}`);
+  if (data.roofType) parts.push(`Roof: ${data.roofType}`);
+  if (data.systemPreference) parts.push(`Pref: ${data.systemPreference}`);
+  if (context?.solution) parts.push(`Solution: ${context.solution}`);
 
   return parts.filter(Boolean).join(" | ");
 };
