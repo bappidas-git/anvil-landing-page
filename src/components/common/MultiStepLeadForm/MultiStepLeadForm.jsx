@@ -7,7 +7,8 @@
    `./steps/`.
    ============================================ */
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Icon } from "@iconify/react";
 import StepIndicator from "./StepIndicator";
@@ -15,7 +16,6 @@ import StepShell from "./steps/StepShell";
 import Step1BillRegion from "./steps/Step1BillRegion";
 import Step2Property from "./steps/Step2Property";
 import Step3Contact from "./steps/Step3Contact";
-import SuccessState from "./steps/SuccessState";
 import useLeadFormMachine from "./useLeadFormMachine";
 import styles from "./MultiStepLeadForm.module.css";
 
@@ -41,6 +41,7 @@ const MultiStepLeadForm = ({
   onClose,
   onSuccess,
 }) => {
+  const navigate = useNavigate();
   const { state, actions } = useLeadFormMachine({
     source,
     solution,
@@ -57,12 +58,14 @@ const MultiStepLeadForm = ({
     }
   };
 
+  useEffect(() => {
+    if (step === "success") {
+      navigate("/thank-you");
+    }
+  }, [step, navigate]);
+
   if (step === "success") {
-    return (
-      <div className={`${styles.wrapper} ${variantClass(variant)}`}>
-        <SuccessState name={state.data.name} />
-      </div>
-    );
+    return null;
   }
 
   const renderStepBody = () => {
