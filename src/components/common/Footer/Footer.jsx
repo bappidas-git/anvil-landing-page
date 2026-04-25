@@ -189,7 +189,7 @@ const Footer = () => {
               Refund Policy
             </a>
           </div>
-          <span className={styles.tagRight}>Made for Indian homeowners ⚡</span>
+          <span className={styles.tagRight}>Designed &amp; Developed by Assam Digital</span>
         </div>
       </div>
     </footer>
