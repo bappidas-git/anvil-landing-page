@@ -13,6 +13,7 @@ import { Icon } from '@iconify/react';
 import { useModal } from '../../../context/ModalContext';
 import { useScrolledPast } from '../../../hooks/useScrollPosition';
 import { trackCTAClick } from '../../../utils/gtm';
+import { trackFunnelStep } from '../../../utils/leadEvents';
 import styles from './FloatingContacts.module.css';
 
 const SALES_PHONE_TEL = (process.env.REACT_APP_SALES_PHONE || '+911800202001').replace(/\s+/g, '');
@@ -30,10 +31,12 @@ const FloatingContacts = () => {
 
   const handleWhatsAppClick = () => {
     trackCTAClick('float_whatsapp', 'floating_contacts', 'WhatsApp');
+    trackFunnelStep('whatsapp_click', { source: 'floating_desktop' });
   };
 
   const handleCallClick = () => {
     trackCTAClick('float_call', 'floating_contacts', 'Call');
+    trackFunnelStep('phone_click', { source: 'floating_desktop' });
   };
 
   return (

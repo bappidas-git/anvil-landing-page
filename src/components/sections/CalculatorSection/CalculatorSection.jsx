@@ -4,13 +4,14 @@
    the left, live output panel on the right.
    ============================================ */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Section from '../../common/Section';
 import SectionHeading from '../../common/SectionHeading';
 import CalculatorInputs from './CalculatorInputs';
 import CalculatorOutput from './CalculatorOutput';
 import useSolarCalculator from '../../../hooks/useSolarCalculator';
 import { useModal } from '../../../context/ModalContext';
+import { trackFunnelStep } from '../../../utils/leadEvents';
 import styles from './CalculatorSection.module.css';
 
 const CalculatorSection = () => {
@@ -27,6 +28,27 @@ const CalculatorSection = () => {
       }
     };
   }, [setters.setState]);
+
+  // Debounced calculator interaction event — at most one per ~1.8s
+  // while the user drags sliders or changes inputs. Skips the very
+  // first render so mounting the section doesn't emit an event.
+  const isFirstInteractionRef = useRef(true);
+  useEffect(() => {
+    if (isFirstInteractionRef.current) {
+      isFirstInteractionRef.current = false;
+      return undefined;
+    }
+    const t = setTimeout(() => {
+      trackFunnelStep('calc_interaction', {
+        monthlyBill: inputs.monthlyBill,
+        roofArea: inputs.roofArea,
+        state: inputs.state,
+        systemKw: outputs.systemKw,
+        monthlySavings: outputs.monthlySavings,
+      });
+    }, 1800);
+    return () => clearTimeout(t);
+  }, [inputs, outputs]);
 
   return (
     <Section id="calculator" variant="default" size="lg">

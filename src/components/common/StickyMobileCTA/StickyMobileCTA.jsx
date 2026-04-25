@@ -20,6 +20,7 @@ import { Icon } from '@iconify/react';
 import { useModal } from '../../../context/ModalContext';
 import { useScrolledPast } from '../../../hooks/useScrollPosition';
 import { trackCTAClick } from '../../../utils/gtm';
+import { trackCtaClickEvent, trackFunnelStep } from '../../../utils/leadEvents';
 import styles from './StickyMobileCTA.module.css';
 
 const SALES_PHONE_TEL = (process.env.REACT_APP_SALES_PHONE || '+911800202001').replace(/\s+/g, '');
@@ -37,14 +38,16 @@ const StickyMobileCTA = () => {
 
   const handleCallClick = () => {
     trackCTAClick('sticky_call', 'sticky_mobile_cta', 'Call');
+    trackFunnelStep('phone_click', { source: 'sticky_mobile' });
   };
 
   const handleWhatsAppClick = () => {
     trackCTAClick('sticky_whatsapp', 'sticky_mobile_cta', 'WhatsApp');
+    trackFunnelStep('whatsapp_click', { source: 'sticky_mobile' });
   };
 
   const handleQuoteClick = () => {
-    trackCTAClick('sticky_quote', 'sticky_mobile_cta', 'Get Quote');
+    trackCtaClickEvent('sticky_get_quote', 'sticky_bar', 'Get Quote');
     openLeadDrawer({ source: 'sticky_mobile' });
   };
 

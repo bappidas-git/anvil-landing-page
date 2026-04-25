@@ -6,7 +6,7 @@
    submission pipeline. Consumed by MultiStepLeadForm.
    ============================================ */
 
-import { useCallback, useMemo, useReducer } from "react";
+import { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
 import {
   submitLeadToWebhook,
   isDuplicateLead,
@@ -18,6 +18,7 @@ import { sendLeadEvent } from "../../../utils/metaCAPI";
 import { generateEventId } from "../../../utils/eventDedup";
 import { trackFormSubmission as trackGoogleAdsFormSubmission } from "../../../utils/googleAds";
 import { sendEnhancedConversionData } from "../../../utils/enhancedConversions";
+import { trackFunnelStep } from "../../../utils/leadEvents";
 import {
   getNameErrorMessage,
   getMobileErrorMessage,
@@ -203,6 +204,20 @@ const useLeadFormMachine = (initialContext = {}) => {
     buildInitialState
   );
 
+  // Emit form_open + initial form_step_viewed once per machine instance.
+  const openEmittedRef = useRef(false);
+  useEffect(() => {
+    if (openEmittedRef.current) return;
+    openEmittedRef.current = true;
+    trackFunnelStep("form_open", {
+      source: state.context.source,
+      solution: state.context.solution,
+    });
+    if (typeof state.step === "number") {
+      trackFunnelStep("form_step_viewed", { step: state.step });
+    }
+  }, [state.context.source, state.context.solution, state.step]);
+
   const setField = useCallback((field, value) => {
     let coerced = value;
     if (field === "mobile" && typeof value === "string") {
@@ -219,13 +234,27 @@ const useLeadFormMachine = (initialContext = {}) => {
       dispatch({ type: "SET_ERRORS", errors });
       return false;
     }
+    trackFunnelStep("form_step_completed", {
+      step: currentStep,
+      source: state.context.source,
+    });
+    const nextStep = currentStep === 3 ? 3 : currentStep + 1;
+    if (nextStep !== currentStep) {
+      trackFunnelStep("form_step_viewed", { step: nextStep });
+    }
     dispatch({ type: "GO_NEXT" });
     return true;
-  }, [state.step, state.data]);
+  }, [state.step, state.data, state.context.source]);
 
   const back = useCallback(() => {
+    const currentStep = state.step;
+    if (currentStep === 1 || currentStep === "success") return;
+    const minStep = state.initialStepSkipped ? 2 : 1;
+    if (typeof currentStep === "number" && currentStep > minStep) {
+      trackFunnelStep("form_step_viewed", { step: currentStep - 1 });
+    }
     dispatch({ type: "GO_BACK" });
-  }, []);
+  }, [state.step, state.initialStepSkipped]);
 
   const submit = useCallback(
     async ({ onSuccess, onClose } = {}) => {
@@ -270,6 +299,12 @@ const useLeadFormMachine = (initialContext = {}) => {
           dispatch({ type: "SET_SUBMITTING", value: false });
           return { success: false };
         }
+
+        trackFunnelStep("form_submitted", {
+          source,
+          solution: context.solution,
+          hasSnapshot: !!context.calculatorSnapshot,
+        });
 
         trackFormSubmission(source, {
           serviceInterest: leadData.service_interest,
