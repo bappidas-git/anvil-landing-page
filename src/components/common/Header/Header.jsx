@@ -7,7 +7,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { Icon } from "@iconify/react";
-import { trackPhoneClick, trackNavigation, trackCTAClick } from "../../../utils/gtm";
+import { trackPhoneClick, trackNavigation } from "../../../utils/gtm";
+import { trackCtaClickEvent } from "../../../utils/leadEvents";
 import { useModal } from "../../../context/ModalContext";
 import styles from "./Header.module.css";
 
@@ -223,7 +224,7 @@ const Header = ({ forceCloseMenu = false }) => {
                 className={styles.callButton}
                 onClick={(e) => {
                   e.preventDefault();
-                  trackCTAClick("get_free_quote", "header", "header_cta");
+                  trackCtaClickEvent("header_cta", "header", "Get Free Quote");
                   openLeadDrawer("header_cta");
                   setIsMobileMenuOpen(false);
                 }}

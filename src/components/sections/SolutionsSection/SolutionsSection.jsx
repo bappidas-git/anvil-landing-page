@@ -11,12 +11,18 @@ import Reveal from '../../common/Reveal/Reveal';
 import SolutionCard from './SolutionCard';
 import solutionsData from '../../../data/solutionsData';
 import { useModal } from '../../../context/ModalContext';
+import { trackCtaClickEvent, trackFunnelStep } from '../../../utils/leadEvents';
 import styles from './SolutionsSection.module.css';
 
 const SolutionsSection = () => {
   const { openLeadDrawer } = useModal();
 
   const handleCtaClick = (solution) => {
+    trackCtaClickEvent('solutions_card', solution.id, solution.title);
+    trackFunnelStep('solution_click', {
+      solutionId: solution.id,
+      solutionTag: solution.solutionTag,
+    });
     openLeadDrawer({
       source: 'solutions',
       solution: solution.solutionTag,
