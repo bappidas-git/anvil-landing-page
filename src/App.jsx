@@ -243,6 +243,9 @@ ScrollProgressIndicator.displayName = 'ScrollProgressIndicator';
 // ===========================================
 const BackToTopButton = memo(() => {
   const [isVisible, setIsVisible] = useState(false);
+  // Only render on desktop (>=769px); hidden on mobile and tablet to avoid
+  // overlapping the StickyMobileCTA bar.
+  const isDesktop = useMediaQuery('(min-width: 769px)');
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -266,7 +269,7 @@ const BackToTopButton = memo(() => {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && isDesktop && (
         <motion.button
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -277,7 +280,7 @@ const BackToTopButton = memo(() => {
           style={{
             position: 'fixed',
             bottom: '24px',
-            right: '20px',
+            right: '24px',
             width: '48px',
             height: '48px',
             borderRadius: '50%',
