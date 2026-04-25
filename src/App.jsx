@@ -22,7 +22,6 @@ import HeroSection from './components/sections/HeroSection/HeroSection';
 import TrustBar from './components/sections/TrustBar/TrustBar';
 import Footer from './components/common/Footer/Footer';
 import Modal from './components/common/Modal/Modal';
-import MobileNavigation from './components/common/MobileNavigation/MobileNavigation';
 import MobileDrawer from './components/common/MobileDrawer/MobileDrawer';
 import LeadFormDrawer from './components/common/LeadFormDrawer/LeadFormDrawer';
 import EngagementTracker from './components/common/EngagementTracker/EngagementTracker';
@@ -277,7 +276,7 @@ const BackToTopButton = memo(() => {
           onClick={scrollToTop}
           style={{
             position: 'fixed',
-            bottom: '100px',
+            bottom: '24px',
             right: '20px',
             width: '48px',
             height: '48px',
@@ -386,7 +385,6 @@ const HomePageContent = () => {
     trackMetaPageView();
   }, [location.pathname]);
 
-  const handleMenuClick = () => setIsMobileDrawerOpen(true);
   const handleMobileDrawerClose = () => setIsMobileDrawerOpen(false);
   const handleMobileDrawerOpen = () => setIsMobileDrawerOpen(true);
   const handleEnquiryClick = () => openLeadDrawer('default');
@@ -502,21 +500,14 @@ const HomePageContent = () => {
       {/* Footer */}
       <Footer />
 
-      {/* Mobile Bottom Navigation */}
+      {/* Mobile Drawer */}
       {isMobile && (
-        <>
-          <MobileNavigation
-            onMenuClick={handleMenuClick}
-            onEnquiryClick={handleEnquiryClick}
-            isDrawerOpen={isMobileDrawerOpen}
-          />
-          <MobileDrawer
-            open={isMobileDrawerOpen}
-            onClose={handleMobileDrawerClose}
-            onOpen={handleMobileDrawerOpen}
-            onBookConsultation={handleEnquiryClick}
-          />
-        </>
+        <MobileDrawer
+          open={isMobileDrawerOpen}
+          onClose={handleMobileDrawerClose}
+          onOpen={handleMobileDrawerOpen}
+          onBookConsultation={handleEnquiryClick}
+        />
       )}
 
       {/* Back to Top Button */}
