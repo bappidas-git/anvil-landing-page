@@ -1,7 +1,7 @@
 .stack {
   position: fixed;
-  right: 24px;
-  bottom: 96px;
+  right: 22px;
+  bottom: 92px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -36,10 +36,6 @@
 
 .btn.wa {
   background: #25D366;
-}
-
-.btn.call {
-  background: var(--primary-dark);
 }
 
 .btn svg,

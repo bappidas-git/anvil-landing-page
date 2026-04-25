@@ -1,7 +1,8 @@
 /* ============================================
    FloatingContacts
-   Two circular pills (WhatsApp + Call) anchored
-   to the bottom-right corner on desktop (>=769px).
+   Circular WhatsApp pill anchored to the bottom-right
+   corner on desktop (>=769px). Sits above the
+   back-to-top button and aligns with it vertically.
    Appears after 800px scroll; hides on admin/thank-you
    routes and while the lead drawer is open.
    ============================================ */
@@ -34,11 +35,6 @@ const FloatingContacts = () => {
     trackFunnelStep('whatsapp_click', { source: 'floating_desktop' });
   };
 
-  const handleCallClick = () => {
-    trackCTAClick('float_call', 'floating_contacts', 'Call');
-    trackFunnelStep('phone_click', { source: 'floating_desktop' });
-  };
-
   return (
     <AnimatePresence>
       {shouldShow && (
@@ -60,15 +56,6 @@ const FloatingContacts = () => {
             title="Chat on WhatsApp"
           >
             <Icon icon="mdi:whatsapp" />
-          </a>
-          <a
-            href={`tel:${SALES_PHONE_TEL}`}
-            className={`${styles.btn} ${styles.call}`}
-            onClick={handleCallClick}
-            aria-label="Call Anvil"
-            title="Call Anvil"
-          >
-            <Icon icon="mdi:phone" />
           </a>
         </motion.div>
       )}
